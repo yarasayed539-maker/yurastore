@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yura Store | Handmade Crochet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+<link rel="dns-prefetch" href="https://unpkg.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
@@ -28,6 +33,7 @@ tailwind.config={
         'card':'0 8px 30px rgba(0,0,0,0.06)','card-hover':'0 25px 60px rgba(232,160,191,0.3)',
         'deep':'0 20px 60px rgba(0,0,0,0.12)','glow':'0 0 40px rgba(232,160,191,0.4)',
         'logo':'0 8px 30px rgba(232,160,191,0.25)','logo-hover':'0 15px 50px rgba(232,160,191,0.4)',
+        'modal':'0 25px 80px rgba(0,0,0,0.3)',
       }
     }
   }
@@ -35,7 +41,7 @@ tailwind.config={
 </script>
 <style>
 *{scroll-behavior:smooth}
-body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:hidden}
+body{font-family:'Cairo',sans-serif;font-display:swap;background:#FFF8F0;color:#4A4A4A;overflow-x:hidden}
 ::-webkit-scrollbar{width:10px}
 ::-webkit-scrollbar-track{background:#FFF8F0}
 ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#F4C2C2,#E8A0BF);border-radius:10px;border:2px solid #FFF8F0}
@@ -45,8 +51,8 @@ body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:
 .logo-text{font-family:'Playfair Display',serif;background:linear-gradient(135deg,#E8A0BF 0%,#D4A5A5 50%,#C5D5C0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 4px 8px rgba(232,160,191,0.3))}
 .product-card{transition:all 0.6s cubic-bezier(0.34,1.56,0.64,1);transform-style:preserve-3d;perspective:1000px}
 .product-card:hover{transform:translateY(-16px) scale(1.03) rotateX(2deg);box-shadow:0 30px 70px rgba(232,160,191,0.35),0 10px 30px rgba(0,0,0,0.1)}
-.product-card .card-image{transition:transform 0.8s cubic-bezier(0.4,0,0.2,1)}
-.product-card:hover .card-image{transform:scale(1.12)}
+.product-card .card-image{transition:transform 0.8s cubic-bezier(0.4,0,0.2,1);cursor:pointer}
+.product-card:hover .card-image{transform:scale(1.12)}.product-slider-track{display:flex;width:700%;animation:productSlide 21s ease-in-out infinite}.product-slider-track:hover{animation-play-state:paused}@keyframes productSlide{0%,11%{transform:translateX(0)}14.28%,25.28%{transform:translateX(-14.28%)}28.56%,39.56%{transform:translateX(-28.56%)}42.84%,53.84%{transform:translateX(-42.84%)}57.12%,68.12%{transform:translateX(-57.12%)}71.4%,82.4%{transform:translateX(-71.4%)}85.68%,96.68%{transform:translateX(-85.68%)}100%{transform:translateX(0)}}.product-slider-track .card-image{width:14.285%;flex-shrink:0}
 .product-card .overlay{opacity:0;transition:all 0.5s ease;backdrop-filter:blur(4px)}
 .product-card:hover .overlay{opacity:1}
 .product-card .card-content{transition:all 0.4s ease}
@@ -82,21 +88,38 @@ body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:
 .logo-hero:hover{transform:scale(1.05) rotate(-2deg);filter:drop-shadow(0 15px 40px rgba(232,160,191,0.5))}
 .logo-nav{transition:all 0.4s ease;border-radius:1rem}
 .logo-nav:hover{transform:scale(1.1) rotate(-3deg);filter:drop-shadow(0 6px 15px rgba(232,160,191,0.4))}
-/* Screenshot Gallery Carousel */
-.screenshot-track{display:flex;gap:2rem;animation:scroll-track 30s linear infinite;width:max-content}
-.screenshot-track:hover{animation-play-state:paused}
-@keyframes scroll-track{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.screenshot-card{flex-shrink:0;width:300px;height:600px;border-radius:2rem;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.15);transition:all 0.5s cubic-bezier(0.34,1.56,0.64,1);border:3px solid rgba(255,255,255,0.6)}
-.screenshot-card:hover{transform:scale(1.08) translateY(-10px);box-shadow:0 25px 60px rgba(232,160,191,0.35);border-color:rgba(232,160,191,0.5)}
-.screenshot-card img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease}
-.screenshot-card:hover img{transform:scale(1.05)}
-.screenshot-wrapper{overflow:hidden;position:relative}
-.screenshot-wrapper::before,.screenshot-wrapper::after{content:'';position:absolute;top:0;width:150px;height:100%;z-index:10;pointer-events:none}
-.screenshot-wrapper::before{left:0;background:linear-gradient(90deg,#FFF8F0,transparent)}
-.screenshot-wrapper::after{right:0;background:linear-gradient(-90deg,#FFF8F0,transparent)}
-/* Mobile menu */
-.mobile-menu-enter{animation:slide-down 0.4s cubic-bezier(0.34,1.56,0.64,1)}
-@keyframes slide-down{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+
+
+/* ===== PRODUCT MODAL ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(12px);z-index:100;opacity:0;visibility:hidden;transition:all 0.4s ease;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.active{opacity:1;visibility:visible}
+.modal-content{background:#FFF8F0;border-radius:2.5rem;max-width:1000px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:scale(0.9) translateY(30px);transition:all 0.5s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 30px 80px rgba(0,0,0,0.3)}
+.modal-overlay.active .modal-content{transform:scale(1) translateY(0)}
+.modal-close{position:absolute;top:1.5rem;right:1.5rem;width:44px;height:44px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 4px 15px rgba(0,0,0,0.1);transition:all 0.3s ease;border:none;font-size:1.2rem;color:#4A4A4A}
+.modal-close:hover{background:#E8A0BF;color:white;transform:rotate(90deg) scale(1.1)}
+.modal-gallery{position:relative;border-radius:2rem;overflow:hidden;aspect-square}
+.modal-gallery img{width:100%;height:100%;object-fit:cover;transition:all 0.5s ease}
+.modal-thumbs{display:flex;gap:0.75rem;overflow-x:auto;padding:0.5rem 0}
+.modal-thumbs::-webkit-scrollbar{height:6px}
+.modal-thumbs::-webkit-scrollbar-thumb{background:#E8A0BF;border-radius:3px}
+.modal-thumb{width:70px;height:70px;border-radius:1rem;overflow:hidden;cursor:pointer;border:3px solid transparent;transition:all 0.3s ease;flex-shrink:0}
+.modal-thumb:hover{transform:scale(1.1)}
+.modal-thumb.active{border-color:#E8A0BF;box-shadow:0 4px 15px rgba(232,160,191,0.3)}
+.modal-thumb img{width:100%;height:100%;object-fit:cover}
+.detail-row{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:white;border-radius:1rem;margin-bottom:0.5rem;box-shadow:0 2px 10px rgba(0,0,0,0.04);transition:all 0.3s ease}
+.detail-row:hover{transform:translateX(-5px);box-shadow:0 4px 15px rgba(232,160,191,0.15)}
+.detail-icon{width:36px;height:36px;background:linear-gradient(135deg,#F4C2C2,#E8A0BF);border-radius:0.75rem;display:flex;align-items:center;justify-content:center;color:white;font-size:0.85rem}
+.color-dot{width:24px;height:24px;border-radius:50%;border:2px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.15);display:inline-block;transition:all 0.3s ease}
+.color-dot:hover{transform:scale(1.3);box-shadow:0 4px 12px rgba(0,0,0,0.2)}
+.gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;background:white/90;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.15);transition:all 0.3s ease;z-index:5;border:none;font-size:1rem;color:#4A4A4A}
+.gallery-nav:hover{background:#E8A0BF;color:white;transform:translateY(-50%) scale(1.1)}
+.gallery-nav.prev{left:1rem}
+.gallery-nav.next{right:1rem}
+@media(max-width:768px){
+  .modal-content{border-radius:1.5rem;max-height:95vh}
+  .modal-gallery{aspect-ratio:1/1}
+  .gallery-nav{width:36px;height:36px}
+}
 </style>
 <base target="_blank">
 </head>
@@ -107,19 +130,19 @@ body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex items-center justify-between">
 <a href="#" class="flex items-center gap-3 group" data-aos="fade-down" data-aos-duration="800">
-<img src="yura_logo.jpg" alt="Yura Store Logo" class="logo-nav w-14 h-14 object-cover rounded-2xl shadow-logo border-2 border-white/50">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-nav w-14 h-14 object-cover rounded-2xl shadow-logo border-2 border-white/50">
 <div class="flex flex-col">
 <span class="logo-text text-3xl font-bold leading-none tracking-wide">Yura</span>
 <span class="text-yura-pink-dark text-sm font-tajawal font-medium tracking-[0.2em] -mt-1">STORE</span>
 </div>
 </a>
 <div class="hidden md:flex items-center gap-8">
-<a href="#home" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">الرئيسية</a>
-<a href="#products" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">منتجاتنا</a>
-<a href="#about" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">من نحن</a>
-<a href="#screenshots" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">الاسكرينات</a>
+<a href="#home" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">Home</a>
+<a href="#products" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">Products</a>
+<a href="#about" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">About us</a>
+<a href="#screenshots" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">Feedback</a>
 <a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أستفسر%20عن%20منتجاتكم" target="_blank" class="whatsapp-btn text-white px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2">
-<i class="fab fa-whatsapp text-lg"></i>تواصل معنا
+<i class="fab fa-whatsapp text-lg"></i>Contact us
 </a>
 </div>
 <button id="mobile-menu-btn" class="md:hidden text-yura-dark p-2 hover:bg-yura-pink/10 rounded-lg transition-colors">
@@ -129,12 +152,12 @@ body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:
 </div>
 <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full nav-blur border-t border-yura-pink/20 shadow-soft-lg">
 <div class="px-4 py-6 space-y-4 flex flex-col items-center">
-<a href="#home" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">الرئيسية</a>
-<a href="#products" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">منتجاتنا</a>
-<a href="#about" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">من نحن</a>
-<a href="#screenshots" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">الاسكرينات</a>
+<a href="#home" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">Home</a>
+<a href="#products" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">Products</a>
+<a href="#about" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">About us</a>
+<a href="#screenshots" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">Feedback</a>
 <a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أستفسر%20عن%20منتجاتكم" target="_blank" class="whatsapp-btn text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 mt-2">
-<i class="fab fa-whatsapp"></i>تواصل معنا
+<i class="fab fa-whatsapp"></i>Contact us
 </a>
 </div>
 </div>
@@ -151,38 +174,31 @@ body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:
 
 <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 <div data-aos="zoom-in" data-aos-duration="1000">
-<!-- Logo Hero -->
 <div class="mb-8 inline-block">
-<img src="yura_logo.jpg" alt="Yura Store Logo" class="logo-hero w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover rounded-[2.5rem] shadow-logo border-4 border-white/60">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-hero w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover rounded-[2.5rem] shadow-logo border-4 border-white/60">
 </div>
-
 <h1 class="font-playfair text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold mb-2 leading-tight">
 <span class="logo-text shimmer-text">Yura</span>
 </h1>
 <h2 class="font-tajawal text-3xl sm:text-4xl md:text-5xl font-light text-yura-text mb-4 tracking-[0.3em]">STORE</h2>
-
 <div class="deco-line w-40 mx-auto my-8"></div>
-
 <p class="font-cairo text-lg sm:text-xl md:text-2xl text-yura-text/80 max-w-3xl mx-auto mb-6 leading-relaxed font-light" data-aos="fade-up" data-aos-delay="300">
 𝗛𝗮𝗻𝗱𝗺𝗮𝗱𝗲 𝘄𝗶𝘁𝗵 𝗟𝗼𝘃𝗲, 𝗦𝘁𝗶𝘁𝗰𝗵𝗲𝗱 𝘁𝗼 𝗣𝗲𝗿𝗳𝗲𝗰𝘁𝗶𝗼𝗻 – 𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝘁𝗼 𝗬𝗼𝘂𝗿 𝗖𝗿𝗼𝗰𝗵𝗲𝘁 𝗛𝗮𝘃𝗲𝗻
 </p>
-
 <p class="text-sm text-yura-text/50 mb-12 font-light tracking-[0.2em] uppercase" data-aos="fade-up" data-aos-delay="500">
 HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 </p>
-
 <div class="flex flex-col sm:flex-row gap-5 justify-center items-center" data-aos="fade-up" data-aos-delay="700">
 <a href="#products" class="group relative px-10 py-5 bg-gradient-to-r from-yura-pink-dark to-yura-pink text-white rounded-full font-bold text-lg shadow-soft-lg hover:shadow-glow transition-all duration-500 overflow-hidden">
 <span class="relative z-10 flex items-center gap-3">Shop Collection<i class="fas fa-arrow-left group-hover:-translate-x-2 transition-transform duration-300"></i></span>
 <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
 </a>
-<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أطلب%20عموله%20مخصصة" target="_blank" class="px-10 py-5 border-2 border-yura-pink-dark text-yura-pink-dark rounded-full font-bold text-lg hover:bg-yura-pink-dark hover:text-white transition-all duration-500 flex items-center gap-3 hover:shadow-soft-lg hover:scale-105">
-<i class="fab fa-whatsapp text-xl"></i>عموله · Customize Order
+<a href="https://wa.me/201018140186?text=Hi%20yura%20,%20can%20i%20customize%20my%20order%20?" target="_blank" class="px-10 py-5 border-2 border-yura-pink-dark text-yura-pink-dark rounded-full font-bold text-lg hover:bg-yura-pink-dark hover:text-white transition-all duration-500 flex items-center gap-3 hover:shadow-soft-lg hover:scale-105">
+<i class="fab fa-whatsapp text-xl"></i>Customize Order
 </a>
 </div>
 </div>
 </div>
-
 <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
 <div class="w-10 h-10 rounded-full border-2 border-yura-pink-dark/40 flex items-center justify-center">
 <i class="fas fa-chevron-down text-yura-pink-dark text-sm"></i>
@@ -194,13 +210,13 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <section class="py-16 bg-white/40 backdrop-blur-sm">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up">
-<button class="category-pill active px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer"><span>الكل</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer"><span>Bags & Totes</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer"><span>Dolls & Amigurumi</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer"><span>Anime Collection</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer"><span>Keychains</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer"><span>Boys' Keychains</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer"><span>Gifts & Accessories</span></button>
+<button class="category-pill active px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('all')"><span>الكل</span></button>
+<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('bags')"><span>Bags & Totes</span></button>
+<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('dolls')"><span>Dolls & Amigurumi</span></button>
+<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('anime')"><span>Anime Collection</span></button>
+<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('keychains')"><span>Keychains</span></button>
+<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('boys')"><span>Boys' Keychains</span></button>
+<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('gifts')"><span>Gifts & Accessories</span></button>
 </div>
 </div>
 </section>
@@ -215,239 +231,134 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <p class="mt-6 text-yura-text/70 max-w-xl mx-auto text-lg leading-relaxed">Every piece is crafted with love and precision, ready to make you stand out with elegance</p>
 </div>
 
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="products-grid">
 
-<!-- Product 1: Bags & Totes -->
-<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border" data-aos="fade-up" data-aos-delay="0">
-<div class="relative overflow-hidden aspect-[4/5]">
-<img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&h=750&fit=crop&q=80" alt="شنطة كروشيه يد" class="card-image w-full h-full object-cover">
-<div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6">
-<span class="text-white/90 text-sm font-light tracking-wide">Handmade with Love</span>
-</div>
-<div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">450 ج.م</span></div>
-<div class="absolute top-5 left-5 bg-yura-pink-dark/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Bags & Totes</div>
-</div>
-<div class="card-content p-6">
-<h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">شنطة يد كروشيه</h3>
-<p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">شنطة يد أنيقة مصنوعة يدوياً بخيوط قطنية عالية الجودة بتصميم عصري وألوان باستيل ناعمة</p>
-<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أطلب%20شنطة%20يد%20كروشيه" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
-<i class="fab fa-whatsapp text-lg"></i>اطلبي الآن
-</a>
-</div>
-</div>
+<!-- ⬇️⬇️⬇️ ADD YOUR PRODUCTS HERE ⬇️⬇️⬇️ -->
+<!-- Copy the template below for each product and fill in your details -->
 
-<!-- Product 2: Bags & Totes -->
-<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border" data-aos="fade-up" data-aos-delay="100">
-<div class="relative overflow-hidden aspect-[4/5]">
-<img src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&h=750&fit=crop&q=80" alt="توت باج كروشيه" class="card-image w-full h-full object-cover">
-<div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6">
-<span class="text-white/90 text-sm font-light tracking-wide">Spacious & Stylish</span>
-</div>
-<div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">380 ج.م</span></div>
-<div class="absolute top-5 left-5 bg-yura-pink-dark/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Bags & Totes</div>
-</div>
-<div class="card-content p-6">
-<h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">توت باج كروشيه</h3>
-<p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">توت باج واسع ومريح للجامعة والخروجات اليومية بتصميم بسيط وأنيق</p>
-<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أطلب%20توت%20باج%20كروشيه" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
-<i class="fab fa-whatsapp text-lg"></i>اطلبي الآن
-</a>
-</div>
+<!-- 
+TEMPLATE — Copy & Paste for each product:
+
+<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border product-item" data-category="bags" data-aos="fade-up" data-aos-delay="0">
+  <div class="relative overflow-hidden aspect-[4/5]">
+    <img src="YOUR_IMAGE_URL.jpg" alt="Product Name" class="card-image w-full h-full object-cover" onclick="openProductModal(0)">
+    <div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6 pointer-events-none">
+      <span class="text-white/90 text-sm font-light tracking-wide"><i class="fas fa-images mr-2"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">000 EGP</span></div>
+    <div class="absolute top-5 left-5 bg-yura-pink-dark/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Category</div>
+  </div>
+  <div class="card-content p-6">
+    <h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">Product Name</h3>
+    <p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">Short description here...</p>
+    <a href="https://wa.me/201018140186?text=Hi%20yura%20,%20I%20want%20to%20order%20PRODUCT_NAME" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fab fa-whatsapp text-lg"></i>Order now
+    </a>
+  </div>
 </div>
 
-<!-- Product 3: Dolls & Amigurumi -->
-<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border" data-aos="fade-up" data-aos-delay="200">
-<div class="relative overflow-hidden aspect-[4/5]">
-<img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&h=750&fit=crop&q=80" alt="دمية أميغورومي" class="card-image w-full h-full object-cover">
-<div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6">
-<span class="text-white/90 text-sm font-light tracking-wide">Cute & Cuddly</span>
-</div>
-<div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">320 ج.م</span></div>
-<div class="absolute top-5 left-5 bg-yura-sage/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Dolls & Amigurumi</div>
-</div>
-<div class="card-content p-6">
-<h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">دمية أميغورومي ناعمة</h3>
-<p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">دمية كروشيه لطيفة بتفاصيل دقيقة، مثالية كهدية للأطفال أو لديكور الغرفة</p>
-<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أطلب%20دمية%20أميغورومي%20ناعمة" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
-<i class="fab fa-whatsapp text-lg"></i>اطلبي الآن
-</a>
-</div>
+-->
+
+<!-- Product: Rapunzel Crochet Doll -->
+<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border product-item" data-category="dolls gifts" data-aos="fade-up" data-aos-delay="0">
+  <div class="relative overflow-hidden aspect-[4/5]" id="product-slider-0">
+    <div class="product-slider-track" id="slider-track-0">
+      <img src="https://i.postimg.cc/x83jbTW5/IMG-2718.jpg" alt="Rapunzel Crochet Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(0)">
+      <img src="https://i.postimg.cc/dtnts3RK/IMG-2720.jpg" alt="Rapunzel Crochet Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(0)">
+      <img src="https://i.postimg.cc/8Cxz2YR1/IMG-2721.jpg" alt="Rapunzel Crochet Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(0)">
+      <img src="https://i.postimg.cc/nLNhyW4p/IMG-2722.jpg" alt="Rapunzel Crochet Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(0)">
+      <img src="https://i.postimg.cc/1z8zYSqy/IMG-2724.jpg" alt="Rapunzel Crochet Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(0)">
+      <img src="https://i.postimg.cc/xdB1wZvd/IMG-2725.jpg" alt="Rapunzel Crochet Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(0)">
+      <img src="https://i.postimg.cc/yYnY1xmp/IMG-2726.jpg" alt="Rapunzel Crochet Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(0)">
+    </div>
+    <div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6 pointer-events-none">
+      <span class="text-white/90 text-sm font-light tracking-wide"><i class="fas fa-images mr-2"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">550 EGP</span></div>
+    <div class="absolute top-5 left-5 bg-yura-sage/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Dolls & Amigurumi</div>
+  </div>
+  <div class="card-content p-6">
+    <h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">Rapunzel Crochet Doll</h3>
+    <p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">Handcrafted amigurumi doll inspired by Princess Rapunzel and Pascal. A special gift for any fan.</p>
+    <a href="https://wa.me/201018140186?text=Hi%20yura%20,%20I%20want%20to%20order%20Rapunzel%20Crochet%20Doll" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fab fa-whatsapp text-lg"></i>Order now
+    </a>
+  </div>
 </div>
 
-<!-- Product 4: Dolls & Amigurumi -->
-<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border" data-aos="fade-up" data-aos-delay="300">
-<div class="relative overflow-hidden aspect-[4/5]">
-<img src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=600&h=750&fit=crop&q=80" alt="مجموعة دمى" class="card-image w-full h-full object-cover">
-<div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6">
-<span class="text-white/90 text-sm font-light tracking-wide">Adorable Set</span>
 </div>
-<div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">550 ج.م</span></div>
-<div class="absolute top-5 left-5 bg-yura-sage/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Dolls & Amigurumi</div>
-</div>
-<div class="card-content p-6">
-<h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">طقم دمى أميغورومي</h3>
-<p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">طقم 3 دمى كروشيه صغيرة بتصاميم مختلفة، هدية مثالية للمواليد</p>
-<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أطلب%20طقم%20دمى%20أميغورومي" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
-<i class="fab fa-whatsapp text-lg"></i>اطلبي الآن
-</a>
-</div>
-</div>
-
-<!-- Product 5: Anime Collection -->
-<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border" data-aos="fade-up" data-aos-delay="0">
-<div class="relative overflow-hidden aspect-[4/5]">
-<img src="https://images.unsplash.com/photo-1618336753974-aae8e04506aa?w=600&h=750&fit=crop&q=80" alt="شخصية أنمي كروشيه" class="card-image w-full h-full object-cover">
-<div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6">
-<span class="text-white/90 text-sm font-light tracking-wide">Anime Lover</span>
-</div>
-<div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">420 ج.م</span></div>
-<div class="absolute top-5 left-5 bg-purple-500/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Anime Collection</div>
-</div>
-<div class="card-content p-6">
-<h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">شخصية أنمي كروشيه</h3>
-<p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">شخصية أنمي محبوبة مصنوعة بالكروشيه بتفاصيل دقيقة وألوان زاهية</p>
-<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أطلب%20شخصية%20أنمي%20كروشيه" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
-<i class="fab fa-whatsapp text-lg"></i>اطلبي الآن
-</a>
-</div>
-</div>
-
-<!-- Product 6: Anime Collection -->
-<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border" data-aos="fade-up" data-aos-delay="100">
-<div class="relative overflow-hidden aspect-[4/5]">
-<img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&h=750&fit=crop&q=80" alt="طقم أنمي كروشيه" class="card-image w-full h-full object-cover">
-<div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6">
-<span class="text-white/90 text-sm font-light tracking-wide">Limited Edition</span>
-</div>
-<div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">680 ج.م</span></div>
-<div class="absolute top-5 left-5 bg-purple-500/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Anime Collection</div>
-</div>
-<div class="card-content p-6">
-<h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">بوكس أنمي كروشيه فاخر</h3>
-<p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">بوكس يتضمن شخصيتين أنمي + ميدالية مطابقة، تغليف أنيق وهدية مميزة</p>
-<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أطلب%20بوكس%20أنمي%20كروشيه%20فاخر" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
-<i class="fab fa-whatsapp text-lg"></i>اطلبي الآن
-</a>
-</div>
-</div>
-
-<!-- Product 7: Keychains -->
-<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border" data-aos="fade-up" data-aos-delay="200">
-<div class="relative overflow-hidden aspect-[4/5]">
-<img src="https://images.unsplash.com/photo-1606293926075-69a00febf780?w=600&h=750&fit=crop&q=80" alt="ميداليات كروشيه" class="card-image w-full h-full object-cover">
-<div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6">
-<span class="text-white/90 text-sm font-light tracking-wide">Charming Details</span>
-</div>
-<div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">85 ج.م</span></div>
-<div class="absolute top-5 left-5 bg-rose-400/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Keychains</div>
-</div>
-<div class="card-content p-6">
-<h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">ميدالية كروشيه زهرية</h3>
-<p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">ميدالية أنيقة على شكل وردة كروشيه صغيرة، تزيني بيها شنطتك أو مفاتيحك</p>
-<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أطلب%20ميدالية%20كروشيه%20زهرية" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
-<i class="fab fa-whatsapp text-lg"></i>اطلبي الآن
-</a>
-</div>
-</div>
-
-<!-- Product 8: Keychains -->
-<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border" data-aos="fade-up" data-aos-delay="300">
-<div class="relative overflow-hidden aspect-[4/5]">
-<img src="https://images.unsplash.com/photo-1513519245088-0e12902e35a6?w=600&h=750&fit=crop&q=80" alt="طقم ميداليات" class="card-image w-full h-full object-cover">
-<div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6">
-<span class="text-white/90 text-sm font-light tracking-wide">Pretty Set</span>
-</div>
-<div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">220 ج.م</span></div>
-<div class="absolute top-5 left-5 bg-rose-400/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Keychains</div>
-</div>
-<div class="card-content p-6">
-<h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">طقم ميداليات كروشيه (3 قطع)</h3>
-<p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">3 ميداليات مختلفة الأشكال: قلب، نجمة، ووردة — هدية لطيفة وبسعر مميز</p>
-<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أطلب%20طقم%20ميداليات%20كروشيه" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
-<i class="fab fa-whatsapp text-lg"></i>اطلبي الآن
-</a>
-</div>
-</div>
-
-<!-- Product 9: Boys' Keychains -->
-<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border" data-aos="fade-up" data-aos-delay="0">
-<div class="relative overflow-hidden aspect-[4/5]">
-<img src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=600&h=750&fit=crop&q=80" alt="ميدالية شبابية" class="card-image w-full h-full object-cover">
-<div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6">
-<span class="text-white/90 text-sm font-light tracking-wide">Cool & Edgy</span>
-</div>
-<div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">95 ج.م</span></div>
-<div class="absolute top-5 left-5 bg-slate-500/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Boys' Keychains</div>
-</div>
-<div class="card-content p-6">
-<h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">ميدالية شبابية كروشيه</h3>
-<p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">ميدالية بتصميم شبابي عصري، ألوان داكنة وشكل مميز يناسب الجميع</p>
-<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أطلب%20ميدالية%20شبابية%20كروشيه" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
-<i class="fab fa-whatsapp text-lg"></i>اطلبي الآن
-</a>
-</div>
-</div>
-
-<!-- Product 10: Boys' Keychains -->
-<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border" data-aos="fade-up" data-aos-delay="100">
-<div class="relative overflow-hidden aspect-[4/5]">
-<img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=600&h=750&fit=crop&q=80" alt="طقم ميداليات شبابية" class="card-image w-full h-full object-cover">
-<div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6">
-<span class="text-white/90 text-sm font-light tracking-wide">Masculine Style</span>
-</div>
-<div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">250 ج.م</span></div>
-<div class="absolute top-5 left-5 bg-slate-500/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Boys' Keychains</div>
-</div>
-<div class="card-content p-6">
-<h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">طقم ميداليات شبابية (4 قطع)</h3>
-<p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">4 ميداليات بتصاميم مختلفة: كرة، سيارة، وجه، وشعار — مناسبة للهدايا</p>
-<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أطلب%20طقم%20ميداليات%20شبابية" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
-<i class="fab fa-whatsapp text-lg"></i>اطلبي الآن
-</a>
-</div>
-</div>
-
-<!-- Product 11: Gifts & Accessories -->
-<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border" data-aos="fade-up" data-aos-delay="200">
-<div class="relative overflow-hidden aspect-[4/5]">
-<img src="https://images.unsplash.com/photo-1597484662317-c9253e609f55?w=600&h=750&fit=crop&q=80" alt="بوكس هدايا" class="card-image w-full h-full object-cover">
-<div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6">
-<span class="text-white/90 text-sm font-light tracking-wide">Perfect Gift</span>
-</div>
-<div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">750 ج.م</span></div>
-<div class="absolute top-5 left-5 bg-amber-500/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Gifts & Accessories</div>
-</div>
-<div class="card-content p-6">
-<h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">بوكس هدايا كروشيه فاخر</h3>
-<p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">بوكس يتضمن شنطة صغيرة + ميدالية + دمية + بطاقة تهنئة بتغليف أنيق</p>
-<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أطلب%20بوكس%20هدايا%20كروشيه%20فاخر" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
-<i class="fab fa-whatsapp text-lg"></i>اطلبي الآن
-</a>
-</div>
-</div>
-
-<!-- Product 12: Gifts & Accessories -->
-<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border" data-aos="fade-up" data-aos-delay="300">
-<div class="relative overflow-hidden aspect-[4/5]">
-<img src="https://images.unsplash.com/photo-1619250907682-6625547d6905?w=600&h=750&fit=crop&q=80" alt="إكسسوارات كروشيه" class="card-image w-full h-full object-cover">
-<div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6">
-<span class="text-white/90 text-sm font-light tracking-wide">Elegant Touch</span>
-</div>
-<div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">290 ج.م</span></div>
-<div class="absolute top-5 left-5 bg-amber-500/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Gifts & Accessories</div>
-</div>
-<div class="card-content p-6">
-<h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">طقم إكسسوارات كروشيه</h3>
-<p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">طقم يتضمن اسوارة + طوق شعر + خاتم كروشيه بتصاميم عصرية وألوان ناعمة</p>
-<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أطلب%20طقم%20إكسسوارات%20كروشيه" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
-<i class="fab fa-whatsapp text-lg"></i>اطلبي الآن
-</a>
-</div>
-</div>
-
 </div>
 </div>
 </section>
+
+<!-- Product Detail Modal -->
+<div id="product-modal" class="modal-overlay">
+<div class="modal-content">
+<button class="modal-close" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
+
+<div class="grid md:grid-cols-2 gap-0">
+<!-- Gallery Side -->
+<div class="p-6 md:p-8 bg-gradient-to-br from-yura-cream to-white">
+<div class="modal-gallery relative rounded-2xl overflow-hidden shadow-deep mb-4" id="modal-main-image-container">
+<img id="modal-main-image" src="" alt="" class="w-full aspect-square object-cover">
+<button class="gallery-nav prev" onclick="changeModalImage(-1)"><i class="fas fa-chevron-right"></i></button>
+<button class="gallery-nav next" onclick="changeModalImage(1)"><i class="fas fa-chevron-left"></i></button>
+</div>
+<div class="modal-thumbs" id="modal-thumbs"></div>
+</div>
+
+<!-- Details Side -->
+<div class="p-6 md:p-8 flex flex-col justify-center">
+<div id="modal-category-badge" class="inline-block self-start px-4 py-1.5 rounded-full text-white text-xs font-semibold mb-4 backdrop-blur-sm"></div>
+<h2 id="modal-title" class="font-playfair text-3xl sm:text-4xl font-bold text-yura-dark mb-2"></h2>
+<div class="flex items-center gap-3 mb-6">
+<span id="modal-price" class="text-2xl font-bold text-yura-pink-dark"></span>
+<span class="text-yura-text/40 text-sm line-through" id="modal-old-price"></span>
+</div>
+
+<p id="modal-description" class="text-yura-text/70 leading-relaxed mb-6 text-sm"></p>
+
+<!-- Product Details -->
+<div class="space-y-3 mb-8">
+
+<div class="detail-row">
+<div class="detail-icon"><i class="fas fa-arrows-alt-v"></i></div>
+<div>
+<div class="text-xs text-yura-text/50 font-medium">الطول / الارتفاع</div>
+<div id="modal-length" class="font-bold text-yura-dark text-sm"></div>
+</div>
+</div>
+<div class="detail-row">
+<div class="detail-icon"><i class="fas fa-palette"></i></div>
+<div>
+<div class="text-xs text-yura-text/50 font-medium">الألوان المتاحة</div>
+<div id="modal-colors" class="flex gap-2 mt-1"></div>
+</div>
+</div>
+<div class="detail-row">
+<div class="detail-icon"><i class="fas fa-clock"></i></div>
+<div>
+<div class="text-xs text-yura-text/50 font-medium">مدة التنفيذ</div>
+<div id="modal-time" class="font-bold text-yura-dark text-sm"></div>
+</div>
+</div>
+<div class="detail-row">
+<div class="detail-icon"><i class="fas fa-shipping-fast"></i></div>
+<div>
+<div class="text-xs text-yura-text/50 font-medium">التوصيل</div>
+<div id="modal-shipping" class="font-bold text-yura-dark text-sm"></div>
+</div>
+</div>
+</div>
+
+<a id="modal-whatsapp" href="" target="_blank" class="whatsapp-btn w-full py-4 rounded-2xl text-white font-bold text-base flex items-center justify-center gap-3">
+<i class="fab fa-whatsapp text-xl"></i>
+Order now على واتساب
+</a>
+</div>
+</div>
+</div>
+</div>
 
 <!-- About Section -->
 <section id="about" class="py-28 relative overflow-hidden">
@@ -457,7 +368,7 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <div class="grid md:grid-cols-2 gap-16 items-center">
 <div class="relative" data-aos="fade-right">
 <div class="relative rounded-[3rem] overflow-hidden shadow-deep img-shadow aspect-[4/5] max-w-md mx-auto">
-<img src="yura_logo.jpg" alt="Yura Store Handmade" class="w-full h-full object-cover">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Handmade" class="w-full h-full object-cover">
 <div class="absolute inset-0 bg-gradient-to-t from-yura-pink-dark/40 to-transparent"></div>
 </div>
 <div class="absolute -bottom-8 -right-8 w-40 h-40 bg-yura-pink/40 rounded-full blur-3xl"></div>
@@ -466,7 +377,7 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 </div>
 <div class="text-right" data-aos="fade-left">
 <span class="text-yura-pink-dark font-semibold text-sm tracking-[0.3em] uppercase mb-3 block">Our Story</span>
-<h2 class="font-playfair text-5xl sm:text-6xl font-bold text-yura-dark mb-8 leading-tight">من نحن؟</h2>
+<h2 class="font-playfair text-5xl sm:text-6xl font-bold text-yura-dark mb-8 leading-tight">About us؟</h2>
 <div class="deco-line w-24 mb-8"></div>
 <div class="space-y-5 text-yura-text/80 leading-relaxed text-lg">
 <p><span class="text-yura-pink-dark font-bold text-xl">Yura Store</span> مشروع صغير بيحمل في كل غرزة حكاية. بدأنا رحلتنا من شغف بسيط بفن الكروشيه، وقررنا نحوله لعلامة تجارية تجمع بين الأصالة والعصرية.</p>
@@ -493,83 +404,236 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 </section>
 
 <!-- Screenshots Gallery Section -->
-<section id="screenshots" class="py-28 bg-gradient-to-b from-white/40 to-yura-beige/40 relative overflow-hidden">
+<section id="screenshots" class="py-28 relative overflow-hidden">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center mb-16" data-aos="fade-up">
 <span class="text-yura-pink-dark font-semibold text-sm tracking-[0.3em] uppercase mb-3 block">Real Customers</span>
 <h2 class="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-yura-dark mb-6 section-title">Customer Screenshots</h2>
 <div class="deco-line w-32 mx-auto"></div>
-<p class="mt-6 text-yura-text/70 max-w-lg mx-auto text-lg">اسكرينات حقيقية من عملائنا — ضيفي صورك هنا</p>
+<p class="mt-6 text-yura-text/70 max-w-lg mx-auto text-lg">شكراً لكل عميلة وثقت فينا</p>
 </div>
 
-<div class="screenshot-wrapper py-4">
-<div class="screenshot-track">
-<!-- Screenshot 1 -->
-<div class="screenshot-card">
-<img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=800&fit=crop&q=80" alt="Screenshot 1">
-</div>
-<!-- Screenshot 2 -->
-<div class="screenshot-card">
-<img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=800&fit=crop&q=80" alt="Screenshot 2">
-</div>
-<!-- Screenshot 3 -->
-<div class="screenshot-card">
-<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=800&fit=crop&q=80" alt="Screenshot 3">
-</div>
-<!-- Screenshot 4 -->
-<div class="screenshot-card">
-<img src="https://images.unsplash.com/photo-1523206489230-c012c64b2b48?w=400&h=800&fit=crop&q=80" alt="Screenshot 4">
-</div>
-<!-- Screenshot 5 -->
-<div class="screenshot-card">
-<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=800&fit=crop&q=80" alt="Screenshot 5">
-</div>
-<!-- Screenshot 6 -->
-<div class="screenshot-card">
-<img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=800&fit=crop&q=80" alt="Screenshot 6">
-</div>
-<!-- Duplicate for infinite scroll -->
-<div class="screenshot-card">
-<img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=800&fit=crop&q=80" alt="Screenshot 1">
-</div>
-<div class="screenshot-card">
-<img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=800&fit=crop&q=80" alt="Screenshot 2">
-</div>
-<div class="screenshot-card">
-<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=800&fit=crop&q=80" alt="Screenshot 3">
-</div>
-<div class="screenshot-card">
-<img src="https://images.unsplash.com/photo-1523206489230-c012c64b2b48?w=400&h=800&fit=crop&q=80" alt="Screenshot 4">
-</div>
-<div class="screenshot-card">
-<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=800&fit=crop&q=80" alt="Screenshot 5">
-</div>
-<div class="screenshot-card">
-<img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=800&fit=crop&q=80" alt="Screenshot 6">
-</div>
+<div class="ss-carousel-wrapper" data-aos="fade-up">
+<button class="ss-arrow ss-arrow-prev" onclick="ssMove(-1)" aria-label="السابق">
+<i class="fas fa-chevron-right"></i>
+</button>
+
+<div class="ss-carousel" id="ss-carousel">
+<div class="ss-track" id="ss-track">
+<div class="ss-slide"><img src="https://i.postimg.cc/Sxg1m4zb/IMG-2350.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/8CsK5YLx/IMG-2351.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/7ZKtq4Jd/IMG-2352.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/K80pmbgS/IMG-2353.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/sgTH3zZF/IMG-2354.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/L8xQmSgQ/IMG-2355.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/QdfYjDKb/IMG-2356.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/t4Bv9bnh/IMG-2357.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/8zZXTGfM/IMG-2358.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/zGx2qNHk/IMG-2359.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/fR8qMsSd/IMG-2360.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/JzpYR8HH/IMG-2361.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/2SkXpyyF/IMG-2362.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/qvJZfqqy/IMG-2363.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/rwVY6sst/IMG-2364.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/524kcyyH/IMG-2365.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/GmLS0tt2/IMG-2366.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/SxSt0RRj/IMG-2367.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/g2zB9jjj/IMG-2368.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/pLW1Nrr2/IMG-2369.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/L890d55p/IMG-2370.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/YqfyyYpP/IMG-2371.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/7YMQQ0Hh/IMG-2372.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/Wb6ffgN3/IMG-2373.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/SN7ttCyg/IMG-2374.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/4NbFFVJM/IMG-2375.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/CLVQNmV9/IMG-2376.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/WbPHnXPC/IMG-2377.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/HsCh2BCK/IMG-2379.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/vHdNz3dK/IMG-2380.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/HsCh2BCB/IMG-2381.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/ZKhMcVhx/IMG-2382.jpg" alt="Yura Store" loading="lazy"></div>
 </div>
 </div>
 
-<div class="text-center mt-12" data-aos="fade-up">
-<p class="text-yura-text/60 text-sm mb-4">عايزة تضيفي اسكريناتك؟ غيّري روابط الصور في الكود</p>
-<div class="inline-flex items-center gap-2 text-yura-pink-dark font-semibold text-sm">
-<i class="fas fa-info-circle"></i>
-<span>Hover على الصور عشان توقف الحركة</span>
-</div>
+<button class="ss-arrow ss-arrow-next" onclick="ssMove(1)" aria-label="التالي">
+<i class="fas fa-chevron-left"></i>
+</button>
+
+<div class="ss-dots" id="ss-dots"></div>
 </div>
 </div>
 </section>
 
+<style>
+.ss-carousel-wrapper {
+  position: relative;
+  padding: 0 70px;
+}
+.ss-carousel {
+  overflow: hidden;
+  border-radius: 2rem;
+}
+.ss-track {
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+  align-items: flex-start;
+}
+.ss-slide {
+  flex: 0 0 calc(50% - 1rem);
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.ss-slide img {
+  width: 100%;
+  max-height: 600px;
+  object-fit: contain;
+  object-position: top center;
+  border-radius: 1.5rem;
+  display: block;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  transition: all 0.4s ease;
+  border: 4px solid white;
+  background: white;
+}
+.ss-slide:hover img {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 25px 60px rgba(232,160,191,0.35);
+}
+.ss-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid rgba(232,160,191,0.3);
+  color: #E8A0BF;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+.ss-arrow:hover {
+  background: linear-gradient(135deg, #E8A0BF, #F4C2C2);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 25px rgba(232,160,191,0.4);
+}
+.ss-arrow-prev { right: 0; }
+.ss-arrow-next { left: 0; }
+.ss-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.ss-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+.ss-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(232,160,191,0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.ss-dot.active {
+  background: #E8A0BF;
+  width: 32px;
+  border-radius: 5px;
+}
+.ss-dot:hover {
+  background: #E8A0BF;
+}
+@media (max-width: 768px) {
+  .ss-carousel-wrapper { padding: 0 55px; }
+  .ss-slide { flex: 0 0 calc(100% - 0rem); }
+  .ss-slide img { max-height: 70vh; }
+  .ss-arrow { width: 44px; height: 44px; font-size: 1rem; }
+}
+@media (max-width: 480px) {
+  .ss-carousel-wrapper { padding: 0 45px; }
+  .ss-slide img { max-height: 65vh; border-width: 3px; }
+}
+</style>
+
+<script>
+(function() {
+  const track = document.getElementById('ss-track');
+  const dotsContainer = document.getElementById('ss-dots');
+  const slides = track.children;
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+  let slidesPerView = 2;
+
+  function getSlidesPerView() {
+    if (window.innerWidth <= 768) return 1;
+    return 2;
+  }
+
+  function updateSlidesPerView() {
+    slidesPerView = getSlidesPerView();
+    renderDots();
+    goTo(currentIndex);
+  }
+
+  function renderDots() {
+    const maxIndex = Math.max(0, totalSlides - slidesPerView);
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i <= maxIndex; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'ss-dot' + (i === currentIndex ? ' active' : '');
+      dot.onclick = () => goTo(i);
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function goTo(index) {
+    const maxIndex = Math.max(0, totalSlides - slidesPerView);
+    currentIndex = Math.max(0, Math.min(index, maxIndex));
+    const slideWidth = slides[0].offsetWidth;
+    const gap = 24; // 1.5rem
+    track.style.transform = `translateX(${currentIndex * (slideWidth + gap)}px)`;
+
+    document.querySelectorAll('.ss-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  window.ssMove = function(dir) {
+    const maxIndex = Math.max(0, totalSlides - slidesPerView);
+    goTo(currentIndex + dir);
+  };
+
+  window.addEventListener('resize', updateSlidesPerView);
+  updateSlidesPerView();
+})();
+</script>
 <!-- CTA Section -->
 <section class="py-28 relative overflow-hidden">
 <div class="absolute inset-0 bg-gradient-to-r from-yura-pink/20 via-yura-beige/40 to-yura-sage/20"></div>
 <div class="blob bg-yura-pink/30 w-[500px] h-[500px] top-0 right-0" style="animation-delay:0s"></div>
 <div class="blob bg-yura-sage/30 w-[400px] h-[400px] bottom-0 left-0" style="animation-delay:3s"></div>
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10" data-aos="zoom-in">
-<h2 class="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-yura-dark mb-8">عايزة عموله؟</h2>
-<p class="text-xl text-yura-text/70 mb-12 max-w-2xl mx-auto leading-relaxed">عندك تصميم في بالك؟ أو عايزة لون معين؟ تواصلي معانا على واتساب وهننفذ لكِ اللي في خيالك بأيدينا.</p>
-<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أطلب%20عموله%20مخصصة" target="_blank" class="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full font-bold text-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500">
-<i class="fab fa-whatsapp text-3xl"></i>تواصلي معانا على واتساب
+<h2 class="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-yura-dark mb-8">Customize Order?</h2>
+<p class="text-xl text-yura-text/70 mb-12 max-w-2xl mx-auto leading-relaxed">عندك تصميم في بالك؟ أو عايزة لون معين؟ Contact us on WhatsApp وهننفذ لكِ اللي في خيالك بأيدينا.</p>
+<a href="https://wa.me/201018140186?text=Hi%20yura%20,%20can%20i%20customize%20my%20order%20?" target="_blank" class="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full font-bold text-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500">
+<i class="fab fa-whatsapp text-3xl"></i>Contact us on WhatsApp
 </a>
 </div>
 </section>
@@ -581,7 +645,7 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <div class="grid md:grid-cols-3 gap-12">
 <div class="text-center md:text-right">
 <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
-<img src="yura_logo.jpg" alt="Yura Store Logo" class="w-12 h-12 object-cover rounded-xl shadow-logo border-2 border-white/30">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="w-12 h-12 object-cover rounded-xl shadow-logo border-2 border-white/30">
 <div>
 <span class="font-playfair text-3xl font-bold text-yura-pink">Yura</span>
 <span class="block text-xs tracking-[0.3em] text-yura-pink/70">STORE</span>
@@ -592,14 +656,14 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <div class="text-center">
 <h4 class="font-bold text-lg mb-6 text-yura-pink">روابط سريعة</h4>
 <ul class="space-y-3">
-<li><a href="#home" class="text-white/60 hover:text-yura-pink transition-colors text-sm hover:scale-105 inline-block">الرئيسية</a></li>
-<li><a href="#products" class="text-white/60 hover:text-yura-pink transition-colors text-sm hover:scale-105 inline-block">منتجاتنا</a></li>
-<li><a href="#about" class="text-white/60 hover:text-yura-pink transition-colors text-sm hover:scale-105 inline-block">من نحن</a></li>
-<li><a href="#screenshots" class="text-white/60 hover:text-yura-pink transition-colors text-sm hover:scale-105 inline-block">الاسكرينات</a></li>
+<li><a href="#home" class="text-white/60 hover:text-yura-pink transition-colors text-sm hover:scale-105 inline-block">Home</a></li>
+<li><a href="#products" class="text-white/60 hover:text-yura-pink transition-colors text-sm hover:scale-105 inline-block">Products</a></li>
+<li><a href="#about" class="text-white/60 hover:text-yura-pink transition-colors text-sm hover:scale-105 inline-block">About us</a></li>
+<li><a href="#screenshots" class="text-white/60 hover:text-yura-pink transition-colors text-sm hover:scale-105 inline-block">Feedback</a></li>
 </ul>
 </div>
 <div class="text-center md:text-left">
-<h4 class="font-bold text-lg mb-6 text-yura-pink">تواصل معنا</h4>
+<h4 class="font-bold text-lg mb-6 text-yura-pink">Contact us</h4>
 <ul class="space-y-3">
 <li class="flex items-center justify-center md:justify-start gap-3 text-white/60 text-sm hover:text-white transition-colors cursor-pointer">
 <i class="fab fa-whatsapp text-green-400"></i><span>0101 814 0186</span>
@@ -625,8 +689,182 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 </a>
 
 <script>
+// ===== PRODUCT DATA =====
+// ⬇️⬇️⬇️ ADD YOUR PRODUCTS HERE ⬇️⬇️⬇️
+// Copy the template below and fill in your product details
+/*
+TEMPLATE:
+{
+  id: 0,
+  name: "Product Name",
+  category: "Bags & Totes",     // or "Dolls & Amigurumi", "Anime Collection", "Keychains", "Boys' Keychains", "Gifts & Accessories"
+  categoryColor: "bg-yura-pink-dark",  // bg-yura-pink-dark | bg-yura-sage | bg-purple-500 | bg-rose-400 | bg-slate-500 | bg-amber-500
+  price: "450 EGP",
+  oldPrice: "",                  // leave empty if no discount
+  description: "Your product description here...",
+  size: "30 x 25 cm",
+  length: "25 cm",
+  colors: ["#F4C2C2", "#C5D5C0", "#FAF0E6"],  // hex color codes
+  time: "3-5 days",
+  shipping: "Free delivery in Cairo",
+  images: [
+    "https://your-image-1.jpg",
+    "https://your-image-2.jpg",
+    "https://your-image-3.jpg"
+  ],
+  whatsapp: "Hi yura , I want to order Product Name"
+},
+*/
+const products = [
+  {
+    id: 0,
+    name: "Rapunzel Crochet Doll (Amigurumi)",
+    category: "Dolls & Amigurumi",
+    categoryColor: "bg-yura-sage",
+    price: "550 EGP",
+    oldPrice: "",
+    description: "A handcrafted amigurumi doll inspired by Princess Rapunzel and her sidekick Pascal. Detailed with fine craftsmanship, making it a special gift or a unique keepsake for any fan.",
+    size: "16–17 cm Height",
+    length: "16–17 cm",
+    colors: ["#F4C2C2", "#C5D5C0", "#FAF0E6", "#D4AF37", "#E8A0BF"],
+    time: "15 يوم",
+    shipping: "توصيل لجميع المحافظات",
+    images: [
+      "https://i.postimg.cc/x83jbTW5/IMG-2718.jpg",
+      "https://i.postimg.cc/dtnts3RK/IMG-2720.jpg",
+      "https://i.postimg.cc/8Cxz2YR1/IMG-2721.jpg",
+      "https://i.postimg.cc/nLNhyW4p/IMG-2722.jpg",
+      "https://i.postimg.cc/1z8zYSqy/IMG-2724.jpg",
+      "https://i.postimg.cc/xdB1wZvd/IMG-2725.jpg",
+      "https://i.postimg.cc/yYnY1xmp/IMG-2726.jpg"
+    ],
+    whatsapp: "Hi yura , I want to order Rapunzel Crochet Doll"
+  }
+];
+
+// ===== MODAL FUNCTIONS =====
+function openProductModal(productId) {
+  currentProduct = products.find(p => p.id === productId);
+  if (!currentProduct) return;
+  currentImageIndex = 0;
+
+  document.getElementById('modal-title').textContent = currentProduct.name;
+  document.getElementById('modal-price').textContent = currentProduct.price;
+  document.getElementById('modal-old-price').textContent = currentProduct.oldPrice;
+  document.getElementById('modal-old-price').style.display = currentProduct.oldPrice ? 'inline' : 'none';
+  document.getElementById('modal-description').textContent = currentProduct.description;
+    document.getElementById('modal-length').textContent = currentProduct.length;
+  document.getElementById('modal-time').textContent = currentProduct.time;
+  document.getElementById('modal-shipping').textContent = currentProduct.shipping;
+
+  // Category badge
+  const badge = document.getElementById('modal-category-badge');
+  badge.textContent = currentProduct.category;
+  badge.className = `inline-block self-start px-4 py-1.5 rounded-full text-white text-xs font-semibold mb-4 backdrop-blur-sm ${currentProduct.categoryColor}`;
+
+  // Colors
+  const colorsContainer = document.getElementById('modal-colors');
+  colorsContainer.innerHTML = '';
+  currentProduct.colors.forEach(color => {
+    const dot = document.createElement('span');
+    dot.className = 'color-dot';
+    dot.style.backgroundColor = color;
+    dot.title = color;
+    colorsContainer.appendChild(dot);
+  });
+
+  // Images
+  updateModalImage();
+  renderThumbs();
+
+  // WhatsApp link
+  document.getElementById('modal-whatsapp').href = `https://wa.me/201018140186?text=${encodeURIComponent(currentProduct.whatsapp)}`;
+
+  // Show modal
+  document.getElementById('product-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProductModal() {
+  document.getElementById('product-modal').classList.remove('active');
+  document.body.style.overflow = '';
+  currentProduct = null;
+}
+
+function updateModalImage() {
+  if (!currentProduct) return;
+  const img = document.getElementById('modal-main-image');
+  img.style.opacity = '0';
+  setTimeout(() => {
+    img.src = currentProduct.images[currentImageIndex];
+    img.alt = currentProduct.name;
+    img.style.opacity = '1';
+  }, 150);
+}
+
+function renderThumbs() {
+  if (!currentProduct) return;
+  const container = document.getElementById('modal-thumbs');
+  container.innerHTML = '';
+  currentProduct.images.forEach((src, idx) => {
+    const thumb = document.createElement('div');
+    thumb.className = `modal-thumb ${idx === currentImageIndex ? 'active' : ''}`;
+    thumb.innerHTML = `<img src="${src}" alt="${currentProduct.name} - ${idx + 1}">`;
+    thumb.onclick = () => {
+      currentImageIndex = idx;
+      updateModalImage();
+      renderThumbs();
+    };
+    container.appendChild(thumb);
+  });
+}
+
+function changeModalImage(direction) {
+  if (!currentProduct) return;
+  currentImageIndex += direction;
+  if (currentImageIndex < 0) currentImageIndex = currentProduct.images.length - 1;
+  if (currentImageIndex >= currentProduct.images.length) currentImageIndex = 0;
+  updateModalImage();
+  renderThumbs();
+}
+
+// Close modal on overlay click
+document.getElementById('product-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeProductModal();
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+  if (!currentProduct) return;
+  if (e.key === 'Escape') closeProductModal();
+  if (e.key === 'ArrowLeft') changeModalImage(1); // RTL
+  if (e.key === 'ArrowRight') changeModalImage(-1); // RTL
+});
+
+// ===== CATEGORY FILTER =====
+function filterProducts(category) {
+  const items = document.querySelectorAll('.product-item');
+  items.forEach(item => {
+    if (category === 'all' || item.dataset.category === category) {
+      item.style.display = '';
+      setTimeout(() => {
+        item.style.opacity = '1';
+        item.style.transform = 'scale(1)';
+      }, 50);
+    } else {
+      item.style.opacity = '0';
+      item.style.transform = 'scale(0.8)';
+      setTimeout(() => {
+        item.style.display = 'none';
+      }, 300);
+    }
+  });
+}
+
+// ===== AOS INIT =====
 AOS.init({duration:800,easing:'ease-out-cubic',once:true,offset:100,delay:0});
 
+// ===== NAVBAR =====
 const navbar=document.getElementById('navbar');
 window.addEventListener('scroll',()=>{
   if(window.scrollY>50){
@@ -639,6 +877,7 @@ window.addEventListener('scroll',()=>{
   }
 });
 
+// ===== MOBILE MENU =====
 const mobileMenuBtn=document.getElementById('mobile-menu-btn');
 const mobileMenu=document.getElementById('mobile-menu');
 mobileMenuBtn.addEventListener('click',()=>{
@@ -650,6 +889,7 @@ mobileMenu.querySelectorAll('a').forEach(link=>{
   });
 });
 
+// ===== CATEGORY PILLS =====
 const categoryPills=document.querySelectorAll('.category-pill');
 categoryPills.forEach(pill=>{
   pill.addEventListener('click',()=>{
@@ -658,6 +898,7 @@ categoryPills.forEach(pill=>{
   });
 });
 
+// ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
   anchor.addEventListener('click',function(e){
     e.preventDefault();
@@ -668,6 +909,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
   });
 });
 
+// ===== PARALLAX =====
 window.addEventListener('scroll',()=>{
   const scrolled=window.pageYOffset;
   document.querySelectorAll('.blob').forEach((blob,index)=>{
