@@ -2,20 +2,17 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#F4C2C2">
 <title>Yura Store | Handmade Crochet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-<link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
 <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-<link rel="dns-prefetch" href="https://unpkg.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 tailwind.config={
   theme:{
@@ -40,108 +37,151 @@ tailwind.config={
 }
 </script>
 <style>
-*{scroll-behavior:smooth}
-body{font-family:'Cairo',sans-serif;font-display:swap;background:#FFF8F0;color:#4A4A4A;overflow-x:hidden}
-::-webkit-scrollbar{width:10px}
+*{scroll-behavior:smooth; -webkit-tap-highlight-color: transparent;}
+body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:hidden; -webkit-font-smoothing: antialiased;}
+::-webkit-scrollbar{width:8px}
 ::-webkit-scrollbar-track{background:#FFF8F0}
-::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#F4C2C2,#E8A0BF);border-radius:10px;border:2px solid #FFF8F0}
-::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#E8A0BF,#D4A5A5)}
-.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.4;animation:float 10s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translate(0,0) scale(1) rotate(0deg)}25%{transform:translate(40px,-40px) scale(1.1) rotate(5deg)}50%{transform:translate(-30px,20px) scale(0.95) rotate(-3deg)}75%{transform:translate(20px,30px) scale(1.05) rotate(2deg)}}
-.logo-text{font-family:'Playfair Display',serif;background:linear-gradient(135deg,#E8A0BF 0%,#D4A5A5 50%,#C5D5C0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 4px 8px rgba(232,160,191,0.3))}
-.product-card{transition:all 0.6s cubic-bezier(0.34,1.56,0.64,1);transform-style:preserve-3d;perspective:1000px}
-.product-card:hover{transform:translateY(-16px) scale(1.03) rotateX(2deg);box-shadow:0 30px 70px rgba(232,160,191,0.35),0 10px 30px rgba(0,0,0,0.1)}
-.product-card .card-image{transition:transform 0.8s cubic-bezier(0.4,0,0.2,1);cursor:pointer}
-.product-card:hover .card-image{transform:scale(1.12)}
-.product-card .overlay{opacity:0;transition:all 0.5s ease;backdrop-filter:blur(4px)}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#F4C2C2,#E8A0BF);border-radius:8px;border:2px solid #FFF8F0}
+
+/* خفيف جداً للموبايل */
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:0.25;animation:float 12s ease-in-out infinite; will-change: transform;}
+@keyframes float{0%,100%{transform:translate(0,0)}33%{transform:translate(30px,-30px)}66%{transform:translate(-20px,15px)}}
+
+.logo-text{font-family:'Playfair Display',serif;background:linear-gradient(135deg,#E8A0BF 0%,#D4A5A5 50%,#C5D5C0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+.product-card{transition: transform 0.3s ease, box-shadow 0.3s ease; will-change: transform; transform: translateZ(0);}
+.product-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 50px rgba(232,160,191,0.25);}
+@media (hover: none) {.product-card:hover{transform: none; box-shadow: 0 8px 30px rgba(0,0,0,0.06);}}
+
+.product-card .card-image{transition:transform 0.3s ease;cursor:pointer; will-change: transform;}
+.product-card:hover .card-image{transform:scale(1.08)}
+@media (hover: none) {.product-card:hover .card-image{transform: none;}}
+
+.product-card .overlay{opacity:0;transition:opacity 0.3s ease; background: linear-gradient(to top, rgba(45,45,45,0.6), transparent);}
 .product-card:hover .overlay{opacity:1}
-.product-card .card-content{transition:all 0.4s ease}
-.product-card:hover .card-content{background:linear-gradient(180deg,#ffffff 0%,#FFF8F0 100%)}
-.whatsapp-btn{background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 6px 20px rgba(37,211,102,0.35);position:relative;overflow:hidden}
-.whatsapp-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transition:left 0.6s ease}
-.whatsapp-btn:hover::before{left:100%}
-.whatsapp-btn:hover{transform:scale(1.08) translateY(-2px);box-shadow:0 10px 35px rgba(37,211,102,0.5)}
+@media (hover: none) {.product-card .overlay{opacity:1; background: linear-gradient(to top, rgba(45,45,45,0.4), transparent);}}
+
+.whatsapp-btn{background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);transition:transform 0.2s ease;box-shadow:0 4px 15px rgba(37,211,102,0.3);position:relative;overflow:hidden;}
+.whatsapp-btn:active{transform:scale(0.96)}
+
 .float-whatsapp{animation:pulse-whatsapp 2.5s infinite}
-@keyframes pulse-whatsapp{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,0.6),0 6px 20px rgba(37,211,102,0.3)}50%{box-shadow:0 0 0 25px rgba(37,211,102,0),0 6px 20px rgba(37,211,102,0.3)}}
-.nav-blur{backdrop-filter:blur(25px);background:rgba(255,248,240,0.9);box-shadow:0 4px 30px rgba(232,160,191,0.15)}
-.category-pill{transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);position:relative;overflow:hidden}
-.category-pill::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#E8A0BF 0%,#F4C2C2 100%);opacity:0;transition:opacity 0.4s ease;z-index:0;border-radius:inherit}
-.category-pill:hover,.category-pill.active{color:white;transform:scale(1.08) translateY(-2px);box-shadow:0 8px 25px rgba(232,160,191,0.4);border-color:transparent}
-.category-pill:hover::after,.category-pill.active::after{opacity:1}
+@keyframes pulse-whatsapp{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}50%{box-shadow:0 0 0 20px rgba(37,211,102,0)}}
+
+.nav-blur{background:rgba(255,248,240,0.95);box-shadow:0 4px 30px rgba(232,160,191,0.15)}
+
+.category-pill{transition:all 0.3s ease;position:relative;overflow:hidden; cursor: pointer; touch-action: manipulation;}
+.category-pill::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#E8A0BF 0%,#F4C2C2 100%);opacity:0;transition:opacity 0.3s ease;z-index:0;border-radius:inherit}
+.category-pill.active,.category-pill:active{color:white;transform:scale(1.05);box-shadow:0 6px 20px rgba(232,160,191,0.3);border-color:transparent}
+.category-pill.active::after,.category-pill:active::after{opacity:1}
 .category-pill span{position:relative;z-index:1}
+
 .deco-line{height:3px;background:linear-gradient(90deg,transparent,#E8A0BF,#C5D5C0,#E8A0BF,transparent);border-radius:2px}
-.price-tag{background:linear-gradient(135deg,#FFF8F0 0%,#FAF0E6 100%);border:1px solid rgba(232,160,191,0.4);box-shadow:0 4px 15px rgba(232,160,191,0.15);backdrop-filter:blur(10px)}
-.needle-float{animation:needle-bob 4s ease-in-out infinite}
-@keyframes needle-bob{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(8deg) translateY(-15px)}}
+.price-tag{background:linear-gradient(135deg,#FFF8F0 0%,#FAF0E6 100%);border:1px solid rgba(232,160,191,0.4);box-shadow:0 4px 15px rgba(232,160,191,0.15);}
+
 .section-title{position:relative}
 .section-title::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:60px;height:60px;background:radial-gradient(circle,rgba(232,160,191,0.3) 0%,transparent 70%);border-radius:50%;filter:blur(20px);z-index:-1}
-.spin-slow{animation:spin-slow 20s linear infinite}
-@keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
 .shimmer-text{background:linear-gradient(90deg,#E8A0BF,#C5D5C0,#E8A0BF);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer-text 3s linear infinite}
 @keyframes shimmer-text{to{background-position:200% center}}
-.img-shadow{box-shadow:0 15px 40px rgba(0,0,0,0.12);transition:all 0.5s ease}
+
+.img-shadow{box-shadow:0 15px 40px rgba(0,0,0,0.12);transition:box-shadow 0.3s ease}
 .img-shadow:hover{box-shadow:0 25px 60px rgba(232,160,191,0.3)}
+
 .gradient-border{position:relative;background:white;border-radius:2rem}
-.gradient-border::before{content:'';position:absolute;inset:-2px;border-radius:calc(2rem + 2px);background:linear-gradient(135deg,#E8A0BF,#C5D5C0,#F4C2C2);z-index:-1;opacity:0;transition:opacity 0.4s ease}
+.gradient-border::before{content:'';position:absolute;inset:-2px;border-radius:calc(2rem + 2px);background:linear-gradient(135deg,#E8A0BF,#C5D5C0,#F4C2C2);z-index:-1;opacity:0;transition:opacity 0.3s ease}
 .gradient-border:hover::before{opacity:0.6}
-.logo-hero{transition:all 0.6s cubic-bezier(0.34,1.56,0.64,1);filter:drop-shadow(0 8px 20px rgba(232,160,191,0.3))}
-.logo-hero:hover{transform:scale(1.05) rotate(-2deg);filter:drop-shadow(0 15px 40px rgba(232,160,191,0.5))}
-.logo-nav{transition:all 0.4s ease;border-radius:1rem}
-.logo-nav:hover{transform:scale(1.1) rotate(-3deg);filter:drop-shadow(0 6px 15px rgba(232,160,191,0.4))}
 
+.logo-hero{transition:transform 0.3s ease;}
+.logo-hero:active{transform:scale(0.98)}
+.logo-nav{transition:transform 0.2s ease;border-radius:1rem}
+.logo-nav:active{transform:scale(0.95)}
 
-/* ===== PRODUCT MODAL ===== */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(12px);z-index:100;opacity:0;visibility:hidden;transition:all 0.4s ease;display:flex;align-items:center;justify-content:center;padding:1rem}
+/* ===== PRODUCT MODAL - سريع وخفيف ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;opacity:0;visibility:hidden;transition:opacity 0.25s ease, visibility 0.25s;display:flex;align-items:center;justify-content:center;padding:1rem}
 .modal-overlay.active{opacity:1;visibility:visible}
-.modal-content{background:#FFF8F0;border-radius:2.5rem;max-width:1000px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:scale(0.9) translateY(30px);transition:all 0.5s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 30px 80px rgba(0,0,0,0.3)}
+.modal-content{background:#FFF8F0;border-radius:2rem;max-width:900px;width:100%;max-height:92vh;overflow-y:auto;position:relative;transform:scale(0.95) translateY(20px);transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 30px 80px rgba(0,0,0,0.3); will-change: transform;}
 .modal-overlay.active .modal-content{transform:scale(1) translateY(0)}
-.modal-close{position:absolute;top:1.5rem;right:1.5rem;width:44px;height:44px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 4px 15px rgba(0,0,0,0.1);transition:all 0.3s ease;border:none;font-size:1.2rem;color:#4A4A4A}
-.modal-close:hover{background:#E8A0BF;color:white;transform:rotate(90deg) scale(1.1)}
-.modal-gallery{position:relative;border-radius:2rem;overflow:hidden;aspect-square}
-.modal-gallery img{width:100%;height:100%;object-fit:cover;transition:all 0.5s ease}
-.modal-thumbs{display:flex;gap:0.75rem;overflow-x:auto;padding:0.5rem 0}
-.modal-thumbs::-webkit-scrollbar{height:6px}
-.modal-thumbs::-webkit-scrollbar-thumb{background:#E8A0BF;border-radius:3px}
-.modal-thumb{width:70px;height:70px;border-radius:1rem;overflow:hidden;cursor:pointer;border:3px solid transparent;transition:all 0.3s ease;flex-shrink:0}
-.modal-thumb:hover{transform:scale(1.1)}
-.modal-thumb.active{border-color:#E8A0BF;box-shadow:0 4px 15px rgba(232,160,191,0.3)}
+.modal-close{position:absolute;top:1rem;right:1rem;width:40px;height:40px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 2px 10px rgba(0,0,0,0.1);transition:all 0.2s ease;border:none;font-size:1.1rem;color:#4A4A4A; touch-action: manipulation;}
+.modal-close:active{background:#E8A0BF;color:white;transform:scale(0.9)}
+.modal-gallery{position:relative;border-radius:1.5rem;overflow:hidden; background: #f5f5f5;}
+.modal-gallery img{width:100%;height:100%;object-fit:cover; display: block;}
+.modal-thumbs{display:flex;gap:0.5rem;overflow-x:auto;padding:0.5rem 0; -webkit-overflow-scrolling: touch;}
+.modal-thumbs::-webkit-scrollbar{height:4px}
+.modal-thumbs::-webkit-scrollbar-thumb{background:#E8A0BF;border-radius:2px}
+.modal-thumb{width:60px;height:60px;border-radius:0.75rem;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color 0.2s;flex-shrink:0; touch-action: manipulation;}
+.modal-thumb.active{border-color:#E8A0BF;box-shadow:0 2px 8px rgba(232,160,191,0.3)}
 .modal-thumb img{width:100%;height:100%;object-fit:cover}
-.detail-row{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:white;border-radius:1rem;margin-bottom:0.5rem;box-shadow:0 2px 10px rgba(0,0,0,0.04);transition:all 0.3s ease}
-.detail-row:hover{transform:translateX(-5px);box-shadow:0 4px 15px rgba(232,160,191,0.15)}
-.detail-icon{width:36px;height:36px;background:linear-gradient(135deg,#F4C2C2,#E8A0BF);border-radius:0.75rem;display:flex;align-items:center;justify-content:center;color:white;font-size:0.85rem}
-.color-dot{width:24px;height:24px;border-radius:50%;border:2px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.15);display:inline-block;transition:all 0.3s ease}
-.color-dot:hover{transform:scale(1.3);box-shadow:0 4px 12px rgba(0,0,0,0.2)}
-.gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;background:white/90;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.15);transition:all 0.3s ease;z-index:5;border:none;font-size:1rem;color:#4A4A4A}
-.gallery-nav:hover{background:#E8A0BF;color:white;transform:translateY(-50%) scale(1.1)}
-.gallery-nav.prev{left:1rem}
-.gallery-nav.next{right:1rem}
+.detail-row{display:flex;align-items:center;gap:0.75rem;padding:0.6rem 1rem;background:white;border-radius:0.75rem;margin-bottom:0.4rem;box-shadow:0 1px 5px rgba(0,0,0,0.04)}
+.detail-icon{width:32px;height:32px;background:linear-gradient(135deg,#F4C2C2,#E8A0BF);border-radius:0.5rem;display:flex;align-items:center;justify-content:center;color:white;font-size:0.8rem;flex-shrink:0}
+.color-dot{width:22px;height:22px;border-radius:50%;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.15);display:inline-block;}
+.gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,0.15);transition:all 0.2s ease;z-index:5;border:none;font-size:0.9rem;color:#4A4A4A; touch-action: manipulation;}
+.gallery-nav:active{background:#E8A0BF;color:white;transform:translateY(-50%) scale(0.95)}
+.gallery-nav.prev{left:0.75rem}
+.gallery-nav.next{right:0.75rem}
+
 @media(max-width:768px){
-  .modal-content{border-radius:1.5rem;max-height:95vh}
+  .blob{display:none !important;}
+  .modal-content{border-radius:1.25rem;max-height:95vh}
   .modal-gallery{aspect-ratio:1/1}
   .gallery-nav{width:36px;height:36px}
+  .modal-thumb{width:50px;height:50px}
+  .product-card:hover{transform: none; box-shadow: 0 8px 30px rgba(0,0,0,0.06);}
+  .product-card:hover .card-image{transform: none;}
+}
+
+/* تسريع الـ screenshots carousel */
+.ss-carousel-wrapper {position: relative; padding: 0 60px;}
+.ss-carousel {overflow: hidden; border-radius: 1.5rem;}
+.ss-track {display: flex; gap: 1.5rem; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); will-change: transform; align-items: flex-start;}
+.ss-slide {flex: 0 0 calc(50% - 0.75rem); min-width: 0; display: flex; align-items: flex-start; justify-content: center;}
+.ss-slide img {width: 100%; max-height: 65vh; object-fit: contain; object-position: top center; border-radius: 1rem; display: block; box-shadow: 0 8px 30px rgba(0,0,0,0.1); border: 3px solid white; background: white; will-change: transform;}
+.ss-arrow {position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: white; border: 2px solid rgba(232,160,191,0.3); color: #E8A0BF; font-size: 1.1rem; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.2s ease; touch-action: manipulation;}
+.ss-arrow:active {background: #E8A0BF; color: white; transform: translateY(-50%) scale(0.95);}
+.ss-arrow-prev { right: 0; }
+.ss-arrow-next { left: 0; }
+.ss-dots {display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; flex-wrap: wrap;}
+.ss-dot {width: 8px; height: 8px; border-radius: 50%; background: rgba(232,160,191,0.3); border: none; cursor: pointer; transition: all 0.2s ease; touch-action: manipulation;}
+.ss-dot.active {background: #E8A0BF; width: 24px; border-radius: 4px;}
+
+@media (max-width: 768px) {
+  .ss-carousel-wrapper { padding: 0 50px; }
+  .ss-slide { flex: 0 0 calc(100% - 0rem); }
+  .ss-slide img { max-height: 70vh; border-width: 2px; border-radius: 0.75rem; }
+  .ss-arrow { width: 40px; height: 40px; font-size: 0.9rem; }
+}
+@media (max-width: 480px) {
+  .ss-carousel-wrapper { padding: 0 36px; }
+  .ss-slide img { max-height: 65vh; }
+  .ss-arrow { width: 34px; height: 34px; font-size: 0.8rem; }
+}
+
+/* تقليل animations للموبايل */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important;}
 }
 </style>
+<base target="_blank">
 <base target="_blank">
 </head>
 <body class="font-cairo antialiased">
 
 <!-- Navigation -->
-<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-4">
+<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-3">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex items-center justify-between">
-<a href="#" class="flex items-center gap-3 group" data-aos="fade-down" data-aos-duration="800">
-<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-nav w-14 h-14 object-cover rounded-2xl shadow-logo border-2 border-white/50">
+<a href="#" class="flex items-center gap-3 group">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-nav w-12 h-12 object-cover rounded-xl shadow-logo border-2 border-white/50">
 <div class="flex flex-col">
-<span class="logo-text text-3xl font-bold leading-none tracking-wide">Yura</span>
-<span class="text-yura-pink-dark text-sm font-tajawal font-medium tracking-[0.2em] -mt-1">STORE</span>
+<span class="logo-text text-2xl font-bold leading-none tracking-wide">Yura</span>
+<span class="text-yura-pink-dark text-xs font-tajawal font-medium tracking-[0.2em] -mt-1">STORE</span>
 </div>
 </a>
 <div class="hidden md:flex items-center gap-8">
-<a href="#home" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">Home</a>
-<a href="#products" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">Products</a>
-<a href="#about" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">About us</a>
-<a href="#screenshots" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">Feedback</a>
-<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أستفسر%20عن%20منتجاتكم" target="_blank" class="whatsapp-btn text-white px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2">
+<a href="#home" class="text-yura-text hover:text-yura-pink-dark transition-colors duration-200 font-medium text-sm tracking-wide">Home</a>
+<a href="#products" class="text-yura-text hover:text-yura-pink-dark transition-colors duration-200 font-medium text-sm tracking-wide">Products</a>
+<a href="#about" class="text-yura-text hover:text-yura-pink-dark transition-colors duration-200 font-medium text-sm tracking-wide">About us</a>
+<a href="#screenshots" class="text-yura-text hover:text-yura-pink-dark transition-colors duration-200 font-medium text-sm tracking-wide">Feedback</a>
+<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أستفسر%20عن%20منتجاتكم" target="_blank" class="whatsapp-btn text-white px-5 py-2 rounded-full text-sm font-bold flex items-center gap-2">
 <i class="fab fa-whatsapp text-lg"></i>Contact us
 </a>
 </div>
@@ -152,10 +192,10 @@ body{font-family:'Cairo',sans-serif;font-display:swap;background:#FFF8F0;color:#
 </div>
 <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full nav-blur border-t border-yura-pink/20 shadow-soft-lg">
 <div class="px-4 py-6 space-y-4 flex flex-col items-center">
-<a href="#home" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">Home</a>
-<a href="#products" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">Products</a>
-<a href="#about" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">About us</a>
-<a href="#screenshots" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">Feedback</a>
+<a href="#home" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2">Home</a>
+<a href="#products" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2">Products</a>
+<a href="#about" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2">About us</a>
+<a href="#screenshots" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2">Feedback</a>
 <a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أستفسر%20عن%20منتجاتكم" target="_blank" class="whatsapp-btn text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 mt-2">
 <i class="fab fa-whatsapp"></i>Contact us
 </a>
@@ -165,120 +205,89 @@ body{font-family:'Cairo',sans-serif;font-display:swap;background:#FFF8F0;color:#
 
 <!-- Hero Section -->
 <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-<div class="blob bg-yura-pink w-[500px] h-[500px] top-10 -right-40" style="animation-delay:0s"></div>
-<div class="blob bg-yura-sage w-[400px] h-[400px] bottom-10 -left-40" style="animation-delay:3s"></div>
-<div class="blob bg-yura-warm w-[350px] h-[350px] top-1/3 left-1/4" style="animation-delay:6s"></div>
-<div class="blob bg-yura-pink-dark/30 w-[300px] h-[300px] bottom-1/4 right-1/4" style="animation-delay:2s"></div>
-<div class="absolute top-32 left-20 w-20 h-20 border-2 border-yura-pink/20 rounded-full spin-slow hidden lg:block"></div>
-<div class="absolute bottom-40 right-32 w-16 h-16 border-2 border-yura-sage/30 rounded-full spin-slow hidden lg:block" style="animation-direction:reverse"></div>
+<div class="blob bg-yura-pink w-[400px] h-[400px] top-10 -right-40" style="animation-delay:0s"></div>
+<div class="blob bg-yura-sage w-[350px] h-[350px] bottom-10 -left-40" style="animation-delay:4s"></div>
+<div class="blob bg-yura-warm w-[300px] h-[300px] top-1/3 left-1/4" style="animation-delay:8s"></div>
 
 <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-<div data-aos="zoom-in" data-aos-duration="1000">
-<div class="mb-8 inline-block">
-<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-hero w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover rounded-[2.5rem] shadow-logo border-4 border-white/60">
+<div>
+<div class="mb-6 inline-block">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-hero w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 object-cover rounded-[2rem] shadow-logo border-4 border-white/60">
 </div>
-<h1 class="font-playfair text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold mb-2 leading-tight">
+<h1 class="font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-2 leading-tight">
 <span class="logo-text shimmer-text">Yura</span>
 </h1>
-<h2 class="font-tajawal text-3xl sm:text-4xl md:text-5xl font-light text-yura-text mb-4 tracking-[0.3em]">STORE</h2>
-<div class="deco-line w-40 mx-auto my-8"></div>
-<p class="font-cairo text-lg sm:text-xl md:text-2xl text-yura-text/80 max-w-3xl mx-auto mb-6 leading-relaxed font-light" data-aos="fade-up" data-aos-delay="300">
+<h2 class="font-tajawal text-2xl sm:text-3xl md:text-4xl font-light text-yura-text mb-4 tracking-[0.3em]">STORE</h2>
+<div class="deco-line w-32 mx-auto my-6"></div>
+<p class="font-cairo text-base sm:text-lg md:text-xl text-yura-text/80 max-w-2xl mx-auto mb-4 leading-relaxed font-light">
 𝗛𝗮𝗻𝗱𝗺𝗮𝗱𝗲 𝘄𝗶𝘁𝗵 𝗟𝗼𝘃𝗲, 𝗦𝘁𝗶𝘁𝗰𝗵𝗲𝗱 𝘁𝗼 𝗣𝗲𝗿𝗳𝗲𝗰𝘁𝗶𝗼𝗻 – 𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝘁𝗼 𝗬𝗼𝘂𝗿 𝗖𝗿𝗼𝗰𝗵𝗲𝘁 𝗛𝗮𝘃𝗲𝗻
 </p>
-<p class="text-sm text-yura-text/50 mb-12 font-light tracking-[0.2em] uppercase" data-aos="fade-up" data-aos-delay="500">
+<p class="text-xs text-yura-text/50 mb-10 font-light tracking-[0.2em] uppercase">
 HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 </p>
-<div class="flex flex-col sm:flex-row gap-5 justify-center items-center" data-aos="fade-up" data-aos-delay="700">
-<a href="#products" class="group relative px-10 py-5 bg-gradient-to-r from-yura-pink-dark to-yura-pink text-white rounded-full font-bold text-lg shadow-soft-lg hover:shadow-glow transition-all duration-500 overflow-hidden">
-<span class="relative z-10 flex items-center gap-3">Shop Collection<i class="fas fa-arrow-left group-hover:-translate-x-2 transition-transform duration-300"></i></span>
-<div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+<a href="#products" class="group relative px-8 py-4 bg-gradient-to-r from-yura-pink-dark to-yura-pink text-white rounded-full font-bold text-base shadow-soft-lg hover:shadow-glow transition-all duration-300 overflow-hidden">
+<span class="relative z-10 flex items-center gap-2">Shop Collection<i class="fas fa-arrow-left group-hover:-translate-x-1 transition-transform duration-200"></i></span>
 </a>
-<a href="https://wa.me/201018140186?text=Hi%20yura%20,%20can%20i%20customize%20my%20order%20?" target="_blank" class="px-10 py-5 border-2 border-yura-pink-dark text-yura-pink-dark rounded-full font-bold text-lg hover:bg-yura-pink-dark hover:text-white transition-all duration-500 flex items-center gap-3 hover:shadow-soft-lg hover:scale-105">
-<i class="fab fa-whatsapp text-xl"></i>Customize Order
+<a href="https://wa.me/201018140186?text=Hi%20yura%20,%20can%20i%20customize%20my%20order%20?" target="_blank" class="px-8 py-4 border-2 border-yura-pink-dark text-yura-pink-dark rounded-full font-bold text-base hover:bg-yura-pink-dark hover:text-white transition-all duration-300 flex items-center gap-2">
+<i class="fab fa-whatsapp text-lg"></i>Customize Order
 </a>
 </div>
 </div>
 </div>
-<div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
-<div class="w-10 h-10 rounded-full border-2 border-yura-pink-dark/40 flex items-center justify-center">
-<i class="fas fa-chevron-down text-yura-pink-dark text-sm"></i>
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+<div class="w-8 h-8 rounded-full border-2 border-yura-pink-dark/40 flex items-center justify-center">
+<i class="fas fa-chevron-down text-yura-pink-dark text-xs"></i>
 </div>
 </div>
 </section>
 
 <!-- Categories -->
-<section class="py-16 bg-white/40 backdrop-blur-sm">
+<section class="py-12 bg-white/60">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex flex-wrap justify-center gap-4" data-aos="fade-up">
-<button class="category-pill active px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('all')"><span>All</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('bags')"><span>Bags & Totes</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('dolls')"><span>Dolls & Amigurumi</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('anime')"><span>Anime Collection</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('keychains')"><span>Keychains</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('boys')"><span>Boys' Keychains</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('gifts')"><span>Gifts & Accessories</span></button>
+<div class="flex flex-wrap justify-center gap-3">
+<button class="category-pill active px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('all')"><span>All</span></button>
+<button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('bags')"><span>Bags & Totes</span></button>
+<button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('dolls')"><span>Dolls & Amigurumi</span></button>
+<button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('anime')"><span>Anime Collection</span></button>
+<button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('keychains')"><span>Keychains</span></button>
+<button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('boys')"><span>Boys' Keychains</span></button>
+<button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('gifts')"><span>Gifts & Accessories</span></button>
 </div>
 </div>
 </section>
 
 <!-- Products Section -->
-<section id="products" class="py-24 relative">
+<section id="products" class="py-20 relative">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-20" data-aos="fade-up">
+<div class="text-center mb-16">
 <span class="text-yura-pink-dark font-semibold text-sm tracking-[0.3em] uppercase mb-3 block">Handmade Collection</span>
-<h2 class="font-playfair text-6xl sm:text-7xl md:text-8xl font-bold text-yura-dark mb-6 section-title">Our Collection</h2>
-<div class="deco-line w-32 mx-auto"></div>
-<p class="mt-6 text-yura-text/70 max-w-xl mx-auto text-lg leading-relaxed">Every piece is crafted with love and precision, ready to make you stand out with elegance</p>
+<h2 class="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-yura-dark mb-4 section-title">Our Collection</h2>
+<div class="deco-line w-24 mx-auto"></div>
+<p class="mt-4 text-yura-text/70 max-w-lg mx-auto text-base leading-relaxed">Every piece is crafted with love and precision, ready to make you stand out with elegance</p>
 </div>
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto" id="products-grid">
 
-<!-- ⬇️⬇️⬇️ ADD YOUR PRODUCTS HERE ⬇️⬇️⬇️ -->
-<!-- Copy the template below for each product and fill in your details -->
-
-<!-- 
-TEMPLATE — Copy & Paste for each product:
-
-<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border product-item" data-category="bags" data-aos="fade-up" data-aos-delay="0">
-  <div class="relative overflow-hidden aspect-[3/4]">
-    <img src="YOUR_IMAGE_URL.jpg" alt="Product Name" class="card-image w-full h-full object-cover" onclick="openProductModal(0)">
-    <div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6 pointer-events-none">
-      <span class="text-white/90 text-sm font-light tracking-wide"><i class="fas fa-images mr-2"></i>Tap for details</span>
-    </div>
-    <div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">000 EGP</span></div>
-    <div class="absolute top-5 left-5 bg-yura-pink-dark/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Category</div>
-  </div>
-  <div class="card-content p-6">
-    <h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">Product Name</h3>
-    <p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">Short description here...</p>
-    <a href="https://wa.me/201018140186?text=Hi%20yura%20,%20I%20want%20to%20order%20PRODUCT_NAME" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
-      <i class="fab fa-whatsapp text-lg"></i>Order now
-    </a>
-  </div>
-</div>
-
--->
-
 <!-- Product: Rapunzel Crochet Doll -->
-<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border product-item" data-category="dolls" data-aos="fade-up" data-aos-delay="0">
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="dolls">
   <div class="relative overflow-hidden aspect-[3/4]">
-    <img src="https://i.postimg.cc/x83jbTW5/IMG-2718.jpg" alt="Rapunzel Crochet Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(0)">
-    <div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6 pointer-events-none">
-      <span class="text-white/90 text-sm font-light tracking-wide"><i class="fas fa-images mr-2"></i>Tap for details</span>
+    <img src="https://i.postimg.cc/x83jbTW5/IMG-2718.jpg" alt="Rapunzel Crochet Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(0)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
     </div>
-    <div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">550 EGP</span></div>
-    <div class="absolute top-5 left-5 bg-yura-sage/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Dolls & Amigurumi</div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">550 EGP</span></div>
+    <div class="absolute top-4 left-4 bg-yura-sage/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Dolls & Amigurumi</div>
   </div>
-  <div class="card-content p-6">
-    <h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">Rapunzel Crochet Doll</h3>
-    <p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">Handcrafted amigurumi doll inspired by Princess Rapunzel and Pascal. A special gift for any fan.</p>
-    <a href="https://wa.me/201018140186?text=Hi%20yura%20,%20I%20want%20to%20order%20Rapunzel%20Crochet%20Doll" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
-      <i class="fab fa-whatsapp text-lg"></i>Order now
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Rapunzel Crochet Doll</h3>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">Handcrafted amigurumi doll inspired by Princess Rapunzel and Pascal. A special gift for any fan.</p>
+    <a href="https://wa.me/201018140186?text=Hi%20yura%20,%20I%20want%20to%20order%20Rapunzel%20Crochet%20Doll" target="_blank" class="whatsapp-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fab fa-whatsapp text-base"></i>Order now
     </a>
   </div>
 </div>
 
-</div>
 </div>
 </div>
 </section>
@@ -290,9 +299,9 @@ TEMPLATE — Copy & Paste for each product:
 
 <div class="grid md:grid-cols-2 gap-0">
 <!-- Gallery Side -->
-<div class="p-6 md:p-8 bg-gradient-to-br from-yura-cream to-white">
-<div class="modal-gallery relative rounded-2xl overflow-hidden shadow-deep mb-4" id="modal-main-image-container">
-<img id="modal-main-image" src="" alt="" class="w-full aspect-square object-cover">
+<div class="p-4 md:p-6 bg-gradient-to-br from-yura-cream to-white">
+<div class="modal-gallery relative rounded-xl overflow-hidden shadow-deep mb-3" id="modal-main-image-container" style="aspect-ratio: 1/1;">
+<img id="modal-main-image" src="" alt="" class="w-full h-full object-cover" style="display: block;">
 <button class="gallery-nav prev" onclick="changeModalImage(-1)"><i class="fas fa-chevron-right"></i></button>
 <button class="gallery-nav next" onclick="changeModalImage(1)"><i class="fas fa-chevron-left"></i></button>
 </div>
@@ -300,19 +309,18 @@ TEMPLATE — Copy & Paste for each product:
 </div>
 
 <!-- Details Side -->
-<div class="p-6 md:p-8 flex flex-col justify-center">
-<div id="modal-category-badge" class="inline-block self-start px-4 py-1.5 rounded-full text-white text-xs font-semibold mb-4 backdrop-blur-sm"></div>
-<h2 id="modal-title" class="font-playfair text-3xl sm:text-4xl font-bold text-yura-dark mb-2"></h2>
-<div class="flex items-center gap-3 mb-6">
-<span id="modal-price" class="text-2xl font-bold text-yura-pink-dark"></span>
+<div class="p-4 md:p-6 flex flex-col justify-center">
+<div id="modal-category-badge" class="inline-block self-start px-3 py-1 rounded-full text-white text-xs font-semibold mb-3"></div>
+<h2 id="modal-title" class="font-playfair text-2xl sm:text-3xl font-bold text-yura-dark mb-2"></h2>
+<div class="flex items-center gap-3 mb-4">
+<span id="modal-price" class="text-xl font-bold text-yura-pink-dark"></span>
 <span class="text-yura-text/40 text-sm line-through" id="modal-old-price"></span>
 </div>
 
-<p id="modal-description" class="text-yura-text/70 leading-relaxed mb-6 text-sm"></p>
+<p id="modal-description" class="text-yura-text/70 leading-relaxed mb-5 text-sm"></p>
 
 <!-- Product Details -->
-<div class="space-y-3 mb-8">
-
+<div class="space-y-2 mb-6">
 <div class="detail-row">
 <div class="detail-icon"><i class="fas fa-arrows-alt-v"></i></div>
 <div>
@@ -343,8 +351,8 @@ TEMPLATE — Copy & Paste for each product:
 </div>
 </div>
 
-<a id="modal-whatsapp" href="" target="_blank" class="whatsapp-btn w-full py-4 rounded-2xl text-white font-bold text-base flex items-center justify-center gap-3">
-<i class="fab fa-whatsapp text-xl"></i>
+<a id="modal-whatsapp" href="" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+<i class="fab fa-whatsapp text-lg"></i>
 Order now على واتساب
 </a>
 </div>
@@ -353,40 +361,35 @@ Order now على واتساب
 </div>
 
 <!-- About Section -->
-<section id="about" class="py-28 relative overflow-hidden">
-<div class="blob bg-yura-sage/30 w-[500px] h-[500px] -top-20 -left-60" style="animation-delay:2s"></div>
-<div class="blob bg-yura-pink/20 w-[400px] h-[400px] bottom-0 right-0" style="animation-delay:5s"></div>
+<section id="about" class="py-24 relative overflow-hidden">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-<div class="grid md:grid-cols-2 gap-16 items-center">
-<div class="relative" data-aos="fade-right">
-<div class="relative rounded-[3rem] overflow-hidden shadow-deep img-shadow aspect-[3/4] max-w-md mx-auto">
-<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Handmade" class="w-full h-full object-cover">
-<div class="absolute inset-0 bg-gradient-to-t from-yura-pink-dark/40 to-transparent"></div>
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="relative">
+<div class="relative rounded-[2.5rem] overflow-hidden shadow-deep img-shadow aspect-[3/4] max-w-sm mx-auto">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Handmade" class="w-full h-full object-cover" loading="lazy">
+<div class="absolute inset-0 bg-gradient-to-t from-yura-pink-dark/30 to-transparent"></div>
 </div>
-<div class="absolute -bottom-8 -right-8 w-40 h-40 bg-yura-pink/40 rounded-full blur-3xl"></div>
-<div class="absolute -top-8 -left-8 w-32 h-32 bg-yura-sage/50 rounded-full blur-2xl"></div>
-<div class="absolute top-1/2 -right-12 w-24 h-24 border-4 border-yura-pink/20 rounded-full spin-slow hidden lg:block"></div>
 </div>
-<div class="text-right" data-aos="fade-left">
+<div class="text-right">
 <span class="text-yura-pink-dark font-semibold text-sm tracking-[0.3em] uppercase mb-3 block">Our Story</span>
-<h2 class="font-playfair text-5xl sm:text-6xl font-bold text-yura-dark mb-8 leading-tight">About us؟</h2>
-<div class="deco-line w-24 mb-8"></div>
-<div class="space-y-5 text-yura-text/80 leading-relaxed text-lg">
-<p><span class="text-yura-pink-dark font-bold text-xl">Yura Store</span> مشروع صغير بيحمل في كل غرزة حكاية. بدأنا رحلتنا من شغف بسيط بفن الكروشيه، وقررنا نحوله لعلامة تجارية تجمع بين الأصالة والعصرية.</p>
+<h2 class="font-playfair text-4xl sm:text-5xl font-bold text-yura-dark mb-6 leading-tight">About us؟</h2>
+<div class="deco-line w-20 mb-6"></div>
+<div class="space-y-4 text-yura-text/80 leading-relaxed text-base">
+<p><span class="text-yura-pink-dark font-bold text-lg">Yura Store</span> مشروع صغير بيحمل في كل غرزة حكاية. بدأنا رحلتنا من شغف بسيط بفن الكروشيه، وقررنا نحوله لعلامة تجارية تجمع بين الأصالة والعصرية.</p>
 <p>كل قطعة في Yura Store بتمر بإيدينا من أول خيط لآخر غرزة. بنستخدم خيوط عالية الجودة وألوان هادية تدفي القلب زي ما بتدفي الجسم.</p>
 <p>تشكيلتنا متنوعة: شنط وتوtes، دمى أميغورومي، شخصيات أنمي، ميداليات للبنات والشباب، وبوكسات هدايا فاخرة — كلها handmade 100% بحب مصري أصيل.</p>
 </div>
-<div class="grid grid-cols-3 gap-6 mt-12">
-<div class="text-center p-5 bg-white/70 rounded-3xl shadow-soft backdrop-blur-sm hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
-<div class="text-3xl font-bold text-yura-pink-dark mb-1">+500</div>
+<div class="grid grid-cols-3 gap-4 mt-10">
+<div class="text-center p-4 bg-white/70 rounded-2xl shadow-soft hover:shadow-soft-lg transition-shadow duration-200">
+<div class="text-2xl font-bold text-yura-pink-dark mb-1">+500</div>
 <div class="text-xs text-yura-text/60 font-medium">طلب منفذ</div>
 </div>
-<div class="text-center p-5 bg-white/70 rounded-3xl shadow-soft backdrop-blur-sm hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
-<div class="text-3xl font-bold text-yura-pink-dark mb-1">100%</div>
+<div class="text-center p-4 bg-white/70 rounded-2xl shadow-soft hover:shadow-soft-lg transition-shadow duration-200">
+<div class="text-2xl font-bold text-yura-pink-dark mb-1">100%</div>
 <div class="text-xs text-yura-text/60 font-medium">هاند ميد</div>
 </div>
-<div class="text-center p-5 bg-white/70 rounded-3xl shadow-soft backdrop-blur-sm hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
-<div class="text-3xl font-bold text-yura-pink-dark mb-1">+200</div>
+<div class="text-center p-4 bg-white/70 rounded-2xl shadow-soft hover:shadow-soft-lg transition-shadow duration-200">
+<div class="text-2xl font-bold text-yura-pink-dark mb-1">+200</div>
 <div class="text-xs text-yura-text/60 font-medium">عميلة سعيدة</div>
 </div>
 </div>
@@ -396,16 +399,16 @@ Order now على واتساب
 </section>
 
 <!-- Screenshots Gallery Section -->
-<section id="screenshots" class="py-28 relative overflow-hidden">
+<section id="screenshots" class="py-24 relative overflow-hidden">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-16" data-aos="fade-up">
+<div class="text-center mb-12">
 <span class="text-yura-pink-dark font-semibold text-sm tracking-[0.3em] uppercase mb-3 block">Real Customers</span>
-<h2 class="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-yura-dark mb-6 section-title">Customer Screenshots</h2>
-<div class="deco-line w-32 mx-auto"></div>
-<p class="mt-6 text-yura-text/70 max-w-lg mx-auto text-lg">شكراً لكل عميلة وثقت فينا</p>
+<h2 class="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold text-yura-dark mb-4 section-title">Customer Screenshots</h2>
+<div class="deco-line w-24 mx-auto"></div>
+<p class="mt-4 text-yura-text/70 max-w-md mx-auto text-base">شكراً لكل عميلة وثقت فينا</p>
 </div>
 
-<div class="ss-carousel-wrapper" data-aos="fade-up">
+<div class="ss-carousel-wrapper">
 <button class="ss-arrow ss-arrow-prev" onclick="ssMove(-1)" aria-label="السابق">
 <i class="fas fa-chevron-right"></i>
 </button>
@@ -456,258 +459,70 @@ Order now على واتساب
 </div>
 </section>
 
-<style>
-.ss-carousel-wrapper {
-  position: relative;
-  padding: 0 70px;
-}
-.ss-carousel {
-  overflow: hidden;
-  border-radius: 2rem;
-}
-.ss-track {
-  display: flex;
-  gap: 2rem;
-  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  will-change: transform;
-  align-items: flex-start;
-}
-.ss-slide {
-  flex: 0 0 calc(50% - 1rem);
-  min-width: 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-.ss-slide img {
-  width: 100%;
-  max-height: 70vh;
-  object-fit: contain;
-  object-position: top center;
-  border-radius: 1.5rem;
-  display: block;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
-  transition: all 0.4s ease;
-  border: 4px solid white;
-  background: white;
-}
-.ss-slide:hover img {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 25px 60px rgba(232,160,191,0.35);
-}
-.ss-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: white;
-  border: 2px solid rgba(232,160,191,0.3);
-  color: #E8A0BF;
-  font-size: 1.2rem;
-  cursor: pointer;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-}
-.ss-arrow:hover {
-  background: linear-gradient(135deg, #E8A0BF, #F4C2C2);
-  color: white;
-  border-color: transparent;
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 0 8px 25px rgba(232,160,191,0.4);
-}
-.ss-arrow-prev { right: 0; }
-.ss-arrow-next { left: 0; }
-.ss-arrow:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-.ss-dots {
-  display: flex;
-  justify-content: center;
-  gap: 0.6rem;
-  margin-top: 2.5rem;
-  flex-wrap: wrap;
-}
-.ss-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(232,160,191,0.3);
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.ss-dot.active {
-  background: #E8A0BF;
-  width: 32px;
-  border-radius: 5px;
-}
-.ss-dot:hover {
-  background: #E8A0BF;
-}
-@media (max-width: 768px) {
-  .ss-carousel-wrapper { padding: 0 55px; }
-  .ss-slide { flex: 0 0 calc(100% - 0rem); }
-  .ss-slide img { max-height: 75vh; border-width: 3px; }
-  .ss-arrow { width: 44px; height: 44px; font-size: 1rem; }
-}
-@media (max-width: 480px) {
-  .ss-carousel-wrapper { padding: 0 40px; }
-  .ss-slide img { max-height: 70vh; border-width: 2px; border-radius: 1rem; }
-  .ss-arrow { width: 36px; height: 36px; font-size: 0.8rem; }
-}
-</style>
-
-<script>
-(function() {
-  const track = document.getElementById('ss-track');
-  const dotsContainer = document.getElementById('ss-dots');
-  const slides = track.children;
-  const totalSlides = slides.length;
-  let currentIndex = 0;
-  let slidesPerView = 2;
-
-  function getSlidesPerView() {
-    if (window.innerWidth <= 768) return 1;
-    return 2;
-  }
-
-  function updateSlidesPerView() {
-    slidesPerView = getSlidesPerView();
-    renderDots();
-    goTo(currentIndex);
-  }
-
-  function renderDots() {
-    const maxIndex = Math.max(0, totalSlides - slidesPerView);
-    dotsContainer.innerHTML = '';
-    for (let i = 0; i <= maxIndex; i++) {
-      const dot = document.createElement('button');
-      dot.className = 'ss-dot' + (i === currentIndex ? ' active' : '');
-      dot.onclick = () => goTo(i);
-      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
-      dotsContainer.appendChild(dot);
-    }
-  }
-
-  function goTo(index) {
-    const maxIndex = Math.max(0, totalSlides - slidesPerView);
-    currentIndex = Math.max(0, Math.min(index, maxIndex));
-    const slideWidth = slides[0].offsetWidth;
-    const gap = 24; // 1.5rem
-    track.style.transform = `translateX(${currentIndex * (slideWidth + gap)}px)`;
-
-    document.querySelectorAll('.ss-dot').forEach((d, i) => {
-      d.classList.toggle('active', i === currentIndex);
-    });
-  }
-
-  window.ssMove = function(dir) {
-    const maxIndex = Math.max(0, totalSlides - slidesPerView);
-    goTo(currentIndex + dir);
-  };
-
-  window.addEventListener('resize', updateSlidesPerView);
-  updateSlidesPerView();
-})();
-</script>
 <!-- CTA Section -->
-<section class="py-28 relative overflow-hidden">
+<section class="py-24 relative overflow-hidden">
 <div class="absolute inset-0 bg-gradient-to-r from-yura-pink/20 via-yura-beige/40 to-yura-sage/20"></div>
-<div class="blob bg-yura-pink/30 w-[500px] h-[500px] top-0 right-0" style="animation-delay:0s"></div>
-<div class="blob bg-yura-sage/30 w-[400px] h-[400px] bottom-0 left-0" style="animation-delay:3s"></div>
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10" data-aos="zoom-in">
-<h2 class="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-yura-dark mb-8">Customize Order?</h2>
-<p class="text-xl text-yura-text/70 mb-12 max-w-2xl mx-auto leading-relaxed">عندك تصميم في بالك؟ أو عايزة لون معين؟ Contact us on WhatsApp وهننفذ لكِ اللي في خيالك بأيدينا.</p>
-<a href="https://wa.me/201018140186?text=Hi%20yura%20,%20can%20i%20customize%20my%20order%20?" target="_blank" class="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full font-bold text-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500">
-<i class="fab fa-whatsapp text-3xl"></i>Contact us on WhatsApp
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+<h2 class="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold text-yura-dark mb-6">Customize Order?</h2>
+<p class="text-lg text-yura-text/70 mb-10 max-w-xl mx-auto leading-relaxed">عندك تصميم في بالك؟ أو عايزة لون معين؟ Contact us on WhatsApp وهننفذ لكِ اللي في خيالك بأيدينا.</p>
+<a href="https://wa.me/201018140186?text=Hi%20yura%20,%20can%20i%20customize%20my%20order%20?" target="_blank" class="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full font-bold text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+<i class="fab fa-whatsapp text-2xl"></i>Contact us on WhatsApp
 </a>
 </div>
 </section>
 
 <!-- Footer -->
-<footer class="bg-yura-dark text-white py-20 relative overflow-hidden">
+<footer class="bg-yura-dark text-white py-16 relative overflow-hidden">
 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yura-pink via-yura-pink-dark to-yura-sage"></div>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="grid md:grid-cols-3 gap-12">
+<div class="grid md:grid-cols-3 gap-10">
 <div class="text-center md:text-right">
 <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
-<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="w-12 h-12 object-cover rounded-xl shadow-logo border-2 border-white/30">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="w-10 h-10 object-cover rounded-lg shadow-logo border-2 border-white/30">
 <div>
-<span class="font-playfair text-3xl font-bold text-yura-pink">Yura</span>
+<span class="font-playfair text-2xl font-bold text-yura-pink">Yura</span>
 <span class="block text-xs tracking-[0.3em] text-yura-pink/70">STORE</span>
 </div>
 </div>
 <p class="text-white/60 text-sm leading-relaxed">فنّ الكروشيه بأيدي مصرية. كل غرزة فيها حب وروح، وكل قطعة بتروي حكاية.</p>
 </div>
 <div class="text-center">
-<h4 class="font-bold text-lg mb-6 text-yura-pink">روابط سريعة</h4>
-<ul class="space-y-3">
-<li><a href="#home" class="text-white/60 hover:text-yura-pink transition-colors text-sm hover:scale-105 inline-block">Home</a></li>
-<li><a href="#products" class="text-white/60 hover:text-yura-pink transition-colors text-sm hover:scale-105 inline-block">Products</a></li>
-<li><a href="#about" class="text-white/60 hover:text-yura-pink transition-colors text-sm hover:scale-105 inline-block">About us</a></li>
-<li><a href="#screenshots" class="text-white/60 hover:text-yura-pink transition-colors text-sm hover:scale-105 inline-block">Feedback</a></li>
+<h4 class="font-bold text-lg mb-5 text-yura-pink">روابط سريعة</h4>
+<ul class="space-y-2">
+<li><a href="#home" class="text-white/60 hover:text-yura-pink transition-colors text-sm">Home</a></li>
+<li><a href="#products" class="text-white/60 hover:text-yura-pink transition-colors text-sm">Products</a></li>
+<li><a href="#about" class="text-white/60 hover:text-yura-pink transition-colors text-sm">About us</a></li>
+<li><a href="#screenshots" class="text-white/60 hover:text-yura-pink transition-colors text-sm">Feedback</a></li>
 </ul>
 </div>
 <div class="text-center md:text-left">
-<h4 class="font-bold text-lg mb-6 text-yura-pink">Contact us</h4>
-<ul class="space-y-3">
-<li class="flex items-center justify-center md:justify-start gap-3 text-white/60 text-sm hover:text-white transition-colors cursor-pointer">
+<h4 class="font-bold text-lg mb-5 text-yura-pink">Contact us</h4>
+<ul class="space-y-2">
+<li class="flex items-center justify-center md:justify-start gap-2 text-white/60 text-sm">
 <i class="fab fa-whatsapp text-green-400"></i><span>0101 814 0186</span>
 </li>
-<li class="flex items-center justify-center md:justify-start gap-3 text-white/60 text-sm hover:text-white transition-colors cursor-pointer">
+<li class="flex items-center justify-center md:justify-start gap-2 text-white/60 text-sm">
 <i class="fab fa-instagram text-pink-400"></i><span>@yura.store</span>
 </li>
-<li class="flex items-center justify-center md:justify-start gap-3 text-white/60 text-sm hover:text-white transition-colors cursor-pointer">
+<li class="flex items-center justify-center md:justify-start gap-2 text-white/60 text-sm">
 <i class="fab fa-facebook text-blue-400"></i><span>Yura Store</span>
 </li>
 </ul>
 </div>
 </div>
-<div class="border-t border-white/10 mt-12 pt-8 text-center">
+<div class="border-t border-white/10 mt-10 pt-6 text-center">
 <p class="text-white/40 text-sm">© 2026 Yura Store. All rights reserved. Handmade with <i class="fas fa-heart text-yura-pink text-xs"></i> in Egypt</p>
 </div>
 </div>
 </footer>
 
 <!-- Floating WhatsApp Button -->
-<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أستفسر%20عن%20منتجاتكم" target="_blank" class="fixed bottom-6 left-6 z-50 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg float-whatsapp hover:scale-110 transition-transform duration-300">
+<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أستفسر%20عن%20منتجاتكم" target="_blank" class="fixed bottom-5 left-5 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg float-whatsapp hover:scale-110 transition-transform duration-200">
 <i class="fab fa-whatsapp"></i>
 </a>
 
 <script>
 // ===== PRODUCT DATA =====
-// ⬇️⬇️⬇️ ADD YOUR PRODUCTS HERE ⬇️⬇️⬇️
-// Copy the template below and fill in your product details
-/*
-TEMPLATE:
-{
-  id: 0,
-  name: "Product Name",
-  category: "Bags & Totes",     // or "Dolls & Amigurumi", "Anime Collection", "Keychains", "Boys' Keychains", "Gifts & Accessories"
-  categoryColor: "bg-yura-pink-dark",  // bg-yura-pink-dark | bg-yura-sage | bg-purple-500 | bg-rose-400 | bg-slate-500 | bg-amber-500
-  price: "450 EGP",
-  oldPrice: "",                  // leave empty if no discount
-  description: "Your product description here...",
-  size: "30 x 25 cm",
-  length: "25 cm",
-  colors: ["#F4C2C2", "#C5D5C0", "#FAF0E6"],  // hex color codes
-  time: "3-5 days",
-  shipping: "Free delivery in Cairo",
-  images: [
-    "https://your-image-1.jpg",
-    "https://your-image-2.jpg",
-    "https://your-image-3.jpg"
-  ],
-  whatsapp: "Hi yura , I want to order Product Name"
-},
-*/
 const products = [
   {
     id: 0,
@@ -735,7 +550,10 @@ const products = [
   }
 ];
 
-// ===== MODAL FUNCTIONS =====
+let currentProduct = null;
+let currentImageIndex = 0;
+
+// ===== MODAL FUNCTIONS - سريعة وسلسة =====
 function openProductModal(productId) {
   currentProduct = products.find(p => p.id === productId);
   if (!currentProduct) return;
@@ -746,16 +564,14 @@ function openProductModal(productId) {
   document.getElementById('modal-old-price').textContent = currentProduct.oldPrice;
   document.getElementById('modal-old-price').style.display = currentProduct.oldPrice ? 'inline' : 'none';
   document.getElementById('modal-description').textContent = currentProduct.description;
-    document.getElementById('modal-length').textContent = currentProduct.length;
+  document.getElementById('modal-length').textContent = currentProduct.length;
   document.getElementById('modal-time').textContent = currentProduct.time;
   document.getElementById('modal-shipping').textContent = currentProduct.shipping;
 
-  // Category badge
   const badge = document.getElementById('modal-category-badge');
   badge.textContent = currentProduct.category;
-  badge.className = `inline-block self-start px-4 py-1.5 rounded-full text-white text-xs font-semibold mb-4 backdrop-blur-sm ${currentProduct.categoryColor}`;
+  badge.className = `inline-block self-start px-3 py-1 rounded-full text-white text-xs font-semibold mb-3 ${currentProduct.categoryColor}`;
 
-  // Colors
   const colorsContainer = document.getElementById('modal-colors');
   colorsContainer.innerHTML = '';
   currentProduct.colors.forEach(color => {
@@ -766,14 +582,11 @@ function openProductModal(productId) {
     colorsContainer.appendChild(dot);
   });
 
-  // Images
   updateModalImage();
   renderThumbs();
 
-  // WhatsApp link
   document.getElementById('modal-whatsapp').href = `https://wa.me/201018140186?text=${encodeURIComponent(currentProduct.whatsapp)}`;
 
-  // Show modal
   document.getElementById('product-modal').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
@@ -784,15 +597,12 @@ function closeProductModal() {
   currentProduct = null;
 }
 
+// تغيير الصورة فوراً بدون تأخير
 function updateModalImage() {
   if (!currentProduct) return;
   const img = document.getElementById('modal-main-image');
-  img.style.opacity = '0';
-  setTimeout(() => {
-    img.src = currentProduct.images[currentImageIndex];
-    img.alt = currentProduct.name;
-    img.style.opacity = '1';
-  }, 150);
+  img.src = currentProduct.images[currentImageIndex];
+  img.alt = currentProduct.name;
 }
 
 function renderThumbs() {
@@ -802,7 +612,7 @@ function renderThumbs() {
   currentProduct.images.forEach((src, idx) => {
     const thumb = document.createElement('div');
     thumb.className = `modal-thumb ${idx === currentImageIndex ? 'active' : ''}`;
-    thumb.innerHTML = `<img src="${src}" alt="${currentProduct.name} - ${idx + 1}">`;
+    thumb.innerHTML = `<img src="${src}" alt="${currentProduct.name} - ${idx + 1}" loading="lazy">`;
     thumb.onclick = () => {
       currentImageIndex = idx;
       updateModalImage();
@@ -821,6 +631,33 @@ function changeModalImage(direction) {
   renderThumbs();
 }
 
+// Swipe باللمس للمودال
+let touchStartX = 0;
+let touchEndX = 0;
+const modalGallery = document.getElementById('modal-main-image-container');
+
+modalGallery.addEventListener('touchstart', function(e) {
+  touchStartX = e.changedTouches[0].screenX;
+}, {passive: true});
+
+modalGallery.addEventListener('touchend', function(e) {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+}, {passive: true});
+
+function handleSwipe() {
+  if (!currentProduct) return;
+  const swipeThreshold = 50;
+  const diff = touchStartX - touchEndX;
+  if (Math.abs(diff) > swipeThreshold) {
+    if (diff > 0) {
+      changeModalImage(1); // swipe left -> next (RTL)
+    } else {
+      changeModalImage(-1); // swipe right -> prev (RTL)
+    }
+  }
+}
+
 // Close modal on overlay click
 document.getElementById('product-modal').addEventListener('click', function(e) {
   if (e.target === this) closeProductModal();
@@ -830,8 +667,8 @@ document.getElementById('product-modal').addEventListener('click', function(e) {
 document.addEventListener('keydown', function(e) {
   if (!currentProduct) return;
   if (e.key === 'Escape') closeProductModal();
-  if (e.key === 'ArrowLeft') changeModalImage(1); // RTL
-  if (e.key === 'ArrowRight') changeModalImage(-1); // RTL
+  if (e.key === 'ArrowLeft') changeModalImage(1);
+  if (e.key === 'ArrowRight') changeModalImage(-1);
 });
 
 // ===== CATEGORY FILTER =====
@@ -840,76 +677,124 @@ function filterProducts(category) {
   items.forEach(item => {
     if (category === 'all' || item.dataset.category === category) {
       item.style.display = '';
-      setTimeout(() => {
+      requestAnimationFrame(() => {
         item.style.opacity = '1';
         item.style.transform = 'scale(1)';
-      }, 50);
+      });
     } else {
       item.style.opacity = '0';
-      item.style.transform = 'scale(0.8)';
-      setTimeout(() => {
-        item.style.display = 'none';
-      }, 300);
+      item.style.transform = 'scale(0.95)';
+      setTimeout(() => { item.style.display = 'none'; }, 200);
     }
   });
 }
 
-// ===== AOS INIT =====
-AOS.init({duration:800,easing:'ease-out-cubic',once:true,offset:100,delay:0});
-
 // ===== NAVBAR =====
-const navbar=document.getElementById('navbar');
-window.addEventListener('scroll',()=>{
-  if(window.scrollY>50){
-    navbar.classList.add('nav-blur','shadow-soft');
-    navbar.classList.remove('py-4');
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.classList.add('nav-blur', 'shadow-soft');
+    navbar.classList.remove('py-3');
     navbar.classList.add('py-2');
-  }else{
-    navbar.classList.remove('nav-blur','shadow-soft','py-2');
-    navbar.classList.add('py-4');
+  } else {
+    navbar.classList.remove('nav-blur', 'shadow-soft', 'py-2');
+    navbar.classList.add('py-3');
   }
-});
+}, {passive: true});
 
 // ===== MOBILE MENU =====
-const mobileMenuBtn=document.getElementById('mobile-menu-btn');
-const mobileMenu=document.getElementById('mobile-menu');
-mobileMenuBtn.addEventListener('click',()=>{
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+mobileMenuBtn.addEventListener('click', () => {
   mobileMenu.classList.toggle('hidden');
 });
-mobileMenu.querySelectorAll('a').forEach(link=>{
-  link.addEventListener('click',()=>{
+mobileMenu.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
     mobileMenu.classList.add('hidden');
   });
 });
 
 // ===== CATEGORY PILLS =====
-const categoryPills=document.querySelectorAll('.category-pill');
-categoryPills.forEach(pill=>{
-  pill.addEventListener('click',()=>{
-    categoryPills.forEach(p=>p.classList.remove('active'));
+const categoryPills = document.querySelectorAll('.category-pill');
+categoryPills.forEach(pill => {
+  pill.addEventListener('click', () => {
+    categoryPills.forEach(p => p.classList.remove('active'));
     pill.classList.add('active');
   });
 });
 
 // ===== SMOOTH SCROLL =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-  anchor.addEventListener('click',function(e){
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
     e.preventDefault();
-    const target=document.querySelector(this.getAttribute('href'));
-    if(target){
-      target.scrollIntoView({behavior:'smooth',block:'start'});
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({behavior: 'smooth', block: 'start'});
     }
   });
 });
 
-// ===== PARALLAX =====
-window.addEventListener('scroll',()=>{
-  const scrolled=window.pageYOffset;
-  document.querySelectorAll('.blob').forEach((blob,index)=>{
-    const speed=0.3+(index*0.1);
-    blob.style.transform=`translateY(${scrolled*speed}px)`;
-  });
-});
+// ===== SCREENSHOTS CAROUSEL =====
+(function() {
+  const track = document.getElementById('ss-track');
+  const dotsContainer = document.getElementById('ss-dots');
+  const slides = track.children;
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+  let slidesPerView = 2;
+
+  function getSlidesPerView() {
+    return window.innerWidth <= 768 ? 1 : 2;
+  }
+
+  function updateSlidesPerView() {
+    slidesPerView = getSlidesPerView();
+    renderDots();
+    goTo(currentIndex);
+  }
+
+  function renderDots() {
+    const maxIndex = Math.max(0, totalSlides - slidesPerView);
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i <= maxIndex; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'ss-dot' + (i === currentIndex ? ' active' : '');
+      dot.onclick = () => goTo(i);
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function goTo(index) {
+    const maxIndex = Math.max(0, totalSlides - slidesPerView);
+    currentIndex = Math.max(0, Math.min(index, maxIndex));
+    const slideWidth = slides[0].offsetWidth;
+    const gap = 24;
+    track.style.transform = `translateX(${currentIndex * (slideWidth + gap)}px)`;
+    document.querySelectorAll('.ss-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  window.ssMove = function(dir) {
+    const maxIndex = Math.max(0, totalSlides - slidesPerView);
+    goTo(currentIndex + dir);
+  };
+
+  // Touch swipe للـ screenshots
+  let ssStartX = 0;
+  const ssCarousel = document.getElementById('ss-carousel');
+  ssCarousel.addEventListener('touchstart', (e) => { ssStartX = e.changedTouches[0].screenX; }, {passive: true});
+  ssCarousel.addEventListener('touchend', (e) => {
+    const diff = ssStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) {
+      ssMove(diff > 0 ? 1 : -1);
+    }
+  }, {passive: true});
+
+  window.addEventListener('resize', updateSlidesPerView, {passive: true});
+  updateSlidesPerView();
+})();
 </script>
 </body>
 </html>
