@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yura Store | Handmade Crochet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -14,8 +14,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 tailwind.config={
   theme:{
@@ -29,11 +29,11 @@ tailwind.config={
         'cairo':['Cairo','sans-serif'],'tajawal':['Tajawal','sans-serif'],'playfair':['Playfair Display','serif'],
       },
       boxShadow:{
-        'soft':'0 2px 10px rgba(232,160,191,0.12)','soft-lg':'0 6px 24px rgba(232,160,191,0.15)',
-        'card':'0 4px 16px rgba(0,0,0,0.05)','card-hover':'0 12px 32px rgba(232,160,191,0.2)',
-        'deep':'0 8px 24px rgba(0,0,0,0.08)','glow':'0 0 20px rgba(232,160,191,0.25)',
-        'logo':'0 4px 16px rgba(232,160,191,0.2)','logo-hover':'0 8px 24px rgba(232,160,191,0.3)',
-        'modal':'0 12px 40px rgba(0,0,0,0.2)',
+        'soft':'0 4px 20px rgba(232,160,191,0.15)','soft-lg':'0 10px 40px rgba(232,160,191,0.2)',
+        'card':'0 8px 30px rgba(0,0,0,0.06)','card-hover':'0 25px 60px rgba(232,160,191,0.3)',
+        'deep':'0 20px 60px rgba(0,0,0,0.12)','glow':'0 0 40px rgba(232,160,191,0.4)',
+        'logo':'0 8px 30px rgba(232,160,191,0.25)','logo-hover':'0 15px 50px rgba(232,160,191,0.4)',
+        'modal':'0 25px 80px rgba(0,0,0,0.3)',
       }
     }
   }
@@ -41,113 +41,86 @@ tailwind.config={
 </script>
 <style>
 *{scroll-behavior:smooth}
-body{font-family:'Cairo',sans-serif;font-display:swap;background:#FFF8F0;color:#4A4A4A;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:#E8A0BF;border-radius:3px}
-
-25%{transform:translate(40px,-40px) scale(1.1) rotate(5deg)}50%{transform:translate(-30px,20px) scale(0.95) rotate(-3deg)}75%{transform:translate(20px,30px) scale(1.05) rotate(2deg)}}
+body{font-family:'Cairo',sans-serif;font-display:swap;background:#FFF8F0;color:#4A4A4A;overflow-x:hidden}
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#FFF8F0}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#F4C2C2,#E8A0BF);border-radius:10px;border:2px solid #FFF8F0}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#E8A0BF,#D4A5A5)}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.4;animation:float 10s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1) rotate(0deg)}25%{transform:translate(40px,-40px) scale(1.1) rotate(5deg)}50%{transform:translate(-30px,20px) scale(0.95) rotate(-3deg)}75%{transform:translate(20px,30px) scale(1.05) rotate(2deg)}}
 .logo-text{font-family:'Playfair Display',serif;background:linear-gradient(135deg,#E8A0BF 0%,#D4A5A5 50%,#C5D5C0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 4px 8px rgba(232,160,191,0.3))}
-.product-card{transition:transform 0.2s ease,box-shadow 0.2s ease;touch-action:manipulation;-webkit-tap-highlight-color:transparent;contain:layout}
-.product-card:hover{transform:translateY(-8px);box-shadow:0 12px 32px rgba(232,160,191,0.2)}
-.product-card .card-image{transition:transform 0.8s cubic-bezier(0.4,0,0.2,1);cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;-webkit-user-drag:none;user-select:none}
-.product-card:hover .card-image{transform:scale(1.05)}
+.product-card{transition:all 0.6s cubic-bezier(0.34,1.56,0.64,1);transform-style:preserve-3d;perspective:1000px}
+.product-card:hover{transform:translateY(-16px) scale(1.03) rotateX(2deg);box-shadow:0 30px 70px rgba(232,160,191,0.35),0 10px 30px rgba(0,0,0,0.1)}
+.product-card .card-image{transition:transform 0.8s cubic-bezier(0.4,0,0.2,1);cursor:pointer}
+.product-card:hover .card-image{transform:scale(1.12)}
 .product-card .overlay{opacity:0;transition:all 0.5s ease;backdrop-filter:blur(4px)}
 .product-card:hover .overlay{opacity:1}
 .product-card .card-content{transition:all 0.4s ease}
 .product-card:hover .card-content{background:linear-gradient(180deg,#ffffff 0%,#FFF8F0 100%)}
-.whatsapp-btn{background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);transition:transform 0.2s ease,box-shadow 0.2s ease;box-shadow:0 4px 12px rgba(37,211,102,0.3)}
-.whatsapp-btn:hover{transform:scale(1.03);box-shadow:0 6px 16px rgba(37,211,102,0.4)}
-.float-whatsapp{animation:pulse-whatsapp 3s infinite}
-@keyframes pulse-whatsapp{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,0.4),0 4px 12px rgba(37,211,102,0.25)}50%{box-shadow:0 0 0 15px rgba(37,211,102,0),0 4px 12px rgba(37,211,102,0.25)}}
-.nav-blur{backdrop-filter:blur(12px);background:rgba(255,248,240,0.92);box-shadow:0 2px 12px rgba(232,160,191,0.1)}
-.category-pill{transition:all 0.2s ease;position:relative;overflow:hidden;cursor:pointer}
-.category-pill::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#E8A0BF 0%,#F4C2C2 100%);opacity:0;transition:opacity 0.2s ease;z-index:0;border-radius:inherit}
-.category-pill:hover,.category-pill.active{color:white;transform:scale(1.05);box-shadow:0 4px 12px rgba(232,160,191,0.3);border-color:transparent}
+.whatsapp-btn{background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 6px 20px rgba(37,211,102,0.35);position:relative;overflow:hidden}
+.whatsapp-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transition:left 0.6s ease}
+.whatsapp-btn:hover::before{left:100%}
+.whatsapp-btn:hover{transform:scale(1.08) translateY(-2px);box-shadow:0 10px 35px rgba(37,211,102,0.5)}
+.float-whatsapp{animation:pulse-whatsapp 2.5s infinite}
+@keyframes pulse-whatsapp{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,0.6),0 6px 20px rgba(37,211,102,0.3)}50%{box-shadow:0 0 0 25px rgba(37,211,102,0),0 6px 20px rgba(37,211,102,0.3)}}
+.nav-blur{backdrop-filter:blur(25px);background:rgba(255,248,240,0.9);box-shadow:0 4px 30px rgba(232,160,191,0.15)}
+.category-pill{transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);position:relative;overflow:hidden}
+.category-pill::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#E8A0BF 0%,#F4C2C2 100%);opacity:0;transition:opacity 0.4s ease;z-index:0;border-radius:inherit}
+.category-pill:hover,.category-pill.active{color:white;transform:scale(1.08) translateY(-2px);box-shadow:0 8px 25px rgba(232,160,191,0.4);border-color:transparent}
 .category-pill:hover::after,.category-pill.active::after{opacity:1}
 .category-pill span{position:relative;z-index:1}
-.deco-line{height:2px;background:linear-gradient(90deg,transparent,#E8A0BF,#C5D5C0,#E8A0BF,transparent);border-radius:2px}
-.price-tag{background:#FFF8F0;border:1px solid rgba(232,160,191,0.3);box-shadow:0 2px 8px rgba(232,160,191,0.1)}
-
-50%{transform:rotate(8deg) translateY(-15px)}}
+.deco-line{height:3px;background:linear-gradient(90deg,transparent,#E8A0BF,#C5D5C0,#E8A0BF,transparent);border-radius:2px}
+.price-tag{background:linear-gradient(135deg,#FFF8F0 0%,#FAF0E6 100%);border:1px solid rgba(232,160,191,0.4);box-shadow:0 4px 15px rgba(232,160,191,0.15);backdrop-filter:blur(10px)}
+.needle-float{animation:needle-bob 4s ease-in-out infinite}
+@keyframes needle-bob{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(8deg) translateY(-15px)}}
 .section-title{position:relative}
+.section-title::after{content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:60px;height:60px;background:radial-gradient(circle,rgba(232,160,191,0.3) 0%,transparent 70%);border-radius:50%;filter:blur(20px);z-index:-1}
+.spin-slow{animation:spin-slow 20s linear infinite}
+@keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.shimmer-text{background:linear-gradient(90deg,#E8A0BF,#C5D5C0,#E8A0BF);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer-text 3s linear infinite}
+@keyframes shimmer-text{to{background-position:200% center}}
+.img-shadow{box-shadow:0 15px 40px rgba(0,0,0,0.12);transition:all 0.5s ease}
+.img-shadow:hover{box-shadow:0 25px 60px rgba(232,160,191,0.3)}
+.gradient-border{position:relative;background:white;border-radius:2rem}
+.gradient-border::before{content:'';position:absolute;inset:-2px;border-radius:calc(2rem + 2px);background:linear-gradient(135deg,#E8A0BF,#C5D5C0,#F4C2C2);z-index:-1;opacity:0;transition:opacity 0.4s ease}
+.gradient-border:hover::before{opacity:0.6}
+.logo-hero{transition:all 0.6s cubic-bezier(0.34,1.56,0.64,1);filter:drop-shadow(0 8px 20px rgba(232,160,191,0.3))}
+.logo-hero:hover{transform:scale(1.05) rotate(-2deg);filter:drop-shadow(0 15px 40px rgba(232,160,191,0.5))}
+.logo-nav{transition:all 0.4s ease;border-radius:1rem}
+.logo-nav:hover{transform:scale(1.1) rotate(-3deg);filter:drop-shadow(0 6px 15px rgba(232,160,191,0.4))}
 
-to{transform:rotate(360deg)}}
-
-}
-.img-shadow{box-shadow:0 8px 24px rgba(0,0,0,0.08)}
-.gradient-border{background:white;border-radius:2rem}
-.logo-hero{transition:transform 0.3s ease;filter:drop-shadow(0 4px 12px rgba(232,160,191,0.2))}
-.logo-hero:hover{transform:scale(1.03)}
-.logo-nav{transition:transform 0.2s ease;border-radius:1rem}
-.logo-nav:hover{transform:scale(1.05)}
-
-/* ===== MOBILE PRODUCT CARDS ===== */
-@media(max-width:768px){
-  .product-card{border-radius:1.5rem!important}
-  .product-card .card-content{padding:1rem}
-  .product-card h3{font-size:1rem}
-  .product-card p{font-size:0.8rem}
-  .product-card .whatsapp-btn{padding:0.6rem 0;font-size:0.8rem}
-  .price-tag{padding:0.3rem 0.75rem!important}
-  .price-tag span{font-size:0.85rem}
-  #products-grid{gap:1rem}
-  .category-pill{padding:0.5rem 1rem!important;font-size:0.75rem}
-}
 
 /* ===== PRODUCT MODAL ===== */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);z-index:100;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s ease;display:flex;align-items:center;justify-content:center;padding:1rem;overscroll-behavior:none;touch-action:none}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(12px);z-index:100;opacity:0;visibility:hidden;transition:all 0.4s ease;display:flex;align-items:center;justify-content:center;padding:1rem}
 .modal-overlay.active{opacity:1;visibility:visible}
-.modal-content{background:#FFF8F0;border-radius:2.5rem;max-width:1000px;width:95%;max-height:90vh;overflow-y:auto;position:relative;transform:scale(0.95) translateY(20px);transition:all 0.4s cubic-bezier(0.4,0,0.2,1);box-shadow:0 30px 80px rgba(0,0,0,0.3);-webkit-overflow-scrolling:touch;touch-action:pan-y}
-.modal-overlay.active .modal-content{transform:scale(1) translateY(0);transition:transform 0.2s ease,opacity 0.2s ease}
-.modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,0.1);border:none;font-size:1rem;color:#4A4A4A}
-.modal-close:hover{background:#E8A0BF;color:white}
-.modal-gallery{position:relative;border-radius:1.5rem;overflow:hidden;aspect-ratio:1/1;background:#f0f0f0}
-.modal-gallery img{width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;user-select:none;transition:opacity 0.15s ease}
-.modal-thumbs{display:flex;gap:0.5rem;overflow-x:auto;padding:0.5rem 0;-webkit-overflow-scrolling:touch}
-.modal-thumbs::-webkit-scrollbar{height:3px}
-.modal-thumbs::-webkit-scrollbar-thumb{background:#E8A0BF;border-radius:2px}
-.modal-thumb{width:52px;height:52px;border-radius:0.5rem;overflow:hidden;cursor:pointer;border:2px solid transparent;flex-shrink:0;-webkit-tap-highlight-color:transparent}
-.modal-thumb.active{border-color:#E8A0BF;box-shadow:0 0 0 2px rgba(232,160,191,0.3)}
+.modal-content{background:#FFF8F0;border-radius:2.5rem;max-width:1000px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:scale(0.9) translateY(30px);transition:all 0.5s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 30px 80px rgba(0,0,0,0.3)}
+.modal-overlay.active .modal-content{transform:scale(1) translateY(0)}
+.modal-close{position:absolute;top:1.5rem;right:1.5rem;width:44px;height:44px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 4px 15px rgba(0,0,0,0.1);transition:all 0.3s ease;border:none;font-size:1.2rem;color:#4A4A4A}
+.modal-close:hover{background:#E8A0BF;color:white;transform:rotate(90deg) scale(1.1)}
+.modal-gallery{position:relative;border-radius:2rem;overflow:hidden;aspect-square}
+.modal-gallery img{width:100%;height:100%;object-fit:cover;transition:all 0.5s ease}
+.modal-thumbs{display:flex;gap:0.75rem;overflow-x:auto;padding:0.5rem 0}
+.modal-thumbs::-webkit-scrollbar{height:6px}
+.modal-thumbs::-webkit-scrollbar-thumb{background:#E8A0BF;border-radius:3px}
+.modal-thumb{width:70px;height:70px;border-radius:1rem;overflow:hidden;cursor:pointer;border:3px solid transparent;transition:all 0.3s ease;flex-shrink:0}
+.modal-thumb:hover{transform:scale(1.1)}
+.modal-thumb.active{border-color:#E8A0BF;box-shadow:0 4px 15px rgba(232,160,191,0.3)}
 .modal-thumb img{width:100%;height:100%;object-fit:cover}
-.detail-row{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:white;border-radius:1rem;margin-bottom:0.5rem;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-.detail-icon{width:32px;height:32px;background:#E8A0BF;border-radius:0.5rem;display:flex;align-items:center;justify-content:center;color:white;font-size:0.8rem}
-.color-dot{width:20px;height:20px;border-radius:50%;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.1);display:inline-block}
-.gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:5;border:none;font-size:1rem;color:#4A4A4A;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
-.gallery-nav:active{background:#E8A0BF;color:white;transform:translateY(-50%) scale(0.95)}
-.gallery-nav.prev{left:0.5rem}
-.gallery-nav.next{right:0.5rem}
-#modal-main-image{-webkit-user-drag:none;user-select:none;touch-action:pan-y}
-.modal-thumb img{-webkit-user-drag:none;user-select:none}
+.detail-row{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:white;border-radius:1rem;margin-bottom:0.5rem;box-shadow:0 2px 10px rgba(0,0,0,0.04);transition:all 0.3s ease}
+.detail-row:hover{transform:translateX(-5px);box-shadow:0 4px 15px rgba(232,160,191,0.15)}
+.detail-icon{width:36px;height:36px;background:linear-gradient(135deg,#F4C2C2,#E8A0BF);border-radius:0.75rem;display:flex;align-items:center;justify-content:center;color:white;font-size:0.85rem}
+.color-dot{width:24px;height:24px;border-radius:50%;border:2px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.15);display:inline-block;transition:all 0.3s ease}
+.color-dot:hover{transform:scale(1.3);box-shadow:0 4px 12px rgba(0,0,0,0.2)}
+.gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;background:white/90;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 15px rgba(0,0,0,0.15);transition:all 0.3s ease;z-index:5;border:none;font-size:1rem;color:#4A4A4A}
+.gallery-nav:hover{background:#E8A0BF;color:white;transform:translateY(-50%) scale(1.1)}
+.gallery-nav.prev{left:1rem}
+.gallery-nav.next{right:1rem}
 @media(max-width:768px){
-  .modal-overlay{padding:0;display:block;overflow:hidden;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);touch-action:none}
-  .modal-content{border-radius:1.25rem;width:100%;max-width:100%;height:100%;max-height:100dvh;margin:0;overflow-y:auto;position:fixed;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;touch-action:pan-y}
-  .modal-content .grid{display:flex;flex-direction:column;flex:1}
-  .modal-content .grid > div:first-child{flex-shrink:0}
-  .modal-content .grid > div:last-child{flex:1;overflow-y:auto}
-  .modal-gallery{aspect-ratio:1/1;max-height:45vh;width:100%;border-radius:1.25rem 1.25rem 0 0;overflow:hidden}
-  .modal-gallery img{width:100%;height:100%;object-fit:cover}
-  #modal-main-image{width:100%;height:100%;object-fit:cover;max-height:45vh}
-  .gallery-nav{width:40px;height:40px;top:50%}
-  .modal-thumbs{gap:0.5rem;padding:0.5rem 1rem;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
-  .modal-thumb{width:56px;height:56px;flex-shrink:0}
-  .modal-close{top:0.75rem;right:0.75rem;width:40px;height:40px;z-index:20}
-  #modal-title{font-size:1.3rem!important;margin-top:0.25rem}
-  #modal-price{font-size:1.2rem!important}
-  .modal-content .p-6{padding:0.875rem}
-  .modal-content .p-8{padding:0.875rem}
-  .detail-row{padding:0.5rem 0.75rem;margin-bottom:0.4rem}
-  .detail-icon{width:30px;height:30px;font-size:0.75rem}
-  #modal-whatsapp{position:sticky;bottom:0.5rem;margin-top:0.75rem;border-radius:1rem;flex-shrink:0}
-  #modal-description{font-size:0.85rem!important;margin-bottom:0.75rem!important}
-  #modal-category-badge{font-size:0.7rem!important;padding:0.3rem 0.75rem!important}
+  .modal-content{border-radius:1.5rem;max-height:95vh}
+  .modal-gallery{aspect-ratio:1/1}
+  .gallery-nav{width:36px;height:36px}
 }
 </style>
-
-
-<link rel="preload" as="image" href="https://your-image-1.jpg">
-<link rel="preload" as="image" href="https://your-image-2.jpg">
-<link rel="preload" as="image" href="https://your-image-3.jpg">
 <base target="_blank">
 </head>
 <body class="font-cairo antialiased">
@@ -156,8 +129,8 @@ to{transform:rotate(360deg)}}
 <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-4">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex items-center justify-between">
-<a href="#" class="flex items-center gap-3 group">
-<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-nav w-14 h-14 object-cover rounded-2xl shadow-logo border-2 border-white/50" loading="eager" decoding="async">
+<a href="#" class="flex items-center gap-3 group" data-aos="fade-down" data-aos-duration="800">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-nav w-14 h-14 object-cover rounded-2xl shadow-logo border-2 border-white/50">
 <div class="flex flex-col">
 <span class="logo-text text-3xl font-bold leading-none tracking-wide">Yura</span>
 <span class="text-yura-pink-dark text-sm font-tajawal font-medium tracking-[0.2em] -mt-1">STORE</span>
@@ -168,7 +141,7 @@ to{transform:rotate(360deg)}}
 <a href="#products" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">Products</a>
 <a href="#about" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">About us</a>
 <a href="#screenshots" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">Feedback</a>
-<a href="https://wa.me/message/LOA7KWMVV7N6B1" target="_blank" class="whatsapp-btn text-white px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2">
+<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أستفسر%20عن%20منتجاتكم" target="_blank" class="whatsapp-btn text-white px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2">
 <i class="fab fa-whatsapp text-lg"></i>Contact us
 </a>
 </div>
@@ -183,7 +156,7 @@ to{transform:rotate(360deg)}}
 <a href="#products" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">Products</a>
 <a href="#about" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">About us</a>
 <a href="#screenshots" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">Feedback</a>
-<a href="https://wa.me/message/LOA7KWMVV7N6B1" target="_blank" class="whatsapp-btn text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 mt-2">
+<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أستفسر%20عن%20منتجاتكم" target="_blank" class="whatsapp-btn text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 mt-2">
 <i class="fab fa-whatsapp"></i>Contact us
 </a>
 </div>
@@ -191,36 +164,36 @@ to{transform:rotate(360deg)}}
 </nav>
 
 <!-- Hero Section -->
-<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" style="background:linear-gradient(180deg,#FFF8F0 0%,#FAF0E6 100%)">
-
-
-
-
-
-
+<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+<div class="blob bg-yura-pink w-[500px] h-[500px] top-10 -right-40" style="animation-delay:0s"></div>
+<div class="blob bg-yura-sage w-[400px] h-[400px] bottom-10 -left-40" style="animation-delay:3s"></div>
+<div class="blob bg-yura-warm w-[350px] h-[350px] top-1/3 left-1/4" style="animation-delay:6s"></div>
+<div class="blob bg-yura-pink-dark/30 w-[300px] h-[300px] bottom-1/4 right-1/4" style="animation-delay:2s"></div>
+<div class="absolute top-32 left-20 w-20 h-20 border-2 border-yura-pink/20 rounded-full spin-slow hidden lg:block"></div>
+<div class="absolute bottom-40 right-32 w-16 h-16 border-2 border-yura-sage/30 rounded-full spin-slow hidden lg:block" style="animation-direction:reverse"></div>
 
 <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-<div>
+<div data-aos="zoom-in" data-aos-duration="1000">
 <div class="mb-8 inline-block">
-<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-hero w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover rounded-[2.5rem] shadow-logo border-4 border-white/60" loading="eager" decoding="async">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-hero w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover rounded-[2.5rem] shadow-logo border-4 border-white/60">
 </div>
 <h1 class="font-playfair text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold mb-2 leading-tight">
 <span class="logo-text shimmer-text">Yura</span>
 </h1>
 <h2 class="font-tajawal text-3xl sm:text-4xl md:text-5xl font-light text-yura-text mb-4 tracking-[0.3em]">STORE</h2>
 <div class="deco-line w-40 mx-auto my-8"></div>
-<p class="font-cairo text-lg sm:text-xl md:text-2xl text-yura-text/80 max-w-3xl mx-auto mb-6 leading-relaxed font-light">
+<p class="font-cairo text-lg sm:text-xl md:text-2xl text-yura-text/80 max-w-3xl mx-auto mb-6 leading-relaxed font-light" data-aos="fade-up" data-aos-delay="300">
 𝗛𝗮𝗻𝗱𝗺𝗮𝗱𝗲 𝘄𝗶𝘁𝗵 𝗟𝗼𝘃𝗲, 𝗦𝘁𝗶𝘁𝗰𝗵𝗲𝗱 𝘁𝗼 𝗣𝗲𝗿𝗳𝗲𝗰𝘁𝗶𝗼𝗻 – 𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝘁𝗼 𝗬𝗼𝘂𝗿 𝗖𝗿𝗼𝗰𝗵𝗲𝘁 𝗛𝗮𝘃𝗲𝗻
 </p>
-<p class="text-sm text-yura-text/50 mb-12 font-light tracking-[0.2em] uppercase">
+<p class="text-sm text-yura-text/50 mb-12 font-light tracking-[0.2em] uppercase" data-aos="fade-up" data-aos-delay="500">
 HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 </p>
-<div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
+<div class="flex flex-col sm:flex-row gap-5 justify-center items-center" data-aos="fade-up" data-aos-delay="700">
 <a href="#products" class="group relative px-10 py-5 bg-gradient-to-r from-yura-pink-dark to-yura-pink text-white rounded-full font-bold text-lg shadow-soft-lg hover:shadow-glow transition-all duration-500 overflow-hidden">
 <span class="relative z-10 flex items-center gap-3">Shop Collection<i class="fas fa-arrow-left group-hover:-translate-x-2 transition-transform duration-300"></i></span>
 <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
 </a>
-<a href="https://wa.me/message/LOA7KWMVV7N6B1" target="_blank" class="px-10 py-5 border-2 border-yura-pink-dark text-yura-pink-dark rounded-full font-bold text-lg hover:bg-yura-pink-dark hover:text-white transition-all duration-500 flex items-center gap-3 hover:shadow-soft-lg hover:scale-105">
+<a href="https://wa.me/201018140186?text=Hi%20yura%20,%20can%20i%20customize%20my%20order%20?" target="_blank" class="px-10 py-5 border-2 border-yura-pink-dark text-yura-pink-dark rounded-full font-bold text-lg hover:bg-yura-pink-dark hover:text-white transition-all duration-500 flex items-center gap-3 hover:shadow-soft-lg hover:scale-105">
 <i class="fab fa-whatsapp text-xl"></i>Customize Order
 </a>
 </div>
@@ -236,14 +209,14 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <!-- Categories -->
 <section class="py-16 bg-white/40 backdrop-blur-sm">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex flex-wrap justify-center gap-4">
+<div class="flex flex-wrap justify-center gap-4" data-aos="fade-up">
 <button class="category-pill active px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('all')"><span>All</span></button>
 <button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('bags')"><span>Bags & Totes</span></button>
 <button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('dolls')"><span>Dolls & Amigurumi</span></button>
 <button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('anime')"><span>Anime Collection</span></button>
 <button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('keychains')"><span>Keychains</span></button>
 <button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('boys')"><span>Boys' Keychains</span></button>
-
+<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('gifts')"><span>Gifts & Accessories</span></button>
 </div>
 </div>
 </section>
@@ -251,7 +224,7 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <!-- Products Section -->
 <section id="products" class="py-24 relative">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-20">
+<div class="text-center mb-20" data-aos="fade-up">
 <span class="text-yura-pink-dark font-semibold text-sm tracking-[0.3em] uppercase mb-3 block">Handmade Collection</span>
 <h2 class="font-playfair text-6xl sm:text-7xl md:text-8xl font-bold text-yura-dark mb-6 section-title">Our Collection</h2>
 <div class="deco-line w-32 mx-auto"></div>
@@ -266,20 +239,19 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <!-- 
 TEMPLATE — Copy & Paste for each product:
 
-<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border product-item" data-category="bags">
+<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border product-item" data-category="bags" data-aos="fade-up" data-aos-delay="0">
   <div class="relative overflow-hidden aspect-[3/4]">
-    <img src="YOUR_IMAGE_URL.jpg" alt="Product Name" class="card-image w-full h-full object-cover" onclick="openProductModal(0)" loading="lazy" decoding="async">
+    <img src="YOUR_IMAGE_URL.jpg" alt="Product Name" class="card-image w-full h-full object-cover" onclick="openProductModal(0)">
     <div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6 pointer-events-none">
       <span class="text-white/90 text-sm font-light tracking-wide"><i class="fas fa-images mr-2"></i>Tap for details</span>
     </div>
-    <div class="absolute inset-0 z-10" onclick="openProductModal(0)" style="cursor:pointer;touch-action:manipulation"></div>
     <div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">000 EGP</span></div>
     <div class="absolute top-5 left-5 bg-yura-pink-dark/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Category</div>
   </div>
   <div class="card-content p-6">
     <h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">Product Name</h3>
     <p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">Short description here...</p>
-    <a href="https://wa.me/message/LOA7KWMVV7N6B1" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
+    <a href="https://wa.me/201018140186?text=Hi%20yura%20,%20I%20want%20to%20order%20PRODUCT_NAME" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
       <i class="fab fa-whatsapp text-lg"></i>Order now
     </a>
   </div>
@@ -288,20 +260,19 @@ TEMPLATE — Copy & Paste for each product:
 -->
 
 <!-- Product: Rapunzel Crochet Doll -->
-<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border product-item" data-category="dolls">
+<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border product-item" data-category="dolls" data-aos="fade-up" data-aos-delay="0">
   <div class="relative overflow-hidden aspect-[3/4]">
-    <img src="https://i.postimg.cc/x83jbTW5/IMG-2718.jpg" alt="Rapunzel Crochet Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(0)" loading="eager" decoding="async" fetchpriority="high">
+    <img src="https://i.postimg.cc/x83jbTW5/IMG-2718.jpg" alt="Rapunzel Crochet Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(0)">
     <div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6 pointer-events-none">
       <span class="text-white/90 text-sm font-light tracking-wide"><i class="fas fa-images mr-2"></i>Tap for details</span>
     </div>
-    <div class="absolute inset-0 z-10" onclick="openProductModal(0)" style="cursor:pointer;touch-action:manipulation"></div>
     <div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">550 EGP</span></div>
     <div class="absolute top-5 left-5 bg-yura-sage/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Dolls & Amigurumi</div>
   </div>
   <div class="card-content p-6">
     <h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">Rapunzel Crochet Doll</h3>
     <p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">Handcrafted amigurumi doll inspired by Princess Rapunzel and Pascal. A special gift for any fan.</p>
-    <a href="https://wa.me/message/LOA7KWMVV7N6B1" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
+    <a href="https://wa.me/201018140186?text=Hi%20yura%20,%20I%20want%20to%20order%20Rapunzel%20Crochet%20Doll" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
       <i class="fab fa-whatsapp text-lg"></i>Order now
     </a>
   </div>
@@ -321,7 +292,7 @@ TEMPLATE — Copy & Paste for each product:
 <!-- Gallery Side -->
 <div class="p-6 md:p-8 bg-gradient-to-br from-yura-cream to-white">
 <div class="modal-gallery relative rounded-2xl overflow-hidden shadow-deep mb-4" id="modal-main-image-container">
-<img id="modal-main-image" src="" alt="" class="w-full aspect-square object-cover" loading="lazy" decoding="async">
+<img id="modal-main-image" src="" alt="" class="w-full aspect-square object-cover">
 <button class="gallery-nav prev" onclick="changeModalImage(-1)"><i class="fas fa-chevron-right"></i></button>
 <button class="gallery-nav next" onclick="changeModalImage(1)"><i class="fas fa-chevron-left"></i></button>
 </div>
@@ -382,28 +353,28 @@ Order now على واتساب
 </div>
 
 <!-- About Section -->
-<section id="about" class="py-28 relative overflow-hidden" style="background:#FFF8F0">
-
-
+<section id="about" class="py-28 relative overflow-hidden">
+<div class="blob bg-yura-sage/30 w-[500px] h-[500px] -top-20 -left-60" style="animation-delay:2s"></div>
+<div class="blob bg-yura-pink/20 w-[400px] h-[400px] bottom-0 right-0" style="animation-delay:5s"></div>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 <div class="grid md:grid-cols-2 gap-16 items-center">
-<div class="relative">
+<div class="relative" data-aos="fade-right">
 <div class="relative rounded-[3rem] overflow-hidden shadow-deep img-shadow aspect-[3/4] max-w-md mx-auto">
-<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Handmade" class="w-full h-full object-cover" loading="eager" decoding="async">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Handmade" class="w-full h-full object-cover">
 <div class="absolute inset-0 bg-gradient-to-t from-yura-pink-dark/40 to-transparent"></div>
 </div>
 <div class="absolute -bottom-8 -right-8 w-40 h-40 bg-yura-pink/40 rounded-full blur-3xl"></div>
 <div class="absolute -top-8 -left-8 w-32 h-32 bg-yura-sage/50 rounded-full blur-2xl"></div>
-
+<div class="absolute top-1/2 -right-12 w-24 h-24 border-4 border-yura-pink/20 rounded-full spin-slow hidden lg:block"></div>
 </div>
-<div class="text-right">
+<div class="text-right" data-aos="fade-left">
 <span class="text-yura-pink-dark font-semibold text-sm tracking-[0.3em] uppercase mb-3 block">Our Story</span>
 <h2 class="font-playfair text-5xl sm:text-6xl font-bold text-yura-dark mb-8 leading-tight">About us؟</h2>
 <div class="deco-line w-24 mb-8"></div>
 <div class="space-y-5 text-yura-text/80 leading-relaxed text-lg">
 <p><span class="text-yura-pink-dark font-bold text-xl">Yura Store</span> مشروع صغير بيحمل في كل غرزة حكاية. بدأنا رحلتنا من شغف بسيط بفن الكروشيه، وقررنا نحوله لعلامة تجارية تجمع بين الأصالة والعصرية.</p>
-<p>كل قطعة في Yura Store بتمر بإيدينا من أول خيط لآخر غرزة. بنستخدم خيوط عالية الجودة وألوان هادية.</p>
-<p>تشكيلتنا متنوعة: شنط وتوت باجز، دمى أميجورومي، شخصيات أنمي، ميداليات مميزة للشباب والبنات، وميداليات بنترست— كل قطعة هاند ميد 100% مصنوعة بحب</p>
+<p>كل قطعة في Yura Store بتمر بإيدينا من أول خيط لآخر غرزة. بنستخدم خيوط عالية الجودة وألوان هادية تدفي القلب زي ما بتدفي الجسم.</p>
+<p>تشكيلتنا متنوعة: شنط وتوtes، دمى أميغورومي، شخصيات أنمي، ميداليات للبنات والشباب، وبوكسات هدايا فاخرة — كلها handmade 100% بحب مصري أصيل.</p>
 </div>
 <div class="grid grid-cols-3 gap-6 mt-12">
 <div class="text-center p-5 bg-white/70 rounded-3xl shadow-soft backdrop-blur-sm hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
@@ -427,28 +398,52 @@ Order now على واتساب
 <!-- Screenshots Gallery Section -->
 <section id="screenshots" class="py-28 relative overflow-hidden">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-16">
+<div class="text-center mb-16" data-aos="fade-up">
 <span class="text-yura-pink-dark font-semibold text-sm tracking-[0.3em] uppercase mb-3 block">Real Customers</span>
 <h2 class="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-yura-dark mb-6 section-title">Customer Screenshots</h2>
 <div class="deco-line w-32 mx-auto"></div>
-<p class="mt-6 text-yura-text/70 max-w-lg mx-auto text-lg">شكراً لكل عميل و عميله وثقوا فينا</p>
+<p class="mt-6 text-yura-text/70 max-w-lg mx-auto text-lg">شكراً لكل عميلة وثقت فينا</p>
 </div>
 
-<div class="ss-carousel-wrapper">
+<div class="ss-carousel-wrapper" data-aos="fade-up">
 <button class="ss-arrow ss-arrow-prev" onclick="ssMove(-1)" aria-label="السابق">
 <i class="fas fa-chevron-right"></i>
 </button>
 
 <div class="ss-carousel" id="ss-carousel">
 <div class="ss-track" id="ss-track">
-<div class="ss-slide"><img src="https://i.postimg.cc/Sxg1m4zb/IMG-2350.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
-<div class="ss-slide"><img src="https://i.postimg.cc/8CsK5YLx/IMG-2351.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
-<div class="ss-slide"><img src="https://i.postimg.cc/7ZKtq4Jd/IMG-2352.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
-<div class="ss-slide"><img src="https://i.postimg.cc/K80pmbgS/IMG-2353.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
-<div class="ss-slide"><img src="https://i.postimg.cc/sgTH3zZF/IMG-2354.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
-<div class="ss-slide"><img src="https://i.postimg.cc/L8xQmSgQ/IMG-2355.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
-<div class="ss-slide"><img src="https://i.postimg.cc/QdfYjDKb/IMG-2356.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
-<div class="ss-slide"><img src="https://i.postimg.cc/t4Bv9bnh/IMG-2357.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/Sxg1m4zb/IMG-2350.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/8CsK5YLx/IMG-2351.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/7ZKtq4Jd/IMG-2352.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/K80pmbgS/IMG-2353.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/sgTH3zZF/IMG-2354.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/L8xQmSgQ/IMG-2355.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/QdfYjDKb/IMG-2356.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/t4Bv9bnh/IMG-2357.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/8zZXTGfM/IMG-2358.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/zGx2qNHk/IMG-2359.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/fR8qMsSd/IMG-2360.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/JzpYR8HH/IMG-2361.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/2SkXpyyF/IMG-2362.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/qvJZfqqy/IMG-2363.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/rwVY6sst/IMG-2364.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/524kcyyH/IMG-2365.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/GmLS0tt2/IMG-2366.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/SxSt0RRj/IMG-2367.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/g2zB9jjj/IMG-2368.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/pLW1Nrr2/IMG-2369.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/L890d55p/IMG-2370.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/YqfyyYpP/IMG-2371.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/7YMQQ0Hh/IMG-2372.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/Wb6ffgN3/IMG-2373.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/SN7ttCyg/IMG-2374.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/4NbFFVJM/IMG-2375.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/CLVQNmV9/IMG-2376.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/WbPHnXPC/IMG-2377.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/HsCh2BCK/IMG-2379.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/vHdNz3dK/IMG-2380.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/HsCh2BCB/IMG-2381.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/ZKhMcVhx/IMG-2382.jpg" alt="Yura Store" loading="lazy"></div>
 </div>
 </div>
 
@@ -464,86 +459,108 @@ Order now على واتساب
 <style>
 .ss-carousel-wrapper {
   position: relative;
-  padding: 0 60px;
+  padding: 0 70px;
 }
 .ss-carousel {
   overflow: hidden;
-  border-radius: 1.5rem;
+  border-radius: 2rem;
 }
 .ss-track {
   display: flex;
-  gap: 1rem;
-  transition: transform 0.25s ease-out;
+  gap: 2rem;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   will-change: transform;
+  align-items: flex-start;
 }
 .ss-slide {
-  flex: 0 0 calc(50% - 0.5rem);
+  flex: 0 0 calc(50% - 1rem);
   min-width: 0;
   display: flex;
+  align-items: flex-start;
   justify-content: center;
 }
 .ss-slide img {
   width: 100%;
-  max-height: 60vh;
+  max-height: 70vh;
   object-fit: contain;
-  border-radius: 1rem;
+  object-position: top center;
+  border-radius: 1.5rem;
   display: block;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  border: 3px solid white;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  transition: all 0.4s ease;
+  border: 4px solid white;
   background: white;
+}
+.ss-slide:hover img {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 25px 60px rgba(232,160,191,0.35);
 }
 .ss-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: white;
-  border: 1px solid rgba(232,160,191,0.3);
+  border: 2px solid rgba(232,160,191,0.3);
   color: #E8A0BF;
-  font-size: 1rem;
+  font-size: 1.2rem;
   cursor: pointer;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
 .ss-arrow:hover {
-  background: #E8A0BF;
+  background: linear-gradient(135deg, #E8A0BF, #F4C2C2);
   color: white;
+  border-color: transparent;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 25px rgba(232,160,191,0.4);
 }
 .ss-arrow-prev { right: 0; }
 .ss-arrow-next { left: 0; }
+.ss-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
 .ss-dots {
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
 }
 .ss-dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: rgba(232,160,191,0.3);
   border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 .ss-dot.active {
   background: #E8A0BF;
-  width: 24px;
-  border-radius: 4px;
+  width: 32px;
+  border-radius: 5px;
+}
+.ss-dot:hover {
+  background: #E8A0BF;
 }
 @media (max-width: 768px) {
-  .ss-carousel-wrapper { padding: 0 48px; }
-  .ss-slide { flex: 0 0 100%; }
-  .ss-track { gap: 0.5rem; }
-  .ss-slide img { max-height: 65vh; border-width: 2px; }
-  .ss-arrow { width: 36px; height: 36px; font-size: 0.85rem; }
-  .ss-dots { margin-top: 1rem; }
+  .ss-carousel-wrapper { padding: 0 55px; }
+  .ss-slide { flex: 0 0 calc(100% - 0rem); }
+  .ss-slide img { max-height: 75vh; border-width: 3px; }
+  .ss-arrow { width: 44px; height: 44px; font-size: 1rem; }
+}
+@media (max-width: 480px) {
+  .ss-carousel-wrapper { padding: 0 40px; }
+  .ss-slide img { max-height: 70vh; border-width: 2px; border-radius: 1rem; }
+  .ss-arrow { width: 36px; height: 36px; font-size: 0.8rem; }
 }
 </style>
 
@@ -555,10 +572,16 @@ Order now على واتساب
   const totalSlides = slides.length;
   let currentIndex = 0;
   let slidesPerView = 2;
-  let ticking = false;
 
   function getSlidesPerView() {
-    return window.innerWidth <= 768 ? 1 : 2;
+    if (window.innerWidth <= 768) return 1;
+    return 2;
+  }
+
+  function updateSlidesPerView() {
+    slidesPerView = getSlidesPerView();
+    renderDots();
+    goTo(currentIndex);
   }
 
   function renderDots() {
@@ -577,44 +600,32 @@ Order now على واتساب
     const maxIndex = Math.max(0, totalSlides - slidesPerView);
     currentIndex = Math.max(0, Math.min(index, maxIndex));
     const slideWidth = slides[0].offsetWidth;
-    const gapValue = parseFloat(window.getComputedStyle(track).gap) || 16;
-    track.style.transform = 'translateX(' + (currentIndex * (slideWidth + gapValue)) + 'px)';
+    const gap = 24; // 1.5rem
+    track.style.transform = `translateX(${currentIndex * (slideWidth + gap)}px)`;
 
-    const dots = dotsContainer.children;
-    for (let i = 0; i < dots.length; i++) {
-      dots[i].classList.toggle('active', i === currentIndex);
-    }
+    document.querySelectorAll('.ss-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === currentIndex);
+    });
   }
 
   window.ssMove = function(dir) {
+    const maxIndex = Math.max(0, totalSlides - slidesPerView);
     goTo(currentIndex + dir);
   };
 
-  window.addEventListener('resize', function() {
-    if (!ticking) {
-      window.requestAnimationFrame(function() {
-        slidesPerView = getSlidesPerView();
-        renderDots();
-        goTo(currentIndex);
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
-
-  slidesPerView = getSlidesPerView();
-  renderDots();
+  window.addEventListener('resize', updateSlidesPerView);
+  updateSlidesPerView();
 })();
 </script>
 <!-- CTA Section -->
 <section class="py-28 relative overflow-hidden">
-<div class="absolute inset-0 bg-yura-beige/30"></div>
-
-
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+<div class="absolute inset-0 bg-gradient-to-r from-yura-pink/20 via-yura-beige/40 to-yura-sage/20"></div>
+<div class="blob bg-yura-pink/30 w-[500px] h-[500px] top-0 right-0" style="animation-delay:0s"></div>
+<div class="blob bg-yura-sage/30 w-[400px] h-[400px] bottom-0 left-0" style="animation-delay:3s"></div>
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10" data-aos="zoom-in">
 <h2 class="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-yura-dark mb-8">Customize Order?</h2>
 <p class="text-xl text-yura-text/70 mb-12 max-w-2xl mx-auto leading-relaxed">عندك تصميم في بالك؟ أو عايزة لون معين؟ Contact us on WhatsApp وهننفذ لكِ اللي في خيالك بأيدينا.</p>
-<a href="https://wa.me/message/LOA7KWMVV7N6B1" target="_blank" class="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full font-bold text-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500">
+<a href="https://wa.me/201018140186?text=Hi%20yura%20,%20can%20i%20customize%20my%20order%20?" target="_blank" class="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full font-bold text-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500">
 <i class="fab fa-whatsapp text-3xl"></i>Contact us on WhatsApp
 </a>
 </div>
@@ -622,12 +633,12 @@ Order now على واتساب
 
 <!-- Footer -->
 <footer class="bg-yura-dark text-white py-20 relative overflow-hidden">
-<div class="absolute top-0 left-0 w-full h-1 bg-yura-pink-dark"></div>
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yura-pink via-yura-pink-dark to-yura-sage"></div>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="grid md:grid-cols-3 gap-12">
 <div class="text-center md:text-right">
 <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
-<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="w-12 h-12 object-cover rounded-xl shadow-logo border-2 border-white/30" loading="eager" decoding="async">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="w-12 h-12 object-cover rounded-xl shadow-logo border-2 border-white/30">
 <div>
 <span class="font-playfair text-3xl font-bold text-yura-pink">Yura</span>
 <span class="block text-xs tracking-[0.3em] text-yura-pink/70">STORE</span>
@@ -647,20 +658,14 @@ Order now على واتساب
 <div class="text-center md:text-left">
 <h4 class="font-bold text-lg mb-6 text-yura-pink">Contact us</h4>
 <ul class="space-y-3">
-<li>
-<a href="https://wa.me/message/LOA7KWMVV7N6B1" target="_blank" class="flex items-center justify-center md:justify-start gap-3 text-white/60 text-sm hover:text-white transition-colors">
+<li class="flex items-center justify-center md:justify-start gap-3 text-white/60 text-sm hover:text-white transition-colors cursor-pointer">
 <i class="fab fa-whatsapp text-green-400"></i><span>0101 814 0186</span>
-</a>
 </li>
-<li>
-<a href="https://www.instagram.com/yura_store77?igsh=MTE3NGZvMWJxZHZhMg%3D%3D&utm_source=qr" target="_blank" class="flex items-center justify-center md:justify-start gap-3 text-white/60 text-sm hover:text-white transition-colors">
-<i class="fab fa-instagram text-pink-400"></i><span>@yura_store77</span>
-</a>
+<li class="flex items-center justify-center md:justify-start gap-3 text-white/60 text-sm hover:text-white transition-colors cursor-pointer">
+<i class="fab fa-instagram text-pink-400"></i><span>@yura.store</span>
 </li>
-<li>
-<a href="https://t.me/yurv505" target="_blank" class="flex items-center justify-center md:justify-start gap-3 text-white/60 text-sm hover:text-white transition-colors">
-<i class="fab fa-telegram text-blue-400"></i><span>Yura Store</span>
-</a>
+<li class="flex items-center justify-center md:justify-start gap-3 text-white/60 text-sm hover:text-white transition-colors cursor-pointer">
+<i class="fab fa-facebook text-blue-400"></i><span>Yura Store</span>
 </li>
 </ul>
 </div>
@@ -672,7 +677,7 @@ Order now على واتساب
 </footer>
 
 <!-- Floating WhatsApp Button -->
-<a href="https://wa.me/message/LOA7KWMVV7N6B1" target="_blank" class="fixed bottom-6 left-6 z-50 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg float-whatsapp hover:scale-110 transition-transform duration-300">
+<a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أستفسر%20عن%20منتجاتكم" target="_blank" class="fixed bottom-6 left-6 z-50 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg float-whatsapp hover:scale-110 transition-transform duration-300">
 <i class="fab fa-whatsapp"></i>
 </a>
 
@@ -735,11 +740,6 @@ function openProductModal(productId) {
   currentProduct = products.find(p => p.id === productId);
   if (!currentProduct) return;
   currentImageIndex = 0;
-  // Preload all product images
-  currentProduct.images.forEach(function(src){
-    var img = new Image();
-    img.src = src;
-  });
 
   document.getElementById('modal-title').textContent = currentProduct.name;
   document.getElementById('modal-price').textContent = currentProduct.price;
@@ -771,7 +771,38 @@ function openProductModal(productId) {
   renderThumbs();
 
   // WhatsApp link
-  document.getElementById('modal-whatsapp').href = `https://wa.me/message/LOA7KWMVV7N6B1"${src}" alt="${currentProduct.name} - ${idx + 1}" loading="lazy" decoding="async">`;
+  document.getElementById('modal-whatsapp').href = `https://wa.me/201018140186?text=${encodeURIComponent(currentProduct.whatsapp)}`;
+
+  // Show modal
+  document.getElementById('product-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeProductModal() {
+  document.getElementById('product-modal').classList.remove('active');
+  document.body.style.overflow = '';
+  currentProduct = null;
+}
+
+function updateModalImage() {
+  if (!currentProduct) return;
+  const img = document.getElementById('modal-main-image');
+  img.style.opacity = '0';
+  setTimeout(() => {
+    img.src = currentProduct.images[currentImageIndex];
+    img.alt = currentProduct.name;
+    img.style.opacity = '1';
+  }, 150);
+}
+
+function renderThumbs() {
+  if (!currentProduct) return;
+  const container = document.getElementById('modal-thumbs');
+  container.innerHTML = '';
+  currentProduct.images.forEach((src, idx) => {
+    const thumb = document.createElement('div');
+    thumb.className = `modal-thumb ${idx === currentImageIndex ? 'active' : ''}`;
+    thumb.innerHTML = `<img src="${src}" alt="${currentProduct.name} - ${idx + 1}">`;
     thumb.onclick = () => {
       currentImageIndex = idx;
       updateModalImage();
@@ -824,56 +855,61 @@ function filterProducts(category) {
 }
 
 // ===== AOS INIT =====
-
+AOS.init({duration:800,easing:'ease-out-cubic',once:true,offset:100,delay:0});
 
 // ===== NAVBAR =====
 const navbar=document.getElementById('navbar');
-var lastScroll=0;
-window.addEventListener('scroll',function(){
-  var st=window.scrollY;
-  if(st>50){
-    if(!navbar.classList.contains('nav-blur')){
-      navbar.classList.add('nav-blur','shadow-soft');
-      navbar.classList.remove('py-4');
-      navbar.classList.add('py-2');
-    }
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>50){
+    navbar.classList.add('nav-blur','shadow-soft');
+    navbar.classList.remove('py-4');
+    navbar.classList.add('py-2');
   }else{
     navbar.classList.remove('nav-blur','shadow-soft','py-2');
     navbar.classList.add('py-4');
   }
-  lastScroll=st;
-},{passive:true});
+});
 
 // ===== MOBILE MENU =====
-var mobileMenuBtn=document.getElementById('mobile-menu-btn');
-var mobileMenu=document.getElementById('mobile-menu');
-mobileMenuBtn.addEventListener('click',function(){
+const mobileMenuBtn=document.getElementById('mobile-menu-btn');
+const mobileMenu=document.getElementById('mobile-menu');
+mobileMenuBtn.addEventListener('click',()=>{
   mobileMenu.classList.toggle('hidden');
 });
-mobileMenu.querySelectorAll('a').forEach(function(link){
-  link.addEventListener('click',function(){
+mobileMenu.querySelectorAll('a').forEach(link=>{
+  link.addEventListener('click',()=>{
     mobileMenu.classList.add('hidden');
   });
 });
 
 // ===== CATEGORY PILLS =====
-document.querySelectorAll('.category-pill').forEach(function(p){
-  p.addEventListener('click',function(){
-    document.querySelectorAll('.category-pill').forEach(function(x){x.classList.remove('active')});
-    this.classList.add('active');
+const categoryPills=document.querySelectorAll('.category-pill');
+categoryPills.forEach(pill=>{
+  pill.addEventListener('click',()=>{
+    categoryPills.forEach(p=>p.classList.remove('active'));
+    pill.classList.add('active');
   });
 });
 
 // ===== SMOOTH SCROLL =====
-document.querySelectorAll('a[href^="#"]').forEach(function(a){
-  a.addEventListener('click',function(e){
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+  anchor.addEventListener('click',function(e){
     e.preventDefault();
-    var t=document.querySelector(this.getAttribute('href'));
-    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+    const target=document.querySelector(this.getAttribute('href'));
+    if(target){
+      target.scrollIntoView({behavior:'smooth',block:'start'});
+    }
   });
 });
 
-
+// ===== PARALLAX =====
+window.addEventListener('scroll',()=>{
+  const scrolled=window.pageYOffset;
+  document.querySelectorAll('.blob').forEach((blob,index)=>{
+    const speed=0.3+(index*0.1);
+    blob.style.transform=`translateY(${scrolled*speed}px)`;
+  });
+});
 </script>
 </body>
 </html>
