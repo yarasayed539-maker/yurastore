@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <title>Yura Store | Handmade Crochet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -51,7 +51,7 @@ body{font-family:'Cairo',sans-serif;font-display:swap;background:#FFF8F0;color:#
 .logo-text{font-family:'Playfair Display',serif;background:linear-gradient(135deg,#E8A0BF 0%,#D4A5A5 50%,#C5D5C0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 4px 8px rgba(232,160,191,0.3))}
 .product-card{transition:all 0.6s cubic-bezier(0.34,1.56,0.64,1);transform-style:preserve-3d;perspective:1000px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
 .product-card:hover{transform:translateY(-16px) scale(1.03) rotateX(2deg);box-shadow:0 30px 70px rgba(232,160,191,0.35),0 10px 30px rgba(0,0,0,0.1)}
-.product-card .card-image{transition:transform 0.8s cubic-bezier(0.4,0,0.2,1);cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.product-card .card-image{transition:transform 0.8s cubic-bezier(0.4,0,0.2,1);cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;-webkit-user-drag:none;user-select:none}
 .product-card:hover .card-image{transform:scale(1.12)}
 .product-card .overlay{opacity:0;transition:all 0.5s ease;backdrop-filter:blur(4px)}
 .product-card:hover .overlay{opacity:1}
@@ -89,16 +89,28 @@ body{font-family:'Cairo',sans-serif;font-display:swap;background:#FFF8F0;color:#
 .logo-nav{transition:all 0.4s ease;border-radius:1rem}
 .logo-nav:hover{transform:scale(1.1) rotate(-3deg);filter:drop-shadow(0 6px 15px rgba(232,160,191,0.4))}
 
+/* ===== MOBILE PRODUCT CARDS ===== */
+@media(max-width:768px){
+  .product-card{border-radius:1.5rem!important}
+  .product-card .card-content{padding:1rem}
+  .product-card h3{font-size:1rem}
+  .product-card p{font-size:0.8rem}
+  .product-card .whatsapp-btn{padding:0.6rem 0;font-size:0.8rem}
+  .price-tag{padding:0.3rem 0.75rem!important}
+  .price-tag span{font-size:0.85rem}
+  #products-grid{gap:1rem}
+  .category-pill{padding:0.5rem 1rem!important;font-size:0.75rem}
+}
 
 /* ===== PRODUCT MODAL ===== */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(12px);z-index:100;opacity:0;visibility:hidden;transition:all 0.4s ease;display:flex;align-items:center;justify-content:center;padding:1rem;overscroll-behavior:contain}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(12px);z-index:100;opacity:0;visibility:hidden;transition:all 0.4s ease;display:flex;align-items:center;justify-content:center;padding:1rem;overscroll-behavior:none;touch-action:none}
 .modal-overlay.active{opacity:1;visibility:visible}
-.modal-content{background:#FFF8F0;border-radius:2.5rem;max-width:1000px;width:95%;max-height:90vh;overflow-y:auto;position:relative;transform:scale(0.9) translateY(30px);transition:all 0.5s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 30px 80px rgba(0,0,0,0.3)}
-.modal-overlay.active .modal-content{transform:scale(1) translateY(0)}
+.modal-content{background:#FFF8F0;border-radius:2.5rem;max-width:1000px;width:95%;max-height:90vh;overflow-y:auto;position:relative;transform:scale(0.95) translateY(20px);transition:all 0.4s cubic-bezier(0.4,0,0.2,1);box-shadow:0 30px 80px rgba(0,0,0,0.3);-webkit-overflow-scrolling:touch;touch-action:pan-y}
+.modal-overlay.active .modal-content{transform:scale(1) translateY(0);transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
 .modal-close{position:absolute;top:1.5rem;right:1.5rem;width:44px;height:44px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 4px 15px rgba(0,0,0,0.1);transition:all 0.3s ease;border:none;font-size:1.2rem;color:#4A4A4A}
 .modal-close:hover{background:#E8A0BF;color:white;transform:rotate(90deg) scale(1.1)}
-.modal-gallery{position:relative;border-radius:2rem;overflow:hidden;aspect-square}
-.modal-gallery img{width:100%;height:100%;object-fit:cover;transition:all 0.5s ease}
+.modal-gallery{position:relative;border-radius:2rem;overflow:hidden;aspect-ratio:1/1}
+.modal-gallery img{width:100%;height:100%;object-fit:cover;transition:all 0.5s ease;-webkit-user-drag:none;user-select:none}
 .modal-thumbs{display:flex;gap:0.75rem;overflow-x:auto;padding:0.5rem 0}
 .modal-thumbs::-webkit-scrollbar{height:6px}
 .modal-thumbs::-webkit-scrollbar-thumb{background:#E8A0BF;border-radius:3px}
@@ -115,20 +127,30 @@ body{font-family:'Cairo',sans-serif;font-display:swap;background:#FFF8F0;color:#
 .gallery-nav:hover{background:#E8A0BF;color:white;transform:translateY(-50%) scale(1.1)}
 .gallery-nav.prev{left:1rem}
 .gallery-nav.next{right:1rem}
+#modal-main-image{-webkit-user-drag:none;user-select:none;touch-action:pan-y}
+.modal-thumb img{-webkit-user-drag:none;user-select:none}
 @media(max-width:768px){
-  .modal-content{border-radius:1.5rem;max-height:100dvh;width:100%;margin:0;max-width:100%;height:auto}
-  .modal-gallery{aspect-ratio:1/1;max-height:40vh}
-  .gallery-nav{width:36px;height:36px}
-  .modal-overlay{padding:0;align-items:flex-start}
-  #modal-main-image{max-height:40vh;object-fit:contain}
-  .modal-thumbs{gap:0.5rem}
-  .modal-thumb{width:55px;height:55px}
-  #modal-title{font-size:1.5rem!important}
-  #modal-price{font-size:1.25rem!important}
-  .modal-content .p-6{padding:1rem}
-  .modal-content .p-8{padding:1rem}
-  .detail-row{padding:0.5rem 0.75rem}
-  .detail-icon{width:32px;height:32px}
+  .modal-overlay{padding:0;display:block;overflow:hidden;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);touch-action:none}
+  .modal-content{border-radius:1.25rem;width:100%;max-width:100%;height:100%;max-height:100dvh;margin:0;overflow-y:auto;position:fixed;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;touch-action:pan-y}
+  .modal-content .grid{display:flex;flex-direction:column;flex:1}
+  .modal-content .grid > div:first-child{flex-shrink:0}
+  .modal-content .grid > div:last-child{flex:1;overflow-y:auto}
+  .modal-gallery{aspect-ratio:1/1;max-height:45vh;width:100%;border-radius:1.25rem 1.25rem 0 0;overflow:hidden}
+  .modal-gallery img{width:100%;height:100%;object-fit:cover}
+  #modal-main-image{width:100%;height:100%;object-fit:cover;max-height:45vh}
+  .gallery-nav{width:40px;height:40px;top:50%}
+  .modal-thumbs{gap:0.5rem;padding:0.5rem 1rem;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+  .modal-thumb{width:56px;height:56px;flex-shrink:0}
+  .modal-close{top:0.75rem;right:0.75rem;width:40px;height:40px;z-index:20}
+  #modal-title{font-size:1.3rem!important;margin-top:0.25rem}
+  #modal-price{font-size:1.2rem!important}
+  .modal-content .p-6{padding:0.875rem}
+  .modal-content .p-8{padding:0.875rem}
+  .detail-row{padding:0.5rem 0.75rem;margin-bottom:0.4rem}
+  .detail-icon{width:30px;height:30px;font-size:0.75rem}
+  #modal-whatsapp{position:sticky;bottom:0.5rem;margin-top:0.75rem;border-radius:1rem;flex-shrink:0}
+  #modal-description{font-size:0.85rem!important;margin-bottom:0.75rem!important}
+  #modal-category-badge{font-size:0.7rem!important;padding:0.3rem 0.75rem!important}
 }
 </style>
 
@@ -227,7 +249,7 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('anime')"><span>Anime Collection</span></button>
 <button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('keychains')"><span>Keychains</span></button>
 <button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('boys')"><span>Boys' Keychains</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('gifts')"><span>Gifts & Accessories</span></button>
+
 </div>
 </div>
 </section>
@@ -791,12 +813,12 @@ function openProductModal(productId) {
 
   // Show modal
   document.getElementById('product-modal').classList.add('active');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';document.body.style.position = 'fixed';document.body.style.width = '100%';document.body.style.top = '-' + window.scrollY + 'px';
 }
 
 function closeProductModal() {
   document.getElementById('product-modal').classList.remove('active');
-  document.body.style.overflow = '';
+  const scrollY = document.body.style.top;document.body.style.overflow = '';document.body.style.position = '';document.body.style.width = '';document.body.style.top = '';if(scrollY)window.scrollTo(0, parseInt(scrollY || '0') * -1);
   currentProduct = null;
 }
 
@@ -841,6 +863,14 @@ function changeModalImage(direction) {
 document.getElementById('product-modal').addEventListener('click', function(e) {
   if (e.target === this) closeProductModal();
 });
+
+// Prevent pinch zoom on modal images
+document.getElementById('modal-main-image').addEventListener('touchstart', function(e) {
+  if (e.touches.length > 1) e.preventDefault();
+}, {passive:false});
+document.getElementById('modal-main-image').addEventListener('touchmove', function(e) {
+  if (e.touches.length > 1) e.preventDefault();
+}, {passive:false});
 
 // Keyboard navigation
 document.addEventListener('keydown', function(e) {
