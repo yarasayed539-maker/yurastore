@@ -48,7 +48,7 @@ body{font-family:'Cairo',sans-serif;font-display:swap;background:#FFF8F0;color:#
 
 25%{transform:translate(40px,-40px) scale(1.1) rotate(5deg)}50%{transform:translate(-30px,20px) scale(0.95) rotate(-3deg)}75%{transform:translate(20px,30px) scale(1.05) rotate(2deg)}}
 .logo-text{font-family:'Playfair Display',serif;background:linear-gradient(135deg,#E8A0BF 0%,#D4A5A5 50%,#C5D5C0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 4px 8px rgba(232,160,191,0.3))}
-.product-card{transition:transform 0.3s ease,box-shadow 0.3s ease;touch-action:manipulation;-webkit-tap-highlight-color:transparent;contain:layout}
+.product-card{transition:transform 0.2s ease,box-shadow 0.2s ease;touch-action:manipulation;-webkit-tap-highlight-color:transparent;contain:layout}
 .product-card:hover{transform:translateY(-8px);box-shadow:0 12px 32px rgba(232,160,191,0.2)}
 .product-card .card-image{transition:transform 0.8s cubic-bezier(0.4,0,0.2,1);cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;-webkit-user-drag:none;user-select:none}
 .product-card:hover .card-image{transform:scale(1.05)}
@@ -96,27 +96,27 @@ to{transform:rotate(360deg)}}
 }
 
 /* ===== PRODUCT MODAL ===== */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(12px);z-index:100;opacity:0;visibility:hidden;transition:all 0.4s ease;display:flex;align-items:center;justify-content:center;padding:1rem;overscroll-behavior:none;touch-action:none}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);z-index:100;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s ease;display:flex;align-items:center;justify-content:center;padding:1rem;overscroll-behavior:none;touch-action:none}
 .modal-overlay.active{opacity:1;visibility:visible}
 .modal-content{background:#FFF8F0;border-radius:2.5rem;max-width:1000px;width:95%;max-height:90vh;overflow-y:auto;position:relative;transform:scale(0.95) translateY(20px);transition:all 0.4s cubic-bezier(0.4,0,0.2,1);box-shadow:0 30px 80px rgba(0,0,0,0.3);-webkit-overflow-scrolling:touch;touch-action:pan-y}
-.modal-overlay.active .modal-content{transform:scale(1) translateY(0);transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
+.modal-overlay.active .modal-content{transform:scale(1) translateY(0);transition:transform 0.2s ease,opacity 0.2s ease}
 .modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,0.1);border:none;font-size:1rem;color:#4A4A4A}
 .modal-close:hover{background:#E8A0BF;color:white}
-.modal-gallery{position:relative;border-radius:1.5rem;overflow:hidden;aspect-ratio:1/1}
-.modal-gallery img{width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;user-select:none}
-.modal-thumbs{display:flex;gap:0.5rem;overflow-x:auto;padding:0.5rem 0}
-.modal-thumbs::-webkit-scrollbar{height:4px}
+.modal-gallery{position:relative;border-radius:1.5rem;overflow:hidden;aspect-ratio:1/1;background:#f0f0f0}
+.modal-gallery img{width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;user-select:none;transition:opacity 0.15s ease}
+.modal-thumbs{display:flex;gap:0.5rem;overflow-x:auto;padding:0.5rem 0;-webkit-overflow-scrolling:touch}
+.modal-thumbs::-webkit-scrollbar{height:3px}
 .modal-thumbs::-webkit-scrollbar-thumb{background:#E8A0BF;border-radius:2px}
-.modal-thumb{width:56px;height:56px;border-radius:0.75rem;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color 0.2s ease;flex-shrink:0}
-.modal-thumb.active{border-color:#E8A0BF}
+.modal-thumb{width:52px;height:52px;border-radius:0.5rem;overflow:hidden;cursor:pointer;border:2px solid transparent;flex-shrink:0;-webkit-tap-highlight-color:transparent}
+.modal-thumb.active{border-color:#E8A0BF;box-shadow:0 0 0 2px rgba(232,160,191,0.3)}
 .modal-thumb img{width:100%;height:100%;object-fit:cover}
 .detail-row{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:white;border-radius:1rem;margin-bottom:0.5rem;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
 .detail-icon{width:32px;height:32px;background:#E8A0BF;border-radius:0.5rem;display:flex;align-items:center;justify-content:center;color:white;font-size:0.8rem}
 .color-dot{width:20px;height:20px;border-radius:50%;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.1);display:inline-block}
-.gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;background:rgba(255,255,255,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.1);z-index:5;border:none;font-size:0.85rem;color:#4A4A4A}
-.gallery-nav:hover{background:#E8A0BF;color:white}
-.gallery-nav.prev{left:0.75rem}
-.gallery-nav.next{right:0.75rem}
+.gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:5;border:none;font-size:1rem;color:#4A4A4A;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.gallery-nav:active{background:#E8A0BF;color:white;transform:translateY(-50%) scale(0.95)}
+.gallery-nav.prev{left:0.5rem}
+.gallery-nav.next{right:0.5rem}
 #modal-main-image{-webkit-user-drag:none;user-select:none;touch-action:pan-y}
 .modal-thumb img{-webkit-user-drag:none;user-select:none}
 @media(max-width:768px){
@@ -144,6 +144,10 @@ to{transform:rotate(360deg)}}
 }
 </style>
 
+
+<link rel="preload" as="image" href="https://your-image-1.jpg">
+<link rel="preload" as="image" href="https://your-image-2.jpg">
+<link rel="preload" as="image" href="https://your-image-3.jpg">
 <base target="_blank">
 </head>
 <body class="font-cairo antialiased">
@@ -153,7 +157,7 @@ to{transform:rotate(360deg)}}
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex items-center justify-between">
 <a href="#" class="flex items-center gap-3 group">
-<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-nav w-14 h-14 object-cover rounded-2xl shadow-logo border-2 border-white/50" loading="eager">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-nav w-14 h-14 object-cover rounded-2xl shadow-logo border-2 border-white/50" loading="eager" decoding="async">
 <div class="flex flex-col">
 <span class="logo-text text-3xl font-bold leading-none tracking-wide">Yura</span>
 <span class="text-yura-pink-dark text-sm font-tajawal font-medium tracking-[0.2em] -mt-1">STORE</span>
@@ -198,7 +202,7 @@ to{transform:rotate(360deg)}}
 <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 <div>
 <div class="mb-8 inline-block">
-<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-hero w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover rounded-[2.5rem] shadow-logo border-4 border-white/60" loading="eager">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-hero w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover rounded-[2.5rem] shadow-logo border-4 border-white/60" loading="eager" decoding="async">
 </div>
 <h1 class="font-playfair text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold mb-2 leading-tight">
 <span class="logo-text shimmer-text">Yura</span>
@@ -264,7 +268,7 @@ TEMPLATE — Copy & Paste for each product:
 
 <div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border product-item" data-category="bags">
   <div class="relative overflow-hidden aspect-[3/4]">
-    <img src="YOUR_IMAGE_URL.jpg" alt="Product Name" class="card-image w-full h-full object-cover" onclick="openProductModal(0)" loading="lazy">
+    <img src="YOUR_IMAGE_URL.jpg" alt="Product Name" class="card-image w-full h-full object-cover" onclick="openProductModal(0)" loading="lazy" decoding="async">
     <div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6 pointer-events-none">
       <span class="text-white/90 text-sm font-light tracking-wide"><i class="fas fa-images mr-2"></i>Tap for details</span>
     </div>
@@ -286,7 +290,7 @@ TEMPLATE — Copy & Paste for each product:
 <!-- Product: Rapunzel Crochet Doll -->
 <div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border product-item" data-category="dolls">
   <div class="relative overflow-hidden aspect-[3/4]">
-    <img src="https://i.postimg.cc/x83jbTW5/IMG-2718.jpg" alt="Rapunzel Crochet Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(0)" loading="eager">
+    <img src="https://i.postimg.cc/x83jbTW5/IMG-2718.jpg" alt="Rapunzel Crochet Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(0)" loading="eager" decoding="async" fetchpriority="high">
     <div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6 pointer-events-none">
       <span class="text-white/90 text-sm font-light tracking-wide"><i class="fas fa-images mr-2"></i>Tap for details</span>
     </div>
@@ -317,7 +321,7 @@ TEMPLATE — Copy & Paste for each product:
 <!-- Gallery Side -->
 <div class="p-6 md:p-8 bg-gradient-to-br from-yura-cream to-white">
 <div class="modal-gallery relative rounded-2xl overflow-hidden shadow-deep mb-4" id="modal-main-image-container">
-<img id="modal-main-image" src="" alt="" class="w-full aspect-square object-cover" loading="lazy">
+<img id="modal-main-image" src="" alt="" class="w-full aspect-square object-cover" loading="lazy" decoding="async">
 <button class="gallery-nav prev" onclick="changeModalImage(-1)"><i class="fas fa-chevron-right"></i></button>
 <button class="gallery-nav next" onclick="changeModalImage(1)"><i class="fas fa-chevron-left"></i></button>
 </div>
@@ -385,7 +389,7 @@ Order now على واتساب
 <div class="grid md:grid-cols-2 gap-16 items-center">
 <div class="relative">
 <div class="relative rounded-[3rem] overflow-hidden shadow-deep img-shadow aspect-[3/4] max-w-md mx-auto">
-<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Handmade" class="w-full h-full object-cover" loading="eager">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Handmade" class="w-full h-full object-cover" loading="eager" decoding="async">
 <div class="absolute inset-0 bg-gradient-to-t from-yura-pink-dark/40 to-transparent"></div>
 </div>
 <div class="absolute -bottom-8 -right-8 w-40 h-40 bg-yura-pink/40 rounded-full blur-3xl"></div>
@@ -437,14 +441,14 @@ Order now على واتساب
 
 <div class="ss-carousel" id="ss-carousel">
 <div class="ss-track" id="ss-track">
-<div class="ss-slide"><img src="https://i.postimg.cc/Sxg1m4zb/IMG-2350.jpg" alt="Yura Store" loading="lazy"></div>
-<div class="ss-slide"><img src="https://i.postimg.cc/8CsK5YLx/IMG-2351.jpg" alt="Yura Store" loading="lazy"></div>
-<div class="ss-slide"><img src="https://i.postimg.cc/7ZKtq4Jd/IMG-2352.jpg" alt="Yura Store" loading="lazy"></div>
-<div class="ss-slide"><img src="https://i.postimg.cc/K80pmbgS/IMG-2353.jpg" alt="Yura Store" loading="lazy"></div>
-<div class="ss-slide"><img src="https://i.postimg.cc/sgTH3zZF/IMG-2354.jpg" alt="Yura Store" loading="lazy"></div>
-<div class="ss-slide"><img src="https://i.postimg.cc/L8xQmSgQ/IMG-2355.jpg" alt="Yura Store" loading="lazy"></div>
-<div class="ss-slide"><img src="https://i.postimg.cc/QdfYjDKb/IMG-2356.jpg" alt="Yura Store" loading="lazy"></div>
-<div class="ss-slide"><img src="https://i.postimg.cc/t4Bv9bnh/IMG-2357.jpg" alt="Yura Store" loading="lazy"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/Sxg1m4zb/IMG-2350.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/8CsK5YLx/IMG-2351.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/7ZKtq4Jd/IMG-2352.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/K80pmbgS/IMG-2353.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/sgTH3zZF/IMG-2354.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/L8xQmSgQ/IMG-2355.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/QdfYjDKb/IMG-2356.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
+<div class="ss-slide"><img src="https://i.postimg.cc/t4Bv9bnh/IMG-2357.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
 </div>
 </div>
 
@@ -469,7 +473,7 @@ Order now على واتساب
 .ss-track {
   display: flex;
   gap: 1rem;
-  transition: transform 0.4s ease;
+  transition: transform 0.25s ease-out;
   will-change: transform;
 }
 .ss-slide {
@@ -623,7 +627,7 @@ Order now على واتساب
 <div class="grid md:grid-cols-3 gap-12">
 <div class="text-center md:text-right">
 <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
-<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="w-12 h-12 object-cover rounded-xl shadow-logo border-2 border-white/30" loading="eager">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="w-12 h-12 object-cover rounded-xl shadow-logo border-2 border-white/30" loading="eager" decoding="async">
 <div>
 <span class="font-playfair text-3xl font-bold text-yura-pink">Yura</span>
 <span class="block text-xs tracking-[0.3em] text-yura-pink/70">STORE</span>
@@ -725,6 +729,11 @@ function openProductModal(productId) {
   currentProduct = products.find(p => p.id === productId);
   if (!currentProduct) return;
   currentImageIndex = 0;
+  // Preload all product images
+  currentProduct.images.forEach(function(src){
+    var img = new Image();
+    img.src = src;
+  });
 
   document.getElementById('modal-title').textContent = currentProduct.name;
   document.getElementById('modal-price').textContent = currentProduct.price;
@@ -771,13 +780,9 @@ function closeProductModal() {
 
 function updateModalImage() {
   if (!currentProduct) return;
-  const img = document.getElementById('modal-main-image');
-  img.style.opacity = '0';
-  setTimeout(() => {
-    img.src = currentProduct.images[currentImageIndex];
-    img.alt = currentProduct.name;
-    img.style.opacity = '1';
-  }, 150);
+  var img = document.getElementById('modal-main-image');
+  img.src = currentProduct.images[currentImageIndex];
+  img.alt = currentProduct.name;
 }
 
 function renderThumbs() {
@@ -787,7 +792,7 @@ function renderThumbs() {
   currentProduct.images.forEach((src, idx) => {
     const thumb = document.createElement('div');
     thumb.className = `modal-thumb ${idx === currentImageIndex ? 'active' : ''}`;
-    thumb.innerHTML = `<img src="${src}" alt="${currentProduct.name} - ${idx + 1}" loading="lazy">`;
+    thumb.innerHTML = `<img src="${src}" alt="${currentProduct.name} - ${idx + 1}" loading="lazy" decoding="async">`;
     thumb.onclick = () => {
       currentImageIndex = idx;
       updateModalImage();
