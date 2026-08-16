@@ -3,14 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="format-detection" content="telephone=no">
 <title>Yura Store | Handmade Crochet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+<link rel="dns-prefetch" href="https://unpkg.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
 <script>
 tailwind.config={
   theme:{
@@ -22,100 +27,63 @@ tailwind.config={
       },
       fontFamily:{
         'cairo':['Cairo','sans-serif'],'tajawal':['Tajawal','sans-serif'],'playfair':['Playfair Display','serif'],
+      },
+      boxShadow:{
+        'soft':'0 2px 10px rgba(232,160,191,0.12)','soft-lg':'0 6px 24px rgba(232,160,191,0.15)',
+        'card':'0 4px 16px rgba(0,0,0,0.05)','card-hover':'0 12px 32px rgba(232,160,191,0.2)',
+        'deep':'0 8px 24px rgba(0,0,0,0.08)','glow':'0 0 20px rgba(232,160,191,0.25)',
+        'logo':'0 4px 16px rgba(232,160,191,0.2)','logo-hover':'0 8px 24px rgba(232,160,191,0.3)',
+        'modal':'0 12px 40px rgba(0,0,0,0.2)',
       }
     }
   }
 }
 </script>
 <style>
-*{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
-body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-img{-webkit-user-drag:none;user-select:none}
+*{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;font-display:swap;background:#FFF8F0;color:#4A4A4A;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:#E8A0BF;border-radius:3px}
 
-.logo-text{font-family:'Playfair Display',serif;background:linear-gradient(135deg,#E8A0BF 0%,#D4A5A5 50%,#C5D5C0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-
-.product-card{background:white;border-radius:2rem;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.05);transition:transform 0.2s ease,box-shadow 0.2s ease;touch-action:manipulation;contain:layout}
-.product-card:active{transform:scale(0.98)}
-.product-card .card-image{cursor:pointer;width:100%;height:100%;object-fit:cover}
-.price-tag{background:#FFF8F0;border:1px solid rgba(232,160,191,0.3);box-shadow:0 2px 8px rgba(232,160,191,0.1);border-radius:9999px}
-
-.whatsapp-btn{background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);box-shadow:0 4px 12px rgba(37,211,102,0.3);transition:transform 0.2s ease}
-.whatsapp-btn:hover{transform:scale(1.03)}
-
+25%{transform:translate(40px,-40px) scale(1.1) rotate(5deg)}50%{transform:translate(-30px,20px) scale(0.95) rotate(-3deg)}75%{transform:translate(20px,30px) scale(1.05) rotate(2deg)}}
+.logo-text{font-family:'Playfair Display',serif;background:linear-gradient(135deg,#E8A0BF 0%,#D4A5A5 50%,#C5D5C0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 4px 8px rgba(232,160,191,0.3))}
+.product-card{transition:transform 0.2s ease,box-shadow 0.2s ease;touch-action:manipulation;-webkit-tap-highlight-color:transparent;contain:layout}
+.product-card:hover{transform:translateY(-8px);box-shadow:0 12px 32px rgba(232,160,191,0.2)}
+.product-card .card-image{transition:transform 0.8s cubic-bezier(0.4,0,0.2,1);cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;-webkit-user-drag:none;user-select:none}
+.product-card:hover .card-image{transform:scale(1.05)}
+.product-card .overlay{opacity:0;transition:all 0.5s ease;backdrop-filter:blur(4px)}
+.product-card:hover .overlay{opacity:1}
+.product-card .card-content{transition:all 0.4s ease}
+.product-card:hover .card-content{background:linear-gradient(180deg,#ffffff 0%,#FFF8F0 100%)}
+.whatsapp-btn{background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);transition:transform 0.2s ease,box-shadow 0.2s ease;box-shadow:0 4px 12px rgba(37,211,102,0.3)}
+.whatsapp-btn:hover{transform:scale(1.03);box-shadow:0 6px 16px rgba(37,211,102,0.4)}
+.float-whatsapp{animation:pulse-whatsapp 3s infinite}
+@keyframes pulse-whatsapp{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,0.4),0 4px 12px rgba(37,211,102,0.25)}50%{box-shadow:0 0 0 15px rgba(37,211,102,0),0 4px 12px rgba(37,211,102,0.25)}}
 .nav-blur{backdrop-filter:blur(12px);background:rgba(255,248,240,0.92);box-shadow:0 2px 12px rgba(232,160,191,0.1)}
-
-.category-pill{cursor:pointer;transition:all 0.2s ease;position:relative;overflow:hidden}
-.category-pill.active,.category-pill:hover{color:white;background:linear-gradient(135deg,#E8A0BF,#F4C2C2);transform:scale(1.05);box-shadow:0 4px 12px rgba(232,160,191,0.3);border-color:transparent}
-
+.category-pill{transition:all 0.2s ease;position:relative;overflow:hidden;cursor:pointer}
+.category-pill::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#E8A0BF 0%,#F4C2C2 100%);opacity:0;transition:opacity 0.2s ease;z-index:0;border-radius:inherit}
+.category-pill:hover,.category-pill.active{color:white;transform:scale(1.05);box-shadow:0 4px 12px rgba(232,160,191,0.3);border-color:transparent}
+.category-pill:hover::after,.category-pill.active::after{opacity:1}
+.category-pill span{position:relative;z-index:1}
 .deco-line{height:2px;background:linear-gradient(90deg,transparent,#E8A0BF,#C5D5C0,#E8A0BF,transparent);border-radius:2px}
+.price-tag{background:#FFF8F0;border:1px solid rgba(232,160,191,0.3);box-shadow:0 2px 8px rgba(232,160,191,0.1)}
 
+50%{transform:rotate(8deg) translateY(-15px)}}
 .section-title{position:relative}
 
-.float-whatsapp{animation:pulse-whatsapp 3s infinite}
-@keyframes pulse-whatsapp{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,0.4),0 4px 12px rgba(37,211,102,0.25)}50%{box-shadow:0 0 0 15px rgba(37,211,102,0),0 4px 12px rgba(37,211,102,0.25)}}}
+to{transform:rotate(360deg)}}
 
-/* ===== MODAL ===== */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:100;opacity:0;visibility:hidden;transition:opacity 0.15s ease;display:flex;align-items:center;justify-content:center;padding:1rem}
-.modal-overlay.active{opacity:1;visibility:visible}
-.modal-content{background:#FFF8F0;border-radius:2rem;max-width:1000px;width:95%;max-height:90vh;overflow-y:auto;position:relative;opacity:0;transition:opacity 0.15s ease;box-shadow:0 8px 32px rgba(0,0,0,0.25)}
-.modal-overlay.active .modal-content{opacity:1}
-.modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,0.1);border:none;font-size:1rem;color:#4A4A4A}
-.modal-gallery{position:relative;border-radius:1.5rem;overflow:hidden;background:#f0f0f0}
-.modal-gallery img{width:100%;height:100%;object-fit:cover;display:block}
-.modal-thumbs{display:flex;gap:0.5rem;overflow-x:auto;padding:0.5rem 0}
-.modal-thumb{width:56px;height:56px;border-radius:0.75rem;overflow:hidden;cursor:pointer;border:2px solid transparent;flex-shrink:0}
-.modal-thumb.active{border-color:#E8A0BF}
-.modal-thumb img{width:100%;height:100%;object-fit:cover}
-.detail-row{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:white;border-radius:1rem;margin-bottom:0.5rem;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
-.detail-icon{width:32px;height:32px;background:#E8A0BF;border-radius:0.5rem;display:flex;align-items:center;justify-content:center;color:white;font-size:0.8rem}
-.color-dot{width:20px;height:20px;border-radius:50%;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.1);display:inline-block}
-.gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.1);z-index:5;border:none;font-size:0.85rem;color:#4A4A4A}
-.gallery-nav.prev{left:0.75rem}
-.gallery-nav.next{right:0.75rem}
+}
+.img-shadow{box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+.gradient-border{background:white;border-radius:2rem}
+.logo-hero{transition:transform 0.3s ease;filter:drop-shadow(0 4px 12px rgba(232,160,191,0.2))}
+.logo-hero:hover{transform:scale(1.03)}
+.logo-nav{transition:transform 0.2s ease;border-radius:1rem}
+.logo-nav:hover{transform:scale(1.05)}
 
-/* ===== SCREENSHOTS CAROUSEL ===== */
-.ss-carousel-wrapper{position:relative;padding:0 60px}
-.ss-carousel{overflow:hidden;border-radius:1.5rem}
-.ss-track{display:flex;gap:1rem;transition:transform 0.25s ease-out;will-change:transform}
-.ss-slide{flex:0 0 calc(50% - 0.5rem);min-width:0;display:flex;justify-content:center}
-.ss-slide img{width:100%;max-height:60vh;object-fit:contain;border-radius:1rem;display:block;box-shadow:0 4px 16px rgba(0,0,0,0.08);border:3px solid white;background:white}
-.ss-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:white;border:1px solid rgba(232,160,191,0.3);color:#E8A0BF;font-size:1rem;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.08);transition:all 0.2s ease}
-.ss-arrow:hover{background:#E8A0BF;color:white}
-.ss-arrow-prev{right:0}
-.ss-arrow-next{left:0}
-.ss-dots{display:flex;justify-content:center;gap:0.5rem;margin-top:1.5rem}
-.ss-dot{width:8px;height:8px;border-radius:50%;background:rgba(232,160,191,0.3);border:none;cursor:pointer;transition:all 0.2s ease}
-.ss-dot.active{background:#E8A0BF;width:24px;border-radius:4px}
-
+/* ===== MOBILE PRODUCT CARDS ===== */
 @media(max-width:768px){
-  .modal-overlay{padding:0;display:block}
-  .modal-content{border-radius:0;width:100%;max-width:100%;height:100%;max-height:100vh;margin:0;overflow-y:auto;position:fixed;top:0;left:0;right:0;bottom:0;z-index:101}
-  .modal-content .grid{display:block}
-  .modal-gallery{width:100%;height:auto;max-height:45vh;border-radius:0;overflow:hidden}
-  .modal-gallery img{width:100%;height:auto;object-fit:cover;display:block}
-  #modal-main-image{width:100%;height:auto;max-height:45vh;object-fit:cover}
-  .gallery-nav{width:40px;height:40px;top:50%;margin-top:-20px}
-  .modal-thumbs{gap:0.5rem;padding:0.5rem 1rem;overflow-x:auto;white-space:nowrap}
-  .modal-thumb{width:50px;height:50px;display:inline-block}
-  .modal-close{top:0.5rem;right:0.5rem;width:40px;height:40px;z-index:102}
-  #modal-title{font-size:1.25rem!important}
-  #modal-price{font-size:1.1rem!important}
-  .modal-content .p-6{padding:0.75rem}
-  .modal-content .p-8{padding:0.75rem}
-  .detail-row{padding:0.5rem 0.75rem;margin-bottom:0.4rem}
-  .detail-icon{width:28px;height:28px;font-size:0.75rem}
-  #modal-whatsapp{margin-top:0.75rem;border-radius:1rem}
-  #modal-description{font-size:0.8rem!important;margin-bottom:0.5rem!important}
-  #modal-category-badge{font-size:0.65rem!important;padding:0.25rem 0.6rem!important}
-  .ss-carousel-wrapper{padding:0 48px}
-  .ss-slide{flex:0 0 100%}
-  .ss-track{gap:0.5rem}
-  .ss-slide img{max-height:65vh;border-width:2px}
-  .ss-arrow{width:36px;height:36px;font-size:0.85rem}
-  .ss-dots{margin-top:1rem}
   .product-card{border-radius:1.5rem!important}
   .product-card .card-content{padding:1rem}
   .product-card h3{font-size:1rem}
@@ -126,27 +94,80 @@ img{-webkit-user-drag:none;user-select:none}
   #products-grid{gap:1rem}
   .category-pill{padding:0.5rem 1rem!important;font-size:0.75rem}
 }
+
+/* ===== PRODUCT MODAL ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);z-index:100;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s ease;display:flex;align-items:center;justify-content:center;padding:1rem;overscroll-behavior:none;touch-action:none}
+.modal-overlay.active{opacity:1;visibility:visible}
+.modal-content{background:#FFF8F0;border-radius:2.5rem;max-width:1000px;width:95%;max-height:90vh;overflow-y:auto;position:relative;transform:scale(0.95) translateY(20px);transition:all 0.4s cubic-bezier(0.4,0,0.2,1);box-shadow:0 30px 80px rgba(0,0,0,0.3);-webkit-overflow-scrolling:touch;touch-action:pan-y}
+.modal-overlay.active .modal-content{transform:scale(1) translateY(0);transition:transform 0.2s ease,opacity 0.2s ease}
+.modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,0.1);border:none;font-size:1rem;color:#4A4A4A}
+.modal-close:hover{background:#E8A0BF;color:white}
+.modal-gallery{position:relative;border-radius:1.5rem;overflow:hidden;aspect-ratio:1/1;background:#f0f0f0}
+.modal-gallery img{width:100%;height:100%;object-fit:cover;-webkit-user-drag:none;user-select:none;transition:opacity 0.15s ease}
+.modal-thumbs{display:flex;gap:0.5rem;overflow-x:auto;padding:0.5rem 0;-webkit-overflow-scrolling:touch}
+.modal-thumbs::-webkit-scrollbar{height:3px}
+.modal-thumbs::-webkit-scrollbar-thumb{background:#E8A0BF;border-radius:2px}
+.modal-thumb{width:52px;height:52px;border-radius:0.5rem;overflow:hidden;cursor:pointer;border:2px solid transparent;flex-shrink:0;-webkit-tap-highlight-color:transparent}
+.modal-thumb.active{border-color:#E8A0BF;box-shadow:0 0 0 2px rgba(232,160,191,0.3)}
+.modal-thumb img{width:100%;height:100%;object-fit:cover}
+.detail-row{display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:white;border-radius:1rem;margin-bottom:0.5rem;box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+.detail-icon{width:32px;height:32px;background:#E8A0BF;border-radius:0.5rem;display:flex;align-items:center;justify-content:center;color:white;font-size:0.8rem}
+.color-dot{width:20px;height:20px;border-radius:50%;border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,0.1);display:inline-block}
+.gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:5;border:none;font-size:1rem;color:#4A4A4A;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.gallery-nav:active{background:#E8A0BF;color:white;transform:translateY(-50%) scale(0.95)}
+.gallery-nav.prev{left:0.5rem}
+.gallery-nav.next{right:0.5rem}
+#modal-main-image{-webkit-user-drag:none;user-select:none;touch-action:pan-y}
+.modal-thumb img{-webkit-user-drag:none;user-select:none}
+@media(max-width:768px){
+  .modal-overlay{padding:0;display:block;overflow:hidden;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);touch-action:none}
+  .modal-content{border-radius:1.25rem;width:100%;max-width:100%;height:100%;max-height:100dvh;margin:0;overflow-y:auto;position:fixed;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;touch-action:pan-y}
+  .modal-content .grid{display:flex;flex-direction:column;flex:1}
+  .modal-content .grid > div:first-child{flex-shrink:0}
+  .modal-content .grid > div:last-child{flex:1;overflow-y:auto}
+  .modal-gallery{aspect-ratio:1/1;max-height:45vh;width:100%;border-radius:1.25rem 1.25rem 0 0;overflow:hidden}
+  .modal-gallery img{width:100%;height:100%;object-fit:cover}
+  #modal-main-image{width:100%;height:100%;object-fit:cover;max-height:45vh}
+  .gallery-nav{width:40px;height:40px;top:50%}
+  .modal-thumbs{gap:0.5rem;padding:0.5rem 1rem;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+  .modal-thumb{width:56px;height:56px;flex-shrink:0}
+  .modal-close{top:0.75rem;right:0.75rem;width:40px;height:40px;z-index:20}
+  #modal-title{font-size:1.3rem!important;margin-top:0.25rem}
+  #modal-price{font-size:1.2rem!important}
+  .modal-content .p-6{padding:0.875rem}
+  .modal-content .p-8{padding:0.875rem}
+  .detail-row{padding:0.5rem 0.75rem;margin-bottom:0.4rem}
+  .detail-icon{width:30px;height:30px;font-size:0.75rem}
+  #modal-whatsapp{position:sticky;bottom:0.5rem;margin-top:0.75rem;border-radius:1rem;flex-shrink:0}
+  #modal-description{font-size:0.85rem!important;margin-bottom:0.75rem!important}
+  #modal-category-badge{font-size:0.7rem!important;padding:0.3rem 0.75rem!important}
+}
 </style>
+
+
+<link rel="preload" as="image" href="https://your-image-1.jpg">
+<link rel="preload" as="image" href="https://your-image-2.jpg">
+<link rel="preload" as="image" href="https://your-image-3.jpg">
 <base target="_blank">
 </head>
 <body class="font-cairo antialiased">
 
 <!-- Navigation -->
-<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-4">
+<nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500 py-4">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex items-center justify-between">
 <a href="#" class="flex items-center gap-3 group">
-<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="w-14 h-14 object-cover rounded-2xl shadow-md border-2 border-white/50" loading="eager" decoding="async">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-nav w-14 h-14 object-cover rounded-2xl shadow-logo border-2 border-white/50" loading="eager" decoding="async">
 <div class="flex flex-col">
 <span class="logo-text text-3xl font-bold leading-none tracking-wide">Yura</span>
 <span class="text-yura-pink-dark text-sm font-tajawal font-medium tracking-[0.2em] -mt-1">STORE</span>
 </div>
 </a>
 <div class="hidden md:flex items-center gap-8">
-<a href="#home" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium text-sm tracking-wide">Home</a>
-<a href="#products" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium text-sm tracking-wide">Products</a>
-<a href="#about" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium text-sm tracking-wide">About us</a>
-<a href="#screenshots" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium text-sm tracking-wide">Feedback</a>
+<a href="#home" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">Home</a>
+<a href="#products" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">Products</a>
+<a href="#about" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">About us</a>
+<a href="#screenshots" class="text-yura-text hover:text-yura-pink-dark transition-all duration-300 font-medium text-sm tracking-wide hover:scale-105">Feedback</a>
 <a href="https://wa.me/message/LOA7KWMVV7N6B1" target="_blank" class="whatsapp-btn text-white px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2">
 <i class="fab fa-whatsapp text-lg"></i>Contact us
 </a>
@@ -156,12 +177,12 @@ img{-webkit-user-drag:none;user-select:none}
 </button>
 </div>
 </div>
-<div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full nav-blur border-t border-yura-pink/20 shadow-lg">
+<div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full nav-blur border-t border-yura-pink/20 shadow-soft-lg">
 <div class="px-4 py-6 space-y-4 flex flex-col items-center">
-<a href="#home" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2">Home</a>
-<a href="#products" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2">Products</a>
-<a href="#about" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2">About us</a>
-<a href="#screenshots" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2">Feedback</a>
+<a href="#home" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">Home</a>
+<a href="#products" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">Products</a>
+<a href="#about" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">About us</a>
+<a href="#screenshots" class="text-yura-text hover:text-yura-pink-dark transition-colors font-medium py-2 hover:scale-105">Feedback</a>
 <a href="https://wa.me/message/LOA7KWMVV7N6B1" target="_blank" class="whatsapp-btn text-white px-6 py-3 rounded-full font-bold flex items-center gap-2 mt-2">
 <i class="fab fa-whatsapp"></i>Contact us
 </a>
@@ -171,13 +192,20 @@ img{-webkit-user-drag:none;user-select:none}
 
 <!-- Hero Section -->
 <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" style="background:linear-gradient(180deg,#FFF8F0 0%,#FAF0E6 100%)">
+
+
+
+
+
+
+
 <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 <div>
 <div class="mb-8 inline-block">
-<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover rounded-[2.5rem] shadow-lg border-4 border-white/60" loading="eager" decoding="async" fetchpriority="high">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-hero w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover rounded-[2.5rem] shadow-logo border-4 border-white/60" loading="eager" decoding="async">
 </div>
 <h1 class="font-playfair text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold mb-2 leading-tight">
-<span class="logo-text">Yura</span>
+<span class="logo-text shimmer-text">Yura</span>
 </h1>
 <h2 class="font-tajawal text-3xl sm:text-4xl md:text-5xl font-light text-yura-text mb-4 tracking-[0.3em]">STORE</h2>
 <div class="deco-line w-40 mx-auto my-8"></div>
@@ -188,10 +216,11 @@ img{-webkit-user-drag:none;user-select:none}
 HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 </p>
 <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
-<a href="#products" class="group relative px-10 py-5 bg-gradient-to-r from-yura-pink-dark to-yura-pink text-white rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
+<a href="#products" class="group relative px-10 py-5 bg-gradient-to-r from-yura-pink-dark to-yura-pink text-white rounded-full font-bold text-lg shadow-soft-lg hover:shadow-glow transition-all duration-500 overflow-hidden">
 <span class="relative z-10 flex items-center gap-3">Shop Collection<i class="fas fa-arrow-left group-hover:-translate-x-2 transition-transform duration-300"></i></span>
+<div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
 </a>
-<a href="https://wa.me/message/LOA7KWMVV7N6B1" target="_blank" class="px-10 py-5 border-2 border-yura-pink-dark text-yura-pink-dark rounded-full font-bold text-lg hover:bg-yura-pink-dark hover:text-white transition-all duration-300 flex items-center gap-3">
+<a href="https://wa.me/message/LOA7KWMVV7N6B1" target="_blank" class="px-10 py-5 border-2 border-yura-pink-dark text-yura-pink-dark rounded-full font-bold text-lg hover:bg-yura-pink-dark hover:text-white transition-all duration-500 flex items-center gap-3 hover:shadow-soft-lg hover:scale-105">
 <i class="fab fa-whatsapp text-xl"></i>Customize Order
 </a>
 </div>
@@ -208,12 +237,13 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <section class="py-16 bg-white/40 backdrop-blur-sm">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex flex-wrap justify-center gap-4">
-<button class="category-pill active px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-sm" onclick="filterProducts('all')"><span>All</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-sm" onclick="filterProducts('bags')"><span>Bags & Totes</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-sm" onclick="filterProducts('dolls')"><span>Dolls & Amigurumi</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-sm" onclick="filterProducts('anime')"><span>Anime Collection</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-sm" onclick="filterProducts('keychains')"><span>Keychains</span></button>
-<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-sm" onclick="filterProducts('boys')"><span>Boys' Keychains</span></button>
+<button class="category-pill active px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('all')"><span>All</span></button>
+<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('bags')"><span>Bags & Totes</span></button>
+<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('dolls')"><span>Dolls & Amigurumi</span></button>
+<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('anime')"><span>Anime Collection</span></button>
+<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('keychains')"><span>Keychains</span></button>
+<button class="category-pill px-7 py-3 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft cursor-pointer" onclick="filterProducts('boys')"><span>Boys' Keychains</span></button>
+
 </div>
 </div>
 </section>
@@ -230,25 +260,54 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto" id="products-grid">
 
-<!-- Product: Rapunzel Crochet Doll -->
-<div class="product-card group product-item" data-category="dolls">
+<!-- ⬇️⬇️⬇️ ADD YOUR PRODUCTS HERE ⬇️⬇️⬇️ -->
+<!-- Copy the template below for each product and fill in your details -->
+
+<!-- 
+TEMPLATE — Copy & Paste for each product:
+
+<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border product-item" data-category="bags">
   <div class="relative overflow-hidden aspect-[3/4]">
-    <img src="https://i.postimg.cc/x83jbTW5/IMG-2718.jpg" alt="Rapunzel Crochet Doll" class="card-image" onclick="openProductModal(0)" loading="eager" decoding="async" fetchpriority="high">
-    <div class="absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6 pointer-events-none">
+    <img src="YOUR_IMAGE_URL.jpg" alt="Product Name" class="card-image w-full h-full object-cover" onclick="openProductModal(0)" loading="lazy" decoding="async">
+    <div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6 pointer-events-none">
       <span class="text-white/90 text-sm font-light tracking-wide"><i class="fas fa-images mr-2"></i>Tap for details</span>
     </div>
-    <div class="absolute top-5 right-5 price-tag px-4 py-2"><span class="text-yura-dark font-bold">550 EGP</span></div>
-    <div class="absolute top-5 left-5 bg-yura-sage/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold">Dolls & Amigurumi</div>
+    <div class="absolute inset-0 z-10" onclick="openProductModal(0)" style="cursor:pointer;touch-action:manipulation"></div>
+    <div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">000 EGP</span></div>
+    <div class="absolute top-5 left-5 bg-yura-pink-dark/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Category</div>
   </div>
-  <div class="p-6">
-    <h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">Rapunzel Crochet Doll</h3>
-    <p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">Handcrafted amigurumi doll inspired by Princess Rapunzel and Pascal. A special gift for any fan.</p>
-    <a href="https://wa.me/message/LOA7KWMVV7N6B1?text=Hi%20yura%20,%20I%20want%20to%20order%20Rapunzel%20Crochet%20Doll" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
+  <div class="card-content p-6">
+    <h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">Product Name</h3>
+    <p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">Short description here...</p>
+    <a href="https://wa.me/message/LOA7KWMVV7N6B1" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
       <i class="fab fa-whatsapp text-lg"></i>Order now
     </a>
   </div>
 </div>
 
+-->
+
+<!-- Product: Rapunzel Crochet Doll -->
+<div class="product-card group bg-white rounded-[2.5rem] overflow-hidden shadow-card gradient-border product-item" data-category="dolls">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/x83jbTW5/IMG-2718.jpg" alt="Rapunzel Crochet Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(0)" loading="eager" decoding="async" fetchpriority="high">
+    <div class="overlay absolute inset-0 bg-gradient-to-t from-yura-dark/70 via-yura-dark/20 to-transparent flex items-end p-6 pointer-events-none">
+      <span class="text-white/90 text-sm font-light tracking-wide"><i class="fas fa-images mr-2"></i>Tap for details</span>
+    </div>
+    <div class="absolute inset-0 z-10" onclick="openProductModal(0)" style="cursor:pointer;touch-action:manipulation"></div>
+    <div class="absolute top-5 right-5 price-tag px-4 py-2 rounded-full"><span class="text-yura-dark font-bold">550 EGP</span></div>
+    <div class="absolute top-5 left-5 bg-yura-sage/90 text-white text-xs px-3 py-1.5 rounded-full font-semibold backdrop-blur-sm">Dolls & Amigurumi</div>
+  </div>
+  <div class="card-content p-6">
+    <h3 class="font-bold text-yura-dark text-xl mb-2 group-hover:text-yura-pink-dark transition-colors duration-300">Rapunzel Crochet Doll</h3>
+    <p class="text-yura-text/60 text-sm mb-5 line-clamp-2 leading-relaxed">Handcrafted amigurumi doll inspired by Princess Rapunzel and Pascal. A special gift for any fan.</p>
+    <a href="https://wa.me/message/LOA7KWMVV7N6B1" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-2xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fab fa-whatsapp text-lg"></i>Order now
+    </a>
+  </div>
+</div>
+
+</div>
 </div>
 </div>
 </section>
@@ -257,24 +316,32 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <div id="product-modal" class="modal-overlay">
 <div class="modal-content">
 <button class="modal-close" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
+
 <div class="grid md:grid-cols-2 gap-0">
+<!-- Gallery Side -->
 <div class="p-6 md:p-8 bg-gradient-to-br from-yura-cream to-white">
-<div class="modal-gallery relative rounded-2xl overflow-hidden shadow-lg mb-4">
-<img id="modal-main-image" src="" alt="" class="w-full aspect-square object-cover" loading="eager" decoding="async">
+<div class="modal-gallery relative rounded-2xl overflow-hidden shadow-deep mb-4" id="modal-main-image-container">
+<img id="modal-main-image" src="" alt="" class="w-full aspect-square object-cover" loading="lazy" decoding="async">
 <button class="gallery-nav prev" onclick="changeModalImage(-1)"><i class="fas fa-chevron-right"></i></button>
 <button class="gallery-nav next" onclick="changeModalImage(1)"><i class="fas fa-chevron-left"></i></button>
 </div>
 <div class="modal-thumbs" id="modal-thumbs"></div>
 </div>
+
+<!-- Details Side -->
 <div class="p-6 md:p-8 flex flex-col justify-center">
-<div id="modal-category-badge" class="inline-block self-start px-4 py-1.5 rounded-full text-white text-xs font-semibold mb-4"></div>
+<div id="modal-category-badge" class="inline-block self-start px-4 py-1.5 rounded-full text-white text-xs font-semibold mb-4 backdrop-blur-sm"></div>
 <h2 id="modal-title" class="font-playfair text-3xl sm:text-4xl font-bold text-yura-dark mb-2"></h2>
 <div class="flex items-center gap-3 mb-6">
 <span id="modal-price" class="text-2xl font-bold text-yura-pink-dark"></span>
 <span class="text-yura-text/40 text-sm line-through" id="modal-old-price"></span>
 </div>
+
 <p id="modal-description" class="text-yura-text/70 leading-relaxed mb-6 text-sm"></p>
+
+<!-- Product Details -->
 <div class="space-y-3 mb-8">
+
 <div class="detail-row">
 <div class="detail-icon"><i class="fas fa-arrows-alt-v"></i></div>
 <div>
@@ -304,6 +371,7 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 </div>
 </div>
 </div>
+
 <a id="modal-whatsapp" href="" target="_blank" class="whatsapp-btn w-full py-4 rounded-2xl text-white font-bold text-base flex items-center justify-center gap-3">
 <i class="fab fa-whatsapp text-xl"></i>
 Order now على واتساب
@@ -315,13 +383,18 @@ Order now على واتساب
 
 <!-- About Section -->
 <section id="about" class="py-28 relative overflow-hidden" style="background:#FFF8F0">
+
+
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 <div class="grid md:grid-cols-2 gap-16 items-center">
 <div class="relative">
-<div class="relative rounded-[3rem] overflow-hidden shadow-lg aspect-[3/4] max-w-md mx-auto">
+<div class="relative rounded-[3rem] overflow-hidden shadow-deep img-shadow aspect-[3/4] max-w-md mx-auto">
 <img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Handmade" class="w-full h-full object-cover" loading="eager" decoding="async">
 <div class="absolute inset-0 bg-gradient-to-t from-yura-pink-dark/40 to-transparent"></div>
 </div>
+<div class="absolute -bottom-8 -right-8 w-40 h-40 bg-yura-pink/40 rounded-full blur-3xl"></div>
+<div class="absolute -top-8 -left-8 w-32 h-32 bg-yura-sage/50 rounded-full blur-2xl"></div>
+
 </div>
 <div class="text-right">
 <span class="text-yura-pink-dark font-semibold text-sm tracking-[0.3em] uppercase mb-3 block">Our Story</span>
@@ -333,15 +406,15 @@ Order now على واتساب
 <p>تشكيلتنا متنوعة: شنط وتوت باجز، دمى أميجورومي، شخصيات أنمي، ميداليات مميزة للشباب والبنات، وميداليات بنترست— كل قطعة هاند ميد 100% مصنوعة بحب</p>
 </div>
 <div class="grid grid-cols-3 gap-6 mt-12">
-<div class="text-center p-5 bg-white/70 rounded-3xl shadow-sm backdrop-blur-sm hover:shadow-md hover:scale-105 transition-all duration-300">
+<div class="text-center p-5 bg-white/70 rounded-3xl shadow-soft backdrop-blur-sm hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
 <div class="text-3xl font-bold text-yura-pink-dark mb-1">+500</div>
 <div class="text-xs text-yura-text/60 font-medium">طلب منفذ</div>
 </div>
-<div class="text-center p-5 bg-white/70 rounded-3xl shadow-sm backdrop-blur-sm hover:shadow-md hover:scale-105 transition-all duration-300">
+<div class="text-center p-5 bg-white/70 rounded-3xl shadow-soft backdrop-blur-sm hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
 <div class="text-3xl font-bold text-yura-pink-dark mb-1">100%</div>
 <div class="text-xs text-yura-text/60 font-medium">هاند ميد</div>
 </div>
-<div class="text-center p-5 bg-white/70 rounded-3xl shadow-sm backdrop-blur-sm hover:shadow-md hover:scale-105 transition-all duration-300">
+<div class="text-center p-5 bg-white/70 rounded-3xl shadow-soft backdrop-blur-sm hover:shadow-soft-lg hover:scale-105 transition-all duration-300">
 <div class="text-3xl font-bold text-yura-pink-dark mb-1">+200</div>
 <div class="text-xs text-yura-text/60 font-medium">عميلة سعيدة</div>
 </div>
@@ -365,6 +438,7 @@ Order now على واتساب
 <button class="ss-arrow ss-arrow-prev" onclick="ssMove(-1)" aria-label="السابق">
 <i class="fas fa-chevron-right"></i>
 </button>
+
 <div class="ss-carousel" id="ss-carousel">
 <div class="ss-track" id="ss-track">
 <div class="ss-slide"><img src="https://i.postimg.cc/Sxg1m4zb/IMG-2350.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
@@ -377,21 +451,170 @@ Order now على واتساب
 <div class="ss-slide"><img src="https://i.postimg.cc/t4Bv9bnh/IMG-2357.jpg" alt="Yura Store" loading="lazy" decoding="async"></div>
 </div>
 </div>
+
 <button class="ss-arrow ss-arrow-next" onclick="ssMove(1)" aria-label="التالي">
 <i class="fas fa-chevron-left"></i>
 </button>
+
 <div class="ss-dots" id="ss-dots"></div>
 </div>
 </div>
 </section>
 
+<style>
+.ss-carousel-wrapper {
+  position: relative;
+  padding: 0 60px;
+}
+.ss-carousel {
+  overflow: hidden;
+  border-radius: 1.5rem;
+}
+.ss-track {
+  display: flex;
+  gap: 1rem;
+  transition: transform 0.25s ease-out;
+  will-change: transform;
+}
+.ss-slide {
+  flex: 0 0 calc(50% - 0.5rem);
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+.ss-slide img {
+  width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 1rem;
+  display: block;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border: 3px solid white;
+  background: white;
+}
+.ss-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid rgba(232,160,191,0.3);
+  color: #E8A0BF;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: all 0.2s ease;
+}
+.ss-arrow:hover {
+  background: #E8A0BF;
+  color: white;
+}
+.ss-arrow-prev { right: 0; }
+.ss-arrow-next { left: 0; }
+.ss-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.ss-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(232,160,191,0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.ss-dot.active {
+  background: #E8A0BF;
+  width: 24px;
+  border-radius: 4px;
+}
+@media (max-width: 768px) {
+  .ss-carousel-wrapper { padding: 0 48px; }
+  .ss-slide { flex: 0 0 100%; }
+  .ss-track { gap: 0.5rem; }
+  .ss-slide img { max-height: 65vh; border-width: 2px; }
+  .ss-arrow { width: 36px; height: 36px; font-size: 0.85rem; }
+  .ss-dots { margin-top: 1rem; }
+}
+</style>
+
+<script>
+(function() {
+  const track = document.getElementById('ss-track');
+  const dotsContainer = document.getElementById('ss-dots');
+  const slides = track.children;
+  const totalSlides = slides.length;
+  let currentIndex = 0;
+  let slidesPerView = 2;
+  let ticking = false;
+
+  function getSlidesPerView() {
+    return window.innerWidth <= 768 ? 1 : 2;
+  }
+
+  function renderDots() {
+    const maxIndex = Math.max(0, totalSlides - slidesPerView);
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i <= maxIndex; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'ss-dot' + (i === currentIndex ? ' active' : '');
+      dot.onclick = () => goTo(i);
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  function goTo(index) {
+    const maxIndex = Math.max(0, totalSlides - slidesPerView);
+    currentIndex = Math.max(0, Math.min(index, maxIndex));
+    const slideWidth = slides[0].offsetWidth;
+    const gapValue = parseFloat(window.getComputedStyle(track).gap) || 16;
+    track.style.transform = 'translateX(' + (currentIndex * (slideWidth + gapValue)) + 'px)';
+
+    const dots = dotsContainer.children;
+    for (let i = 0; i < dots.length; i++) {
+      dots[i].classList.toggle('active', i === currentIndex);
+    }
+  }
+
+  window.ssMove = function(dir) {
+    goTo(currentIndex + dir);
+  };
+
+  window.addEventListener('resize', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        slidesPerView = getSlidesPerView();
+        renderDots();
+        goTo(currentIndex);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  slidesPerView = getSlidesPerView();
+  renderDots();
+})();
+</script>
 <!-- CTA Section -->
 <section class="py-28 relative overflow-hidden">
 <div class="absolute inset-0 bg-yura-beige/30"></div>
+
+
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
 <h2 class="font-playfair text-5xl sm:text-6xl md:text-7xl font-bold text-yura-dark mb-8">Customize Order?</h2>
 <p class="text-xl text-yura-text/70 mb-12 max-w-2xl mx-auto leading-relaxed">عندك تصميم في بالك؟ أو عايزة لون معين؟ Contact us on WhatsApp وهننفذ لكِ اللي في خيالك بأيدينا.</p>
-<a href="https://wa.me/message/LOA7KWMVV7N6B1" target="_blank" class="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full font-bold text-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+<a href="https://wa.me/message/LOA7KWMVV7N6B1" target="_blank" class="inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full font-bold text-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-500">
 <i class="fab fa-whatsapp text-3xl"></i>Contact us on WhatsApp
 </a>
 </div>
@@ -404,7 +627,7 @@ Order now على واتساب
 <div class="grid md:grid-cols-3 gap-12">
 <div class="text-center md:text-right">
 <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
-<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="w-12 h-12 object-cover rounded-xl shadow-md border-2 border-white/30" loading="eager" decoding="async">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="w-12 h-12 object-cover rounded-xl shadow-logo border-2 border-white/30" loading="eager" decoding="async">
 <div>
 <span class="font-playfair text-3xl font-bold text-yura-pink">Yura</span>
 <span class="block text-xs tracking-[0.3em] text-yura-pink/70">STORE</span>
@@ -455,7 +678,32 @@ Order now على واتساب
 
 <script>
 // ===== PRODUCT DATA =====
-var products = [
+// ⬇️⬇️⬇️ ADD YOUR PRODUCTS HERE ⬇️⬇️⬇️
+// Copy the template below and fill in your product details
+/*
+TEMPLATE:
+{
+  id: 0,
+  name: "Product Name",
+  category: "Bags & Totes",     // or "Dolls & Amigurumi", "Anime Collection", "Keychains", "Boys' Keychains", "Gifts & Accessories"
+  categoryColor: "bg-yura-pink-dark",  // bg-yura-pink-dark | bg-yura-sage | bg-purple-500 | bg-rose-400 | bg-slate-500 | bg-amber-500
+  price: "450 EGP",
+  oldPrice: "",                  // leave empty if no discount
+  description: "Your product description here...",
+  size: "30 x 25 cm",
+  length: "25 cm",
+  colors: ["#F4C2C2", "#C5D5C0", "#FAF0E6"],  // hex color codes
+  time: "3-5 days",
+  shipping: "Free delivery in Cairo",
+  images: [
+    "https://your-image-1.jpg",
+    "https://your-image-2.jpg",
+    "https://your-image-3.jpg"
+  ],
+  whatsapp: "Hi yura , I want to order Product Name"
+},
+*/
+const products = [
   {
     id: 0,
     name: "Rapunzel Crochet Doll (Amigurumi)",
@@ -464,6 +712,7 @@ var products = [
     price: "550 EGP",
     oldPrice: "",
     description: "A handcrafted amigurumi doll inspired by Princess Rapunzel and her sidekick Pascal. Detailed with fine craftsmanship, making it a special gift or a unique keepsake for any fan.",
+    size: "16–17 cm Height",
     length: "16–17 cm",
     colors: ["#F4C2C2", "#C5D5C0", "#FAF0E6", "#D4AF37", "#E8A0BF"],
     time: "15 يوم",
@@ -481,68 +730,49 @@ var products = [
   }
 ];
 
-var currentProduct = null;
-var currentImageIndex = 0;
-
 // ===== MODAL FUNCTIONS =====
 function openProductModal(productId) {
-  currentProduct = products.find(function(p){ return p.id === productId; });
+  currentProduct = products.find(p => p.id === productId);
   if (!currentProduct) return;
   currentImageIndex = 0;
+  // Preload all product images
+  currentProduct.images.forEach(function(src){
+    var img = new Image();
+    img.src = src;
+  });
 
   document.getElementById('modal-title').textContent = currentProduct.name;
   document.getElementById('modal-price').textContent = currentProduct.price;
   document.getElementById('modal-old-price').textContent = currentProduct.oldPrice;
   document.getElementById('modal-old-price').style.display = currentProduct.oldPrice ? 'inline' : 'none';
   document.getElementById('modal-description').textContent = currentProduct.description;
-  document.getElementById('modal-length').textContent = currentProduct.length;
+    document.getElementById('modal-length').textContent = currentProduct.length;
   document.getElementById('modal-time').textContent = currentProduct.time;
   document.getElementById('modal-shipping').textContent = currentProduct.shipping;
 
-  var badge = document.getElementById('modal-category-badge');
+  // Category badge
+  const badge = document.getElementById('modal-category-badge');
   badge.textContent = currentProduct.category;
-  badge.className = 'inline-block self-start px-4 py-1.5 rounded-full text-white text-xs font-semibold mb-4 ' + currentProduct.categoryColor;
+  badge.className = `inline-block self-start px-4 py-1.5 rounded-full text-white text-xs font-semibold mb-4 backdrop-blur-sm ${currentProduct.categoryColor}`;
 
-  var colorsContainer = document.getElementById('modal-colors');
+  // Colors
+  const colorsContainer = document.getElementById('modal-colors');
   colorsContainer.innerHTML = '';
-  currentProduct.colors.forEach(function(color) {
-    var dot = document.createElement('span');
+  currentProduct.colors.forEach(color => {
+    const dot = document.createElement('span');
     dot.className = 'color-dot';
     dot.style.backgroundColor = color;
+    dot.title = color;
     colorsContainer.appendChild(dot);
   });
 
+  // Images
   updateModalImage();
   renderThumbs();
 
-  document.getElementById('modal-whatsapp').href = 'https://wa.me/message/LOA7KWMVV7N6B1?text=' + encodeURIComponent(currentProduct.whatsapp);
-
-  document.getElementById('product-modal').classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeProductModal() {
-  document.getElementById('product-modal').classList.remove('active');
-  document.body.style.overflow = '';
-  currentProduct = null;
-}
-
-function updateModalImage() {
-  if (!currentProduct) return;
-  var img = document.getElementById('modal-main-image');
-  img.src = currentProduct.images[currentImageIndex];
-  img.alt = currentProduct.name;
-}
-
-function renderThumbs() {
-  if (!currentProduct) return;
-  var container = document.getElementById('modal-thumbs');
-  container.innerHTML = '';
-  currentProduct.images.forEach(function(src, idx) {
-    var thumb = document.createElement('div');
-    thumb.className = 'modal-thumb ' + (idx === currentImageIndex ? 'active' : '');
-    thumb.innerHTML = '<img src="' + src + '" alt="' + currentProduct.name + '" loading="lazy" decoding="async">';
-    thumb.onclick = function() {
+  // WhatsApp link
+  document.getElementById('modal-whatsapp').href = `https://wa.me/message/LOA7KWMVV7N6B1"${src}" alt="${currentProduct.name} - ${idx + 1}" loading="lazy" decoding="async">`;
+    thumb.onclick = () => {
       currentImageIndex = idx;
       updateModalImage();
       renderThumbs();
@@ -560,128 +790,90 @@ function changeModalImage(direction) {
   renderThumbs();
 }
 
+// Close modal on overlay click
 document.getElementById('product-modal').addEventListener('click', function(e) {
-  if (e.target === this || e.target.classList.contains('modal-overlay')) closeProductModal();
+  if (e.target === this) closeProductModal();
 });
 
+// Keyboard navigation
 document.addEventListener('keydown', function(e) {
   if (!currentProduct) return;
   if (e.key === 'Escape') closeProductModal();
-  if (e.key === 'ArrowLeft') changeModalImage(1);
-  if (e.key === 'ArrowRight') changeModalImage(-1);
+  if (e.key === 'ArrowLeft') changeModalImage(1); // RTL
+  if (e.key === 'ArrowRight') changeModalImage(-1); // RTL
 });
 
 // ===== CATEGORY FILTER =====
 function filterProducts(category) {
-  var items = document.querySelectorAll('.product-item');
-  items.forEach(function(item) {
+  const items = document.querySelectorAll('.product-item');
+  items.forEach(item => {
     if (category === 'all' || item.dataset.category === category) {
       item.style.display = '';
-      item.style.opacity = '1';
-      item.style.transform = 'scale(1)';
+      setTimeout(() => {
+        item.style.opacity = '1';
+        item.style.transform = 'scale(1)';
+      }, 50);
     } else {
       item.style.opacity = '0';
       item.style.transform = 'scale(0.8)';
-      setTimeout(function() { item.style.display = 'none'; }, 300);
+      setTimeout(() => {
+        item.style.display = 'none';
+      }, 300);
     }
   });
 }
 
+// ===== AOS INIT =====
+
+
 // ===== NAVBAR =====
-var navbar = document.getElementById('navbar');
-window.addEventListener('scroll', function() {
-  if (window.scrollY > 50) {
-    if (!navbar.classList.contains('nav-blur')) {
-      navbar.classList.add('nav-blur', 'shadow-soft');
+const navbar=document.getElementById('navbar');
+var lastScroll=0;
+window.addEventListener('scroll',function(){
+  var st=window.scrollY;
+  if(st>50){
+    if(!navbar.classList.contains('nav-blur')){
+      navbar.classList.add('nav-blur','shadow-soft');
       navbar.classList.remove('py-4');
       navbar.classList.add('py-2');
     }
-  } else {
-    navbar.classList.remove('nav-blur', 'shadow-soft', 'py-2');
+  }else{
+    navbar.classList.remove('nav-blur','shadow-soft','py-2');
     navbar.classList.add('py-4');
   }
-}, {passive: true});
+  lastScroll=st;
+},{passive:true});
 
 // ===== MOBILE MENU =====
-var mobileMenuBtn = document.getElementById('mobile-menu-btn');
-var mobileMenu = document.getElementById('mobile-menu');
-mobileMenuBtn.addEventListener('click', function() {
+var mobileMenuBtn=document.getElementById('mobile-menu-btn');
+var mobileMenu=document.getElementById('mobile-menu');
+mobileMenuBtn.addEventListener('click',function(){
   mobileMenu.classList.toggle('hidden');
 });
-mobileMenu.querySelectorAll('a').forEach(function(link) {
-  link.addEventListener('click', function() {
+mobileMenu.querySelectorAll('a').forEach(function(link){
+  link.addEventListener('click',function(){
     mobileMenu.classList.add('hidden');
   });
 });
 
 // ===== CATEGORY PILLS =====
-document.querySelectorAll('.category-pill').forEach(function(p) {
-  p.addEventListener('click', function() {
-    document.querySelectorAll('.category-pill').forEach(function(x) { x.classList.remove('active'); });
+document.querySelectorAll('.category-pill').forEach(function(p){
+  p.addEventListener('click',function(){
+    document.querySelectorAll('.category-pill').forEach(function(x){x.classList.remove('active')});
     this.classList.add('active');
   });
 });
 
 // ===== SMOOTH SCROLL =====
-document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-  a.addEventListener('click', function(e) {
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
     e.preventDefault();
-    var t = document.querySelector(this.getAttribute('href'));
-    if (t) t.scrollIntoView({behavior: 'smooth', block: 'start'});
+    var t=document.querySelector(this.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
   });
 });
 
-// ===== SCREENSHOTS CAROUSEL =====
-(function() {
-  var track = document.getElementById('ss-track');
-  var dotsContainer = document.getElementById('ss-dots');
-  var slides = track.children;
-  var totalSlides = slides.length;
-  var currentIndex = 0;
-  var slidesPerView = 2;
 
-  function getSlidesPerView() {
-    return window.innerWidth <= 768 ? 1 : 2;
-  }
-
-  function renderDots() {
-    var maxIndex = Math.max(0, totalSlides - slidesPerView);
-    dotsContainer.innerHTML = '';
-    for (var i = 0; i <= maxIndex; i++) {
-      var dot = document.createElement('button');
-      dot.className = 'ss-dot' + (i === currentIndex ? ' active' : '');
-      dot.onclick = (function(idx) { return function() { goTo(idx); }; })(i);
-      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
-      dotsContainer.appendChild(dot);
-    }
-  }
-
-  function goTo(index) {
-    var maxIndex = Math.max(0, totalSlides - slidesPerView);
-    currentIndex = Math.max(0, Math.min(index, maxIndex));
-    var slideWidth = slides[0].offsetWidth;
-    var gapValue = parseFloat(window.getComputedStyle(track).gap) || 16;
-    track.style.transform = 'translateX(' + (currentIndex * (slideWidth + gapValue)) + 'px)';
-
-    var dots = dotsContainer.children;
-    for (var i = 0; i < dots.length; i++) {
-      dots[i].classList.toggle('active', i === currentIndex);
-    }
-  }
-
-  window.ssMove = function(dir) {
-    goTo(currentIndex + dir);
-  };
-
-  window.addEventListener('resize', function() {
-    slidesPerView = getSlidesPerView();
-    renderDots();
-    goTo(currentIndex);
-  });
-
-  slidesPerView = getSlidesPerView();
-  renderDots();
-})();
 </script>
 </body>
 </html>
