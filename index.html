@@ -61,6 +61,13 @@ body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:
 .product-card:hover .overlay{opacity:1}
 @media (hover: none) {.product-card .overlay{opacity:1; background: linear-gradient(to top, rgba(45,45,45,0.4), transparent);}}
 
+/* أنيميشن لمس خفيف للمنتجات على الموبايل فقط */
+@media (hover: none) {
+  .product-card{transition:transform 0.15s ease, box-shadow 0.15s ease;}
+  .product-card:active{transform:scale(0.97);box-shadow:0 8px 20px rgba(232,160,191,0.2);}
+  .product-card:active .card-image{transform:scale(1.04);transition:transform 0.15s ease;}
+}
+
 .whatsapp-btn{background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);transition:transform 0.2s ease;box-shadow:0 4px 15px rgba(37,211,102,0.3);position:relative;overflow:hidden;}
 .whatsapp-btn:active{transform:scale(0.96)}
 
@@ -159,11 +166,23 @@ body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important;}
 }
+
+/* ===== PAGE LOADER ===== */
+#page-loader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#FFF8F0;transition:opacity 0.5s ease, visibility 0.5s ease;}
+#page-loader.hide{opacity:0;visibility:hidden;pointer-events:none;}
+.loader-logo{width:6.5rem;height:6.5rem;object-fit:cover;border-radius:1.5rem;box-shadow:0 8px 30px rgba(232,160,191,0.25);animation:loader-pulse 1.2s ease-in-out infinite;}
+@keyframes loader-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.08);opacity:0.8}}
+body.loading{overflow:hidden;}
 </style>
 <base target="_blank">
 <base target="_blank">
 </head>
-<body class="font-cairo antialiased">
+<body class="font-cairo antialiased loading">
+
+<!-- Page Loader -->
+<div id="page-loader">
+<img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store" class="loader-logo">
+</div>
 
 <!-- Navigation -->
 <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-3">
@@ -214,10 +233,12 @@ body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:
 <div class="mb-6 inline-block">
 <img src="https://i.postimg.cc/3w5fbNg1/IMG-2787.jpg" alt="Yura Store Logo" class="logo-hero w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 object-cover rounded-[2rem] shadow-logo border-4 border-white/60">
 </div>
-<h1 class="font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-2 leading-tight">
+<div dir="ltr" class="flex items-end justify-center gap-2 sm:gap-3 mb-4">
+<h1 class="font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold italic leading-none">
 <span class="logo-text shimmer-text">Yura</span>
 </h1>
-<h2 class="font-tajawal text-2xl sm:text-3xl md:text-4xl font-light text-yura-text mb-4 tracking-[0.3em]">STORE</h2>
+<h2 class="font-playfair text-lg sm:text-xl md:text-2xl font-semibold text-yura-text/70 tracking-[0.35em] mb-1 sm:mb-2">STORE</h2>
+</div>
 <div class="deco-line w-32 mx-auto my-6"></div>
 <p class="font-cairo text-base sm:text-lg md:text-xl text-yura-text/80 max-w-2xl mx-auto mb-4 leading-relaxed font-light">
 𝗛𝗮𝗻𝗱𝗺𝗮𝗱𝗲 𝘄𝗶𝘁𝗵 𝗟𝗼𝘃𝗲, 𝗦𝘁𝗶𝘁𝗰𝗵𝗲𝗱 𝘁𝗼 𝗣𝗲𝗿𝗳𝗲𝗰𝘁𝗶𝗼𝗻 – 𝗪𝗲𝗹𝗰𝗼𝗺𝗲 𝘁𝗼 𝗬𝗼𝘂𝗿 𝗖𝗿𝗼𝗰𝗵𝗲𝘁 𝗛𝗮𝘃𝗲𝗻
@@ -233,11 +254,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <i class="fab fa-whatsapp text-lg"></i>Customize Order
 </a>
 </div>
-</div>
-</div>
-<div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-<div class="w-8 h-8 rounded-full border-2 border-yura-pink-dark/40 flex items-center justify-center">
-<i class="fas fa-chevron-down text-yura-pink-dark text-xs"></i>
 </div>
 </div>
 </section>
@@ -669,6 +685,17 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeProductModal();
   if (e.key === 'ArrowLeft') changeModalImage(1);
   if (e.key === 'ArrowRight') changeModalImage(-1);
+});
+
+// ===== PAGE LOADER =====
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    const loader = document.getElementById('page-loader');
+    if (loader) {
+      loader.classList.add('hide');
+      document.body.classList.remove('loading');
+    }
+  }, 600);
 });
 
 // ===== CATEGORY FILTER =====
