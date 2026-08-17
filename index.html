@@ -368,6 +368,31 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
+<!-- Product: Spider-Man & Gwen Keychains -->
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/Kz5SzyDt/IMG-1968.jpg" alt="Spider-Man & Gwen Keychains" class="card-image w-full h-full object-cover" onclick="openProductModal(4)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full flex items-center gap-2">
+      <span class="text-yura-dark font-bold text-sm">250 EGP</span>
+      <span class="text-yura-text/40 text-xs line-through">300</span>
+    </div>
+    <div class="absolute top-4 left-4 flex flex-col gap-1.5 items-start">
+      <span class="bg-yura-pink-dark/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Keychains</span>
+      <span class="bg-red-500/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold flex items-center gap-1"><i class="fas fa-fire text-[10px]"></i>خصم</span>
+    </div>
+  </div>
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Spider-Man & Gwen Keychains</h3>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">سبايدرمان وجوين أحلى أص معمولة هاند ميد 100%! 🕷️🕸️ قطعة مميزة ولطيفة جداً تتعلّق في الشنط أو العربية، مصنوعة بكل حب ✨</p>
+    <button onclick="addToCart(4)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
+  </div>
+</div>
+
 </div>
 </div>
 </section>
@@ -406,6 +431,13 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <div>
 <div class="text-xs text-yura-text/50 font-medium">الطول / الارتفاع</div>
 <div id="modal-length" class="font-bold text-yura-dark text-sm"></div>
+</div>
+</div>
+<div class="detail-row" id="modal-pieces-row">
+<div class="detail-icon"><i class="fas fa-layer-group"></i></div>
+<div>
+<div class="text-xs text-yura-text/50 font-medium">عدد القطع</div>
+<div id="modal-pieces" class="font-bold text-yura-dark text-sm"></div>
 </div>
 </div>
 <div class="detail-row" id="modal-colors-row">
@@ -733,6 +765,29 @@ const products = [
       "https://i.postimg.cc/KvnwfbMb/IMG-2223.jpg"
     ],
     whatsapp: "Hi yura , I want to order Van Gogh Amigurumi"
+  },
+  {
+    id: 4,
+    name: "Spider-Man & Gwen Keychains",
+    category: "Keychains",
+    categoryColor: "bg-yura-pink-dark",
+    price: "250 EGP",
+    oldPrice: "300 EGP",
+    description: "سبايدرمان وجوين أحلى أص معمولة هاند ميد 100%! 🕷️🕸️ قطعة مميزة ولطيفة جداً تتعلّق في الشنط أو العربية، مصنوعة بكل حب ✨",
+    size: "8-9 سم",
+    length: "8-9 سم",
+    pieces: "قطعتين (الاتنين مع بعض)",
+    colors: ["#2D2D2D", "#E63946", "#F472B6"],
+    time: "7-10 أيام",
+    shipping: "توصيل لجميع المحافظات",
+    images: [
+      "https://i.postimg.cc/Kz5SzyDt/IMG-1968.jpg",
+      "https://i.postimg.cc/C5v3GHtR/IMG-1962.jpg",
+      "https://i.postimg.cc/kXHrDsKb/IMG-1963.jpg",
+      "https://i.postimg.cc/rFH6zjx5/IMG-1964.jpg",
+      "https://i.postimg.cc/fyT4Sg8r/IMG-1965.jpg"
+    ],
+    whatsapp: "Hi yura , I want to order Spider-Man & Gwen Keychains"
   }
 ];
 
@@ -751,6 +806,8 @@ function openProductModal(productId) {
   document.getElementById('modal-old-price').style.display = currentProduct.oldPrice ? 'inline' : 'none';
   document.getElementById('modal-description').textContent = currentProduct.description;
   document.getElementById('modal-length').textContent = currentProduct.length;
+  document.getElementById('modal-pieces').textContent = currentProduct.pieces || '';
+  document.getElementById('modal-pieces-row').style.display = currentProduct.pieces ? 'flex' : 'none';
   document.getElementById('modal-time').textContent = currentProduct.time;
   document.getElementById('modal-shipping').textContent = currentProduct.shipping;
 
