@@ -71,6 +71,14 @@ body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:
 .whatsapp-btn{background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);transition:transform 0.2s ease;box-shadow:0 4px 15px rgba(37,211,102,0.3);position:relative;overflow:hidden;}
 .whatsapp-btn:active{transform:scale(0.96)}
 
+.cart-btn{background:linear-gradient(135deg,#E8A0BF 0%,#D4A5A5 100%);transition:transform 0.2s ease;box-shadow:0 4px 15px rgba(232,160,191,0.3);}
+.cart-btn:active{transform:scale(0.96)}
+#cart-fab{position:fixed;bottom:1.25rem;right:1.25rem;z-index:50;}
+@keyframes cart-bump{0%{transform:scale(1)}50%{transform:scale(1.18)}100%{transform:scale(1)}}
+.cart-bump{animation:cart-bump 0.3s ease;}
+.cart-qty-btn{transition:transform 0.15s ease;touch-action:manipulation;}
+.cart-qty-btn:active{transform:scale(0.85)}
+
 .float-whatsapp{animation:pulse-whatsapp 2.5s infinite}
 @keyframes pulse-whatsapp{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}50%{box-shadow:0 0 0 20px rgba(37,211,102,0)}}
 
@@ -268,7 +276,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('anime')"><span>Anime Collection</span></button>
 <button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('keychains')"><span>Keychains</span></button>
 <button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('boys')"><span>Boys' Keychains</span></button>
-<button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('gifts')"><span>Gifts & Accessories</span></button>
 </div>
 </div>
 </section>
@@ -297,10 +304,29 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
   <div class="card-content p-5">
     <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Rapunzel Crochet Doll</h3>
-    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">Handcrafted amigurumi doll inspired by Princess Rapunzel and Pascal. A special gift for any fan.</p>
-    <a href="https://wa.me/201018140186?text=Hi%20yura%20,%20I%20want%20to%20order%20Rapunzel%20Crochet%20Doll" target="_blank" class="whatsapp-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
-      <i class="fab fa-whatsapp text-base"></i>Order now
-    </a>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">لكل عشاق عالم ديزني! 🌸👑 أميرة ديزني ربانزل ومعاها باسكال هاند ميد 100% بتفاصيل سحرية ومعمولة بكل حب ✨</p>
+    <button onclick="addToCart(0)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
+  </div>
+</div>
+
+<!-- Product: Zoro Amigurumi -->
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="anime boys keychains">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/rsWr2K9L/IMG-2741.jpg" alt="Zoro Amigurumi" class="card-image w-full h-full object-cover" onclick="openProductModal(1)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">150 EGP</span></div>
+    <div class="absolute top-4 left-4 bg-yura-gold/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Anime Collection</div>
+  </div>
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Zoro Amigurumi</h3>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">لكل عشاق ون بيس! 🏴‍☠️ ميدالية زورو أميجورومي مصنوعة يدويًا 100% بكل حب وإتقان ✨</p>
+    <button onclick="addToCart(1)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
   </div>
 </div>
 
@@ -344,7 +370,7 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <div id="modal-length" class="font-bold text-yura-dark text-sm"></div>
 </div>
 </div>
-<div class="detail-row">
+<div class="detail-row" id="modal-colors-row">
 <div class="detail-icon"><i class="fas fa-palette"></i></div>
 <div>
 <div class="text-xs text-yura-text/50 font-medium">الألوان المتاحة</div>
@@ -367,10 +393,16 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 </div>
 </div>
 
-<a id="modal-whatsapp" href="" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
-<i class="fab fa-whatsapp text-lg"></i>
-Order now على واتساب
+<div class="space-y-2">
+<button onclick="addToCartFromModal()" class="cart-btn w-full py-3.5 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+<i class="fas fa-shopping-bag text-lg"></i>
+أضف للسلة
+</button>
+<a id="modal-whatsapp" href="" target="_blank" class="w-full py-3 rounded-xl text-yura-pink-dark border border-yura-pink-dark/40 font-semibold text-sm flex items-center justify-center gap-2 hover:bg-yura-pink-dark hover:text-white transition-colors duration-200">
+<i class="fab fa-whatsapp text-base"></i>
+اطلب مباشرة على واتساب
 </a>
+</div>
 </div>
 </div>
 </div>
@@ -393,7 +425,7 @@ Order now على واتساب
 <div class="space-y-4 text-yura-text/80 leading-relaxed text-base">
 <p><span class="text-yura-pink-dark font-bold text-lg">Yura Store</span> مشروع صغير بيحمل في كل غرزة حكاية. بدأنا رحلتنا من شغف بسيط بفن الكروشيه، وقررنا نحوله لعلامة تجارية تجمع بين الأصالة والعصرية.</p>
 <p>كل قطعة في Yura Store بتمر بإيدينا من أول خيط لآخر غرزة. بنستخدم خيوط عالية الجودة وألوان هادية تدفي القلب زي ما بتدفي الجسم.</p>
-<p>تشكيلتنا متنوعة: شنط وتوtes، دمى أميغورومي، شخصيات أنمي، ميداليات للبنات والشباب، وبوكسات هدايا فاخرة — كلها handmade 100% بحب مصري أصيل.</p>
+<p>شنط وتوت باجز، دمى أميجورومي، شخصيات أنمي، ميداليات مميزة للشباب والبنات، أشكال من بنترست — كل قطعة هاند ميد 100% مصنوعة بحب.</p>
 </div>
 <div class="grid grid-cols-3 gap-4 mt-10">
 <div class="text-center p-4 bg-white/70 rounded-2xl shadow-soft hover:shadow-soft-lg transition-shadow duration-200">
@@ -421,7 +453,7 @@ Order now على واتساب
 <span class="text-yura-pink-dark font-semibold text-sm tracking-[0.3em] uppercase mb-3 block">Real Customers</span>
 <h2 class="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold text-yura-dark mb-4 section-title">Customer Screenshots</h2>
 <div class="deco-line w-24 mx-auto"></div>
-<p class="mt-4 text-yura-text/70 max-w-md mx-auto text-base">شكراً لكل عميلة وثقت فينا</p>
+<p class="mt-4 text-yura-text/70 max-w-md mx-auto text-base">شكراً لكل عميل وعميلة وثقوا فينا</p>
 </div>
 
 <div class="ss-carousel-wrapper">
@@ -537,6 +569,33 @@ Order now على واتساب
 <i class="fab fa-whatsapp"></i>
 </a>
 
+<!-- Cart Modal -->
+<div id="cart-modal" class="modal-overlay">
+<div class="modal-content" style="max-width:520px;">
+<button class="modal-close" onclick="closeCart()"><i class="fas fa-times"></i></button>
+<div class="p-5 md:p-7">
+<h2 class="font-playfair text-2xl sm:text-3xl font-bold text-yura-dark mb-5 flex items-center gap-2"><i class="fas fa-shopping-bag text-yura-pink-dark text-xl"></i>سلة المشتريات</h2>
+<div id="cart-items" class="space-y-3 mb-5 max-h-[45vh] overflow-y-auto"></div>
+<div id="cart-empty" class="text-center text-yura-text/50 py-10 hidden">
+<i class="fas fa-shopping-bag text-3xl mb-3 block"></i>
+<p>السلة فاضية دلوقتي</p>
+</div>
+<div class="border-t border-yura-pink/20 pt-4">
+<a id="cart-whatsapp" href="" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+<i class="fab fa-whatsapp text-lg"></i>
+إتمام الطلب على واتساب
+</a>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Floating Cart Button -->
+<button id="cart-fab" onclick="openCart()" class="relative w-14 h-14 bg-gradient-to-br from-yura-pink-dark to-yura-pink rounded-full flex items-center justify-center text-white text-xl shadow-lg hover:scale-110 transition-transform duration-200">
+<i class="fas fa-shopping-bag"></i>
+<span id="cart-badge" class="absolute -top-1 -left-1 bg-yura-gold text-white text-xs font-bold w-5 h-5 rounded-full items-center justify-center hidden">0</span>
+</button>
+
 <script>
 // ===== PRODUCT DATA =====
 const products = [
@@ -547,7 +606,7 @@ const products = [
     categoryColor: "bg-yura-sage",
     price: "550 EGP",
     oldPrice: "",
-    description: "A handcrafted amigurumi doll inspired by Princess Rapunzel and her sidekick Pascal. Detailed with fine craftsmanship, making it a special gift or a unique keepsake for any fan.",
+    description: "لكل عشاق عالم ديزني! 🌸👑 أميرة ديزني ربانزل ومعاها باسكال هاند ميد 100% بتفاصيل سحرية ومعمولة بكل حب ✨",
     size: "16–17 cm Height",
     length: "16–17 cm",
     colors: ["#F4C2C2", "#C5D5C0", "#FAF0E6", "#D4AF37", "#E8A0BF"],
@@ -563,6 +622,29 @@ const products = [
       "https://i.postimg.cc/yYnY1xmp/IMG-2726.jpg"
     ],
     whatsapp: "Hi yura , I want to order Rapunzel Crochet Doll"
+  },
+  {
+    id: 1,
+    name: "Zoro Amigurumi",
+    category: "Anime Collection",
+    categoryColor: "bg-yura-gold",
+    price: "150 EGP",
+    oldPrice: "",
+    description: "لكل عشاق ون بيس! 🏴‍☠️ ميدالية زورو أميجورومي مصنوعة يدويًا 100% بكل حب وإتقان ✨",
+    size: "8 سم",
+    length: "8 سم",
+    colors: [],
+    time: "7 أيام (أسبوع)",
+    shipping: "توصيل لجميع المحافظات",
+    images: [
+      "https://i.postimg.cc/rsWr2K9L/IMG-2741.jpg",
+      "https://i.postimg.cc/MHRQJvYp/IMG-2740.jpg",
+      "https://i.postimg.cc/4xXhj47j/IMG-2744.jpg",
+      "https://i.postimg.cc/3x9DhM2r/IMG-2748.jpg",
+      "https://i.postimg.cc/XJtCPwdx/IMG-2750.jpg",
+      "https://i.postimg.cc/T1mDvpcd/IMG-2752.jpg"
+    ],
+    whatsapp: "Hi yura , I want to order Zoro Amigurumi"
   }
 ];
 
@@ -590,6 +672,7 @@ function openProductModal(productId) {
 
   const colorsContainer = document.getElementById('modal-colors');
   colorsContainer.innerHTML = '';
+  document.getElementById('modal-colors-row').style.display = currentProduct.colors.length ? 'flex' : 'none';
   currentProduct.colors.forEach(color => {
     const dot = document.createElement('span');
     dot.className = 'color-dot';
@@ -611,6 +694,11 @@ function closeProductModal() {
   document.getElementById('product-modal').classList.remove('active');
   document.body.style.overflow = '';
   currentProduct = null;
+}
+
+function addToCartFromModal() {
+  if (!currentProduct) return;
+  addToCart(currentProduct.id);
 }
 
 // تغيير الصورة فوراً بدون تأخير
@@ -698,11 +786,129 @@ window.addEventListener('load', function() {
   }, 600);
 });
 
+// ===== CART =====
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem('yura-cart') || '[]'); } catch(e) { cart = []; }
+
+function saveCart() {
+  try { localStorage.setItem('yura-cart', JSON.stringify(cart)); } catch(e) {}
+  updateCartBadge();
+}
+
+function updateCartBadge() {
+  const badge = document.getElementById('cart-badge');
+  if (!badge) return;
+  const count = cart.reduce((sum, i) => sum + i.qty, 0);
+  badge.textContent = count;
+  badge.style.display = count > 0 ? 'flex' : 'none';
+}
+
+function addToCart(productId) {
+  const product = products.find(p => p.id === productId);
+  if (!product) return;
+  const existing = cart.find(i => i.id === productId);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({ id: productId, name: product.name, price: product.price, qty: 1 });
+  }
+  saveCart();
+  bumpCartFab();
+}
+
+function bumpCartFab() {
+  const fab = document.getElementById('cart-fab');
+  if (!fab) return;
+  fab.classList.add('cart-bump');
+  setTimeout(() => fab.classList.remove('cart-bump'), 300);
+}
+
+function removeFromCart(productId) {
+  cart = cart.filter(i => i.id !== productId);
+  saveCart();
+  renderCart();
+}
+
+function changeQty(productId, delta) {
+  const item = cart.find(i => i.id === productId);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) { removeFromCart(productId); return; }
+  saveCart();
+  renderCart();
+}
+
+function renderCart() {
+  const container = document.getElementById('cart-items');
+  const emptyMsg = document.getElementById('cart-empty');
+  const waBtn = document.getElementById('cart-whatsapp');
+  container.innerHTML = '';
+
+  if (cart.length === 0) {
+    emptyMsg.classList.remove('hidden');
+    waBtn.style.display = 'none';
+    return;
+  }
+  emptyMsg.classList.add('hidden');
+  waBtn.style.display = 'flex';
+
+  cart.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'flex items-center justify-between gap-3 bg-white rounded-xl p-3 shadow-soft';
+    row.innerHTML = `
+      <div class="flex-1 min-w-0">
+        <p class="font-bold text-yura-dark text-sm truncate">${item.name}</p>
+        <p class="text-yura-pink-dark text-xs font-semibold">${item.price}</p>
+      </div>
+      <div class="flex items-center gap-2">
+        <button class="cart-qty-btn w-7 h-7 rounded-full bg-yura-pink/10 text-yura-pink-dark flex items-center justify-center text-sm font-bold">−</button>
+        <span class="text-sm font-bold w-4 text-center">${item.qty}</span>
+        <button class="cart-qty-btn w-7 h-7 rounded-full bg-yura-pink/10 text-yura-pink-dark flex items-center justify-center text-sm font-bold">+</button>
+      </div>
+      <button class="cart-remove-btn text-yura-text/40 hover:text-red-400 transition-colors" aria-label="حذف"><i class="fas fa-trash-alt text-sm"></i></button>
+    `;
+    const buttons = row.querySelectorAll('.cart-qty-btn');
+    buttons[0].onclick = () => changeQty(item.id, -1);
+    buttons[1].onclick = () => changeQty(item.id, 1);
+    row.querySelector('.cart-remove-btn').onclick = () => removeFromCart(item.id);
+    container.appendChild(row);
+  });
+
+  updateCartWhatsappLink();
+}
+
+function updateCartWhatsappLink() {
+  let message = 'أهلاً Yura Store، عايز/ة أطلب الآتي:%0A%0A';
+  cart.forEach(item => {
+    message += encodeURIComponent(`• ${item.name} (${item.price}) × ${item.qty}`) + '%0A';
+  });
+  message += '%0A' + encodeURIComponent('ممكن تأكدولي الطلب؟');
+  document.getElementById('cart-whatsapp').href = `https://wa.me/201018140186?text=${message}`;
+}
+
+function openCart() {
+  renderCart();
+  document.getElementById('cart-modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCart() {
+  document.getElementById('cart-modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('cart-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeCart();
+});
+
+updateCartBadge();
+
 // ===== CATEGORY FILTER =====
 function filterProducts(category) {
   const items = document.querySelectorAll('.product-item');
   items.forEach(item => {
-    if (category === 'all' || item.dataset.category === category) {
+    const itemCategories = item.dataset.category.split(' ');
+    if (category === 'all' || itemCategories.includes(category)) {
       item.style.display = '';
       requestAnimationFrame(() => {
         item.style.opacity = '1';
