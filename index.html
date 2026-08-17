@@ -79,6 +79,11 @@ body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:
 .cart-qty-btn{transition:transform 0.15s ease;touch-action:manipulation;}
 .cart-qty-btn:active{transform:scale(0.85)}
 
+.social-link-btn{display:inline-flex;align-items:center;gap:0.6rem;padding:0.9rem 1.75rem;border-radius:9999px;color:white;font-weight:700;font-size:0.95rem;box-shadow:0 6px 20px rgba(0,0,0,0.12);transition:transform 0.2s ease, box-shadow 0.2s ease;}
+.social-link-btn i{font-size:1.2rem;}
+.social-link-btn:active{transform:scale(0.95);}
+@media (hover:hover){.social-link-btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,0.18);}}
+
 .float-whatsapp{animation:pulse-whatsapp 2.5s infinite}
 @keyframes pulse-whatsapp{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,0.5)}50%{box-shadow:0 0 0 20px rgba(37,211,102,0)}}
 
@@ -516,6 +521,32 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 </div>
 </section>
 
+<!-- Follow Us Section -->
+<section class="py-16 relative overflow-hidden bg-white/40">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+<span class="text-yura-pink-dark font-semibold text-sm tracking-[0.3em] uppercase mb-3 block">Stay Connected</span>
+<h2 class="font-playfair text-4xl sm:text-5xl font-bold text-yura-dark mb-4 section-title">تابعينا</h2>
+<div class="deco-line w-24 mx-auto mb-10"></div>
+<div class="flex flex-wrap justify-center gap-4">
+<a href="https://www.instagram.com/yura_store77?igsh=MTE3NGZvMWJxZHZhMg%3D%3D&utm_source=qr" target="_blank" class="social-link-btn" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);">
+<i class="fab fa-instagram"></i><span>Instagram</span>
+</a>
+<a href="https://www.tiktok.com/@yurvv7" target="_blank" class="social-link-btn" style="background:linear-gradient(135deg,#010101,#25F4EE);">
+<i class="fab fa-tiktok"></i><span>TikTok</span>
+</a>
+<a href="https://t.me/yurv505" target="_blank" class="social-link-btn" style="background:linear-gradient(135deg,#2AABEE,#229ED9);">
+<i class="fab fa-telegram-plane"></i><span>Telegram</span>
+</a>
+<a href="https://chat.whatsapp.com/K0YKfFzzcQmHEysAnknOPJ?s=cl&p=i&ilr=2" target="_blank" class="social-link-btn" style="background:linear-gradient(135deg,#25D366,#128C7E);">
+<i class="fab fa-whatsapp"></i><span>WhatsApp Community</span>
+</a>
+<a href="https://wa.me/201018140186" target="_blank" class="social-link-btn" style="background:linear-gradient(135deg,#25D366,#128C7E);">
+<i class="fab fa-whatsapp"></i><span>WhatsApp</span>
+</a>
+</div>
+</div>
+</section>
+
 <!-- Screenshots Gallery Section -->
 <section id="screenshots" class="py-24 relative overflow-hidden">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -616,14 +647,17 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <div class="text-center md:text-left">
 <h4 class="font-bold text-lg mb-5 text-yura-pink">Contact us</h4>
 <ul class="space-y-2">
-<li class="flex items-center justify-center md:justify-start gap-2 text-white/60 text-sm">
-<i class="fab fa-whatsapp text-green-400"></i><span>0101 814 0186</span>
+<li class="flex items-center justify-center md:justify-start gap-2 text-sm">
+<a href="https://wa.me/201018140186" target="_blank" class="flex items-center gap-2 text-white/60 hover:text-yura-pink transition-colors"><i class="fab fa-whatsapp text-green-400"></i><span>0101 814 0186</span></a>
 </li>
-<li class="flex items-center justify-center md:justify-start gap-2 text-white/60 text-sm">
-<i class="fab fa-instagram text-pink-400"></i><span>@yura.store</span>
+<li class="flex items-center justify-center md:justify-start gap-2 text-sm">
+<a href="https://www.instagram.com/yura_store77?igsh=MTE3NGZvMWJxZHZhMg%3D%3D&utm_source=qr" target="_blank" class="flex items-center gap-2 text-white/60 hover:text-yura-pink transition-colors"><i class="fab fa-instagram text-pink-400"></i><span>@yura_store77</span></a>
 </li>
-<li class="flex items-center justify-center md:justify-start gap-2 text-white/60 text-sm">
-<i class="fab fa-facebook text-blue-400"></i><span>Yura Store</span>
+<li class="flex items-center justify-center md:justify-start gap-2 text-sm">
+<a href="https://www.tiktok.com/@yurvv7" target="_blank" class="flex items-center gap-2 text-white/60 hover:text-yura-pink transition-colors"><i class="fab fa-tiktok text-white"></i><span>@yurvv7</span></a>
+</li>
+<li class="flex items-center justify-center md:justify-start gap-2 text-sm">
+<a href="https://t.me/yurv505" target="_blank" class="flex items-center gap-2 text-white/60 hover:text-yura-pink transition-colors"><i class="fab fa-telegram-plane text-blue-400"></i><span>@yurv505</span></a>
 </li>
 </ul>
 </div>
