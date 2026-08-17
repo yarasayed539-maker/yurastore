@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="theme-color" content="#F4C2C2">
 <title>Yura Store | Handmade Crochet</title>
+<base target="_blank">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -132,9 +133,9 @@ body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:
 /* تسريع الـ screenshots carousel */
 .ss-carousel-wrapper {position: relative; padding: 0 60px;}
 .ss-carousel {overflow: hidden; border-radius: 1.5rem;}
-.ss-track {display: flex; gap: 1.5rem; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); will-change: transform; align-items: flex-start;}
+.ss-track {display: flex; gap: 1.5rem; transition: transform 0.4s ease-out; will-change: transform; align-items: flex-start;}
 .ss-slide {flex: 0 0 calc(50% - 0.75rem); min-width: 0; display: flex; align-items: flex-start; justify-content: center;}
-.ss-slide img {width: 100%; max-height: 65vh; object-fit: contain; object-position: top center; border-radius: 1rem; display: block; box-shadow: 0 8px 30px rgba(0,0,0,0.1); border: 3px solid white; background: white; will-change: transform;}
+.ss-slide img {width: 100%; max-height: 65vh; object-fit: contain; object-position: top center; border-radius: 1rem; display: block; box-shadow: 0 8px 30px rgba(0,0,0,0.1); border: 3px solid white; background: white; transform: translateZ(0);}
 .ss-arrow {position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; background: white; border: 2px solid rgba(232,160,191,0.3); color: #E8A0BF; font-size: 1.1rem; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.2s ease; touch-action: manipulation;}
 .ss-arrow:active {background: #E8A0BF; color: white; transform: translateY(-50%) scale(0.95);}
 .ss-arrow-prev { right: 0; }
@@ -145,7 +146,7 @@ body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:
 
 @media (max-width: 768px) {
   .ss-carousel-wrapper { padding: 0 50px; }
-  .ss-slide { flex: 0 0 calc(100% - 0rem); }
+  .ss-slide { flex: 0 0 100%; }
   .ss-slide img { max-height: 70vh; border-width: 2px; border-radius: 0.75rem; }
   .ss-arrow { width: 40px; height: 40px; font-size: 0.9rem; }
 }
@@ -160,8 +161,6 @@ body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:
   *, *::before, *::after {animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important;}
 }
 </style>
-<base target="_blank">
-<base target="_blank">
 </head>
 <body class="font-cairo antialiased">
 
@@ -597,7 +596,6 @@ function closeProductModal() {
   currentProduct = null;
 }
 
-// تغيير الصورة فوراً بدون تأخير
 function updateModalImage() {
   if (!currentProduct) return;
   const img = document.getElementById('modal-main-image');
@@ -631,7 +629,7 @@ function changeModalImage(direction) {
   renderThumbs();
 }
 
-// Swipe باللمس للمودال
+// Touch swipe للمودال
 let touchStartX = 0;
 let touchEndX = 0;
 const modalGallery = document.getElementById('modal-main-image-container');
@@ -651,19 +649,17 @@ function handleSwipe() {
   const diff = touchStartX - touchEndX;
   if (Math.abs(diff) > swipeThreshold) {
     if (diff > 0) {
-      changeModalImage(1); // swipe left -> next (RTL)
+      changeModalImage(1);
     } else {
-      changeModalImage(-1); // swipe right -> prev (RTL)
+      changeModalImage(-1);
     }
   }
 }
 
-// Close modal on overlay click
 document.getElementById('product-modal').addEventListener('click', function(e) {
   if (e.target === this) closeProductModal();
 });
 
-// Keyboard navigation
 document.addEventListener('keydown', function(e) {
   if (!currentProduct) return;
   if (e.key === 'Escape') closeProductModal();
@@ -770,14 +766,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     currentIndex = Math.max(0, Math.min(index, maxIndex));
     const slideWidth = slides[0].offsetWidth;
     const gap = 24;
-    track.style.transform = `translateX(${currentIndex * (slideWidth + gap)}px)`;
+    
+    // تصحيح الحركة في اتجاه RTL لضمان السلاسة وعدم الخروج عن الشاشة
+    const isRTL = document.dir === 'rtl' || document.documentElement.dir === 'rtl';
+    const offset = currentIndex * (slideWidth + gap);
+    track.style.transform = isRTL ? `translateX(${offset}px)` : `translateX(-${offset}px)`;
+
     document.querySelectorAll('.ss-dot').forEach((d, i) => {
       d.classList.toggle('active', i === currentIndex);
     });
   }
 
   window.ssMove = function(dir) {
-    const maxIndex = Math.max(0, totalSlides - slidesPerView);
     goTo(currentIndex + dir);
   };
 
@@ -787,7 +787,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   ssCarousel.addEventListener('touchstart', (e) => { ssStartX = e.changedTouches[0].screenX; }, {passive: true});
   ssCarousel.addEventListener('touchend', (e) => {
     const diff = ssStartX - e.changedTouches[0].screenX;
-    if (Math.abs(diff) > 50) {
+    if (Math.abs(diff) > 40) {
       ssMove(diff > 0 ? 1 : -1);
     }
   }, {passive: true});
