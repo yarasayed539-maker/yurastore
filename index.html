@@ -76,8 +76,16 @@ body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:
 #cart-fab{position:fixed;bottom:1.25rem;right:1.25rem;z-index:50;}
 @keyframes cart-bump{0%{transform:scale(1)}50%{transform:scale(1.18)}100%{transform:scale(1)}}
 .cart-bump{animation:cart-bump 0.3s ease;}
-.cart-qty-btn{transition:transform 0.15s ease;touch-action:manipulation;}
-.cart-qty-btn:active{transform:scale(0.85)}
+.cart-qty-btn{transition:transform 0.15s ease, background 0.15s ease;touch-action:manipulation;background:#E8A0BF;color:#ffffff;box-shadow:0 2px 8px rgba(232,160,191,0.4);}
+.cart-qty-btn:hover{background:#E285AA}
+.cart-qty-btn:active{transform:scale(0.85);background:#D4718F}
+
+/* ===== CART ITEMS - thumbnail, subtotal, total ===== */
+.cart-item-thumb{width:52px;height:52px;border-radius:0.85rem;object-fit:cover;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.08);border:1px solid rgba(232,160,191,0.25);}
+.cart-total-row{display:flex;align-items:center;justify-content:space-between;padding:0.9rem 1.1rem;background:linear-gradient(135deg,#FDF2F8,#FCE7F3);border-radius:1rem;border:1px solid rgba(232,160,191,0.35);}
+.cart-continue-btn{width:100%;padding:0.75rem 1rem;border-radius:0.85rem;background:white;color:#4A4A4A;font-weight:700;font-size:0.85rem;border:1.5px solid rgba(232,160,191,0.4);display:flex;align-items:center;justify-content:center;gap:0.5rem;transition:all 0.2s ease;touch-action:manipulation;}
+.cart-continue-btn:active{background:#FDF2F8;transform:scale(0.97);}
+@media (hover:hover){.cart-continue-btn:hover{background:#FDF2F8;border-color:#E8A0BF;}}
 
 .social-link-btn{display:inline-flex;align-items:center;gap:0.6rem;padding:0.9rem 1.75rem;border-radius:9999px;color:white;font-weight:700;font-size:0.95rem;box-shadow:0 6px 20px rgba(0,0,0,0.12);transition:transform 0.2s ease, box-shadow 0.2s ease;}
 .social-link-btn i{font-size:1.2rem;}
@@ -276,7 +284,7 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex flex-wrap justify-center gap-3">
 <button class="category-pill active px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('all')"><span>All</span></button>
-<button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('bags')"><span>Bags & Totes</span></button>
+<button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('bags')"><span>Bags & Totes and Pouchs</span></button>
 <button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('dolls')"><span>Dolls & Amigurumi</span></button>
 <button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('anime')"><span>Anime Collection</span></button>
 <button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('keychains')"><span>Keychains</span></button>
@@ -686,6 +694,44 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
+<!-- Product: Rose Pouch -->
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="bags">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/CLD0J7rK/photo-1-2026-08-17-23-30-19.jpg" alt="Rose Pouch" class="card-image w-full h-full object-cover" onclick="openProductModal(20)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">250 EGP</span></div>
+    <div class="absolute top-4 left-4 bg-yura-sage/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Bags & Totes and Pouchs</div>
+  </div>
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Rose Pouch</h3>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">باوتش كروشيه هاند ميد 100% بغرزة بارزة وناعمة مع وردة حمراء متطرزة برقة، متزودة بسوستة متينة عشان تحفظ لك أغراضك بأمان ✨</p>
+    <button onclick="addToCart(20)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
+  </div>
+</div>
+
+<!-- Product: Duck Backpack Keychain -->
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="dolls boys keychains">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/tTSRQgFV/photo-1-2026-08-17-23-44-38.jpg" alt="Duck Backpack Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(21)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">200 EGP</span></div>
+    <div class="absolute top-4 left-4 bg-yura-pink-dark/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Keychains</div>
+  </div>
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Duck Backpack Keychain</h3>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">لطافة وتفاصيل تفتح النفس في الطريق! 🦆✨ بطة كروشيه هاند ميد 100% لابسة طاقية حمراء ومفصلة بشنطة ظهر رقيقة، متصممة بحب ودقة عشان تضيف بهجة وروح لطيفة ✨</p>
+    <button onclick="addToCart(21)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
+  </div>
+</div>
+
 </div>
 </div>
 </section>
@@ -974,13 +1020,21 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <div id="cart-items" class="space-y-3 mb-5 max-h-[45vh] overflow-y-auto"></div>
 <div id="cart-empty" class="text-center text-yura-text/50 py-10 hidden">
 <i class="fas fa-shopping-bag text-3xl mb-3 block"></i>
-<p>السلة فاضية دلوقتي</p>
+<p class="mb-4">السلة فاضية دلوقتي</p>
+<button onclick="closeCart()" class="cart-continue-btn inline-flex w-auto px-6"><i class="fas fa-arrow-left text-xs"></i>متابعة التسوق</button>
 </div>
-<div class="border-t border-yura-pink/20 pt-4">
+<div id="cart-summary" class="border-t border-yura-pink/20 pt-4 space-y-3">
+<div class="cart-total-row">
+<span class="text-yura-text/70 font-semibold text-sm">الإجمالي الكلي</span>
+<span id="cart-total" class="text-yura-pink-dark font-bold text-lg">0 EGP</span>
+</div>
 <a id="cart-whatsapp" href="" target="_blank" class="whatsapp-btn w-full py-3.5 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
 <i class="fab fa-whatsapp text-lg"></i>
 إتمام الطلب على واتساب
 </a>
+<button onclick="closeCart()" class="cart-continue-btn">
+<i class="fas fa-arrow-left text-xs"></i>متابعة التسوق
+</button>
 </div>
 </div>
 </div>
@@ -1455,6 +1509,53 @@ const products = [
       "https://i.postimg.cc/Vk8B3ZKM/photo-5-2026-08-17-22-23-18.jpg"
     ],
     whatsapp: "Hi yura , I want to order Pink Tulip Coaster"
+  },
+  {
+    id: 20,
+    name: "Rose Pouch",
+    category: "Bags & Totes and Pouchs",
+    categoryColor: "bg-yura-sage",
+    price: "250 EGP",
+    oldPrice: "",
+    description: "باوتش كروشيه هاند ميد 100% بغرزة بارزة وناعمة مع وردة حمراء متطرزة برقة، متزودة بسوستة متينة عشان تحفظ لك الميك أب، الفلوس، أو اكسسواراتك بأمان ✨",
+    note: "متاح تنفيذها بأي ألوان، أي شكل، وبالمقاس اللي يريحك تماماً! 💕",
+    size: "",
+    length: "",
+    colors: ["#F5E6CA", "#FFFFFF", "#8B5E3C", "#F8BBD0", "#A9C4E8"],
+    time: "10 أيام",
+    shipping: "توصيل لجميع المحافظات",
+    images: [
+      "https://i.postimg.cc/CLD0J7rK/photo-1-2026-08-17-23-30-19.jpg",
+      "https://i.postimg.cc/sDSzKmH1/photo-2-2026-08-17-23-30-19.jpg",
+      "https://i.postimg.cc/bNbPLgVD/photo-3-2026-08-17-23-30-19.jpg",
+      "https://i.postimg.cc/rFWTgjZm/photo-4-2026-08-17-23-30-19.jpg",
+      "https://i.postimg.cc/MKRwt53j/photo-5-2026-08-17-23-30-19.jpg",
+      "https://i.postimg.cc/YCHHPFTq/photo-6-2026-08-17-23-30-19.jpg",
+      "https://i.postimg.cc/BQD3Np7F/photo-7-2026-08-17-23-30-19.jpg"
+    ],
+    whatsapp: "Hi yura , I want to order Rose Pouch"
+  },
+  {
+    id: 21,
+    name: "Duck Backpack Keychain",
+    category: "Keychains",
+    categoryColor: "bg-yura-pink-dark",
+    price: "200 EGP",
+    oldPrice: "",
+    description: "لطافة وتفاصيل تفتح النفس في الطريق! 🦆✨ بطة كروشيه هاند ميد 100% لابسة طاقية حمراء ومفصلة بشنطة ظهر رقيقة، متصممة بحب ودقة عشان تضيف بهجة وروح لطيفة. تنفع جداً كتعليقة لمرآة العربية ومثالية كمان كديكور للمكتب أو الشنطة ✨",
+    note: "متاح تعديل أي تفاصيل فيها (تغيير الألوان، شكل الطاقية، أو الحجم) على حسب ذوقك تماماً! 💕",
+    size: "12-13 سم",
+    length: "12-13 سم",
+    colors: ["#FFFFFF", "#E63946", "#4A90D9", "#8B5E3C"],
+    time: "10-15 يوم",
+    shipping: "توصيل لجميع المحافظات",
+    images: [
+      "https://i.postimg.cc/tTSRQgFV/photo-1-2026-08-17-23-44-38.jpg",
+      "https://i.postimg.cc/tJsqXHzq/photo-2-2026-08-17-23-44-38.jpg",
+      "https://i.postimg.cc/9M8X5fyf/photo-3-2026-08-17-23-44-38.jpg",
+      "https://i.postimg.cc/qRbBV726/photo-4-2026-08-17-23-44-38.jpg"
+    ],
+    whatsapp: "Hi yura , I want to order Duck Backpack Keychain"
   }
 ];
 
@@ -1626,7 +1727,8 @@ function addToCart(productId) {
   if (existing) {
     existing.qty += 1;
   } else {
-    cart.push({ id: productId, name: product.name, price: product.price, qty: 1 });
+    const priceValue = parseInt(String(product.price).replace(/[^0-9]/g, ''), 10) || 0;
+    cart.push({ id: productId, name: product.name, price: product.price, priceValue: priceValue, image: product.images && product.images[0] ? product.images[0] : '', qty: 1 });
   }
   saveCart();
   bumpCartFab();
@@ -1657,29 +1759,32 @@ function changeQty(productId, delta) {
 function renderCart() {
   const container = document.getElementById('cart-items');
   const emptyMsg = document.getElementById('cart-empty');
-  const waBtn = document.getElementById('cart-whatsapp');
+  const summary = document.getElementById('cart-summary');
   container.innerHTML = '';
 
   if (cart.length === 0) {
     emptyMsg.classList.remove('hidden');
-    waBtn.style.display = 'none';
+    summary.style.display = 'none';
     return;
   }
   emptyMsg.classList.add('hidden');
-  waBtn.style.display = 'flex';
+  summary.style.display = 'block';
 
   cart.forEach(item => {
+    const priceValue = item.priceValue != null ? item.priceValue : (parseInt(String(item.price).replace(/[^0-9]/g, ''), 10) || 0);
+    const subtotal = priceValue * item.qty;
     const row = document.createElement('div');
     row.className = 'flex items-center justify-between gap-3 bg-white rounded-xl p-3 shadow-soft';
     row.innerHTML = `
+      ${item.image ? `<img src="${item.image}" alt="${item.name}" class="cart-item-thumb" loading="lazy">` : ''}
       <div class="flex-1 min-w-0">
         <p class="font-bold text-yura-dark text-sm truncate">${item.name}</p>
-        <p class="text-yura-pink-dark text-xs font-semibold">${item.price}</p>
+        <p class="text-yura-pink-dark text-xs font-semibold">${item.price} × ${item.qty} = ${subtotal} EGP</p>
       </div>
       <div class="flex items-center gap-2">
-        <button class="cart-qty-btn w-7 h-7 rounded-full bg-yura-pink/10 text-yura-pink-dark flex items-center justify-center text-sm font-bold">−</button>
+        <button class="cart-qty-btn w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">−</button>
         <span class="text-sm font-bold w-4 text-center">${item.qty}</span>
-        <button class="cart-qty-btn w-7 h-7 rounded-full bg-yura-pink/10 text-yura-pink-dark flex items-center justify-center text-sm font-bold">+</button>
+        <button class="cart-qty-btn w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">+</button>
       </div>
       <button class="cart-remove-btn text-yura-text/40 hover:text-red-400 transition-colors" aria-label="حذف"><i class="fas fa-trash-alt text-sm"></i></button>
     `;
@@ -1690,15 +1795,30 @@ function renderCart() {
     container.appendChild(row);
   });
 
+  updateCartTotal();
   updateCartWhatsappLink();
+}
+
+function updateCartTotal() {
+  const totalEl = document.getElementById('cart-total');
+  if (!totalEl) return;
+  const total = cart.reduce((sum, item) => {
+    const priceValue = item.priceValue != null ? item.priceValue : (parseInt(String(item.price).replace(/[^0-9]/g, ''), 10) || 0);
+    return sum + (priceValue * item.qty);
+  }, 0);
+  totalEl.textContent = `${total} EGP`;
 }
 
 function updateCartWhatsappLink() {
   let message = 'أهلاً Yura Store، عايز/ة أطلب الآتي:%0A%0A';
+  let total = 0;
   cart.forEach(item => {
+    const priceValue = item.priceValue != null ? item.priceValue : (parseInt(String(item.price).replace(/[^0-9]/g, ''), 10) || 0);
+    total += priceValue * item.qty;
     message += encodeURIComponent(`• ${item.name} (${item.price}) × ${item.qty}`) + '%0A';
   });
-  message += '%0A' + encodeURIComponent('ممكن تأكدولي الطلب؟');
+  message += '%0A' + encodeURIComponent(`الإجمالي الكلي: ${total} EGP`) + '%0A%0A';
+  message += encodeURIComponent('ممكن تأكدولي الطلب؟');
   document.getElementById('cart-whatsapp').href = `https://wa.me/201018140186?text=${message}`;
 }
 
