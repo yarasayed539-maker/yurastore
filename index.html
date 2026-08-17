@@ -398,6 +398,25 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
+<!-- Product: Ring Box Bouquet -->
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/P5pFF8NT/IMG-2442.jpg" alt="Ring Box Bouquet" class="card-image w-full h-full object-cover" onclick="openProductModal(5)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">200 EGP</span></div>
+    <div class="absolute top-4 left-4 bg-yura-pink-dark/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Keychains</div>
+  </div>
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Ring Box Bouquet</h3>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">بوكيه ورد مش بس للشكل، دا كمان بيشيل خاتمك! 💐✨ قطعة كروشيه هاند ميد 100% بلمسة رومانسية مميزة جداً 💖</p>
+    <button onclick="addToCart(5)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
+  </div>
+</div>
+
 </div>
 </div>
 </section>
@@ -431,7 +450,7 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 
 <!-- Product Details -->
 <div class="space-y-2 mb-6">
-<div class="detail-row">
+<div class="detail-row" id="modal-length-row">
 <div class="detail-icon"><i class="fas fa-arrows-alt-v"></i></div>
 <div>
 <div class="text-xs text-yura-text/50 font-medium">الطول / الارتفاع</div>
@@ -822,6 +841,29 @@ const products = [
       "https://i.postimg.cc/fyT4Sg8r/IMG-1965.jpg"
     ],
     whatsapp: "Hi yura , I want to order Spider-Man & Gwen Keychains"
+  },
+  {
+    id: 5,
+    name: "Ring Box Bouquet",
+    category: "Keychains",
+    categoryColor: "bg-yura-pink-dark",
+    price: "200 EGP",
+    oldPrice: "",
+    description: "بوكيه ورد مش بس للشكل، دا كمان بيشيل خاتمك! 💐✨ قطعة كروشيه هاند ميد 100% مصممة بفكره خطيره ومبتكرة على شكل بوكيه ورد أنيق لحفظ الخاتم أو لتقديم أحلى مفاجأة وهدية بلمسة رومانسية مميزة جداً 💖",
+    size: "",
+    length: "",
+    colors: ["#E63946", "#F4C2C2", "#FAF0E6", "#C5D5C0"],
+    time: "7 أيام",
+    shipping: "توصيل لجميع المحافظات",
+    images: [
+      "https://i.postimg.cc/P5pFF8NT/IMG-2442.jpg",
+      "https://i.postimg.cc/4yxWvYrG/IMG-2437.jpg",
+      "https://i.postimg.cc/Gm8SSs9m/IMG-2441.jpg",
+      "https://i.postimg.cc/cHmD8RkX/IMG-2443.jpg",
+      "https://i.postimg.cc/nhjwwQMx/IMG-2444.jpg",
+      "https://i.postimg.cc/3x4bbDWD/IMG-2446.jpg"
+    ],
+    whatsapp: "Hi yura , I want to order Ring Box Bouquet"
   }
 ];
 
@@ -840,6 +882,7 @@ function openProductModal(productId) {
   document.getElementById('modal-old-price').style.display = currentProduct.oldPrice ? 'inline' : 'none';
   document.getElementById('modal-description').textContent = currentProduct.description;
   document.getElementById('modal-length').textContent = currentProduct.length;
+  document.getElementById('modal-length-row').style.display = currentProduct.length ? 'flex' : 'none';
   document.getElementById('modal-pieces').textContent = currentProduct.pieces || '';
   document.getElementById('modal-pieces-row').style.display = currentProduct.pieces ? 'flex' : 'none';
   document.getElementById('modal-time').textContent = currentProduct.time;
