@@ -214,7 +214,6 @@ body.loading{overflow:hidden;}
 @media (max-width:768px){#scroll-top-btn{bottom:5.5rem;right:1rem;width:40px;height:40px;font-size:1rem;}}
 </style>
 <base target="_blank">
-<base target="_blank">
 </head>
 <body class="font-cairo antialiased loading">
 
@@ -1878,6 +1877,15 @@ let currentSearchTerm = '';
 function filterProducts(category) {
   currentCategory = category;
   applyProductFilters();
+  scrollToProductsGrid();
+}
+
+function scrollToProductsGrid() {
+  const grid = document.getElementById('products-grid');
+  if (!grid) return;
+  const navOffset = 90;
+  const y = grid.getBoundingClientRect().top + window.pageYOffset - navOffset;
+  window.scrollTo({top: Math.max(y, 0), behavior: 'smooth'});
 }
 
 function handleSearchInput(value) {
