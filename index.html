@@ -314,6 +314,8 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('coaster')"><span>Coaster</span></button>
 <button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('airpods')"><span>AirPods Case</span></button>
 <button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('bookmarks')"><span>Bookmarks</span></button>
+<button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('gloves')"><span>Gloves</span></button>
+<button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('accessories')"><span>Accessories</span></button>
 </div>
 </div>
 </section>
@@ -920,6 +922,46 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
     <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Sunflower Keychain</h3>
     <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">ميداليه للشنطة هاند ميد على شكل عباد الشمس بتفاصيل أوراق الشجر الخضراء المبهجة. قطعة كروشيه عملية تزود الشنطة لمسة حيوية وصيفية، وتقدروا كمان تتعلق في العربية أو المفاتيح ✨</p>
     <button onclick="addToCart(30)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
+  </div>
+</div>
+
+
+<!-- Product: Cat Paw Gloves -->
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="gloves">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/05tQwVMw/photo-1-2026-08-18-00-09-45.jpg" alt="Cat Paw Gloves" class="card-image w-full h-full object-cover" onclick="openProductModal(31)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">300 EGP</span></div>
+    <div class="absolute top-4 left-4 bg-yura-pink-dark/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Gloves</div>
+  </div>
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-2">Cat Paw Gloves</h3>
+    <p class="text-yura-text/70 text-sm line-clamp-2">دفء ولطافة تكمّل ستايلك في الشتا! 🐾✨ قفازات كروشيه هاند ميد بتصميم كف القطة.</p>
+    <button onclick="addToCart(31)" class="mt-4 w-full py-3 rounded-xl bg-yura-pink-dark text-white font-semibold">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
+  </div>
+</div>
+
+
+<!-- Product: Classic Gloves -->
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="gloves">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/BQ00tDNZ/photo-10-2026-08-18-00-14-43.jpg" alt="Classic Gloves" class="card-image w-full h-full object-cover" onclick="openProductModal(32)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">200 EGP</span></div>
+    <div class="absolute top-4 left-4 bg-yura-pink-dark/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Gloves</div>
+  </div>
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-2">Classic Gloves</h3>
+    <p class="text-yura-text/70 text-sm line-clamp-2">دفء ونعومة بلمسة كلاسيكية شيك! ❄️✨ جلاڤز كروشيه هاند ميد 100% راقية ومريحة ودافئة.</p>
+    <button onclick="addToCart(32)" class="mt-4 w-full py-3 rounded-xl bg-yura-pink-dark text-white font-semibold">
       <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
     </button>
   </div>
@@ -1961,7 +2003,56 @@ const products = [
       "https://i.postimg.cc/6qvzZYL6/photo-2026-08-18-01-35-15.jpg"
     ],
     whatsapp: "Hi yura , I want to order Sunflower Keychain"
+  },
+  {
+    id: 31,
+    name: "Cat Paw Gloves",
+    category: "Gloves",
+    categoryColor: "bg-yura-pink",
+    price: "300 EGP",
+    oldPrice: "",
+    description: "دفء ولطافة تكمّل ستايلك في الشتا! 🐾✨ قفازات (جلاڤز) بدون أصابع كروشيه هاند ميد 100% بتصميم كف القطة (Paw Print) الشهير والكيوت جدًا، مصنوع بلمسة خيط ناعمة ودافية، وعملي جدًا للاستخدام اليومي والموبايل من غير ما تضايقك.",
+    size: "",
+    length: "",
+    colors: ["#F8BBD0", "#9C4DCC", "#4A90E2", "#8FBC8F", "#FFD54F", "#FFA64D", "#E63946"],
+    time: "15 يوم",
+    shipping: "توصيل لجميع المحافظات",
+    images: [
+      "https://i.postimg.cc/05tQwVMw/photo-1-2026-08-18-00-09-45.jpg",
+      "https://i.postimg.cc/qBmR31hn/photo-2-2026-08-18-00-09-45.jpg",
+      "https://i.postimg.cc/wxWvmwys/photo-3-2026-08-18-00-09-45.jpg",
+      "https://i.postimg.cc/NGNMHd9X/photo-4-2026-08-18-00-09-45.jpg"
+    ],
+    whatsapp: "Hi yura , I want to order Cat Paw Gloves"
+  },
+  {
+    id: 32,
+    name: "Classic Gloves",
+    category: "Gloves",
+    categoryColor: "bg-yura-pink",
+    price: "200 EGP",
+    oldPrice: "",
+    description: "دفء ونعومة بلمسة كلاسيكية شيك! ❄️✨ جلاڤز كروشيه هاند ميد 100% راقية جداً، مريح ودافئ ومصمم بدون أصابع عشان يخليكي تتحركي وتمسكي موبايلك بسهولة طوال اليوم من غير ما تضطري تخلعيه. قطعة أساسية للشتا ومناسبة للـ Matching مع الصحاب أو كهدية شيك ورقيقة! متاح تنفيذه بأي ألوان تطلبيها وبالمقاس المناسب لإيدك تماماً.",
+    size: "",
+    length: "",
+    colors: ["#F8BBD0", "#9C4DCC", "#4A90E2", "#8FBC8F", "#FFD54F", "#FFA64D", "#E63946"],
+    time: "10 أيام",
+    shipping: "توصيل لجميع المحافظات",
+    images: [
+      "https://i.postimg.cc/BQ00tDNZ/photo-10-2026-08-18-00-14-43.jpg",
+      "https://i.postimg.cc/dQdFqnRc/photo-2-2026-08-18-00-14-43.jpg",
+      "https://i.postimg.cc/gcRpY4Vf/photo-3-2026-08-18-00-14-43.jpg",
+      "https://i.postimg.cc/Dfsh25rR/photo-4-2026-08-18-00-14-43.jpg",
+      "https://i.postimg.cc/WprV2Smj/photo-5-2026-08-18-00-14-43.jpg",
+      "https://i.postimg.cc/J7J81K3z/photo-6-2026-08-18-00-14-43.jpg",
+      "https://i.postimg.cc/02ssrmZs/photo-7-2026-08-18-00-14-43.jpg",
+      "https://i.postimg.cc/RVBBqfGm/photo-8-2026-08-18-00-14-43.jpg",
+      "https://i.postimg.cc/wTpp3JFg/photo-9-2026-08-18-00-14-43.jpg",
+      "https://i.postimg.cc/44tGJw6D/photo-1-2026-08-18-00-14-43.jpg"
+    ],
+    whatsapp: "Hi yura , I want to order Classic Gloves"
   }
+
 ];
 
 let currentProduct = null;
