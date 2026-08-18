@@ -194,6 +194,24 @@ body{font-family:'Cairo',sans-serif;background:#FFF8F0;color:#4A4A4A;overflow-x:
 .loader-logo{width:6.5rem;height:6.5rem;object-fit:cover;border-radius:1.5rem;box-shadow:0 8px 30px rgba(232,160,191,0.25);animation:loader-pulse 1.2s ease-in-out infinite;}
 @keyframes loader-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.08);opacity:0.8}}
 body.loading{overflow:hidden;}
+
+/* ===== SEARCH BAR ===== */
+.search-wrap{position:relative;max-width:480px;width:100%;margin:0 auto;}
+.search-input{width:100%;padding:0.9rem 3rem 0.9rem 1.25rem;border-radius:9999px;border:1.5px solid rgba(232,160,191,0.35);background:white;font-family:'Cairo',sans-serif;font-size:0.95rem;color:#4A4A4A;box-shadow:0 4px 15px rgba(232,160,191,0.12);transition:border-color 0.2s ease, box-shadow 0.2s ease;outline:none;}
+.search-input:focus{border-color:#E8A0BF;box-shadow:0 4px 20px rgba(232,160,191,0.3);}
+.search-input::placeholder{color:#4A4A4A99;}
+.search-icon{position:absolute;top:50%;right:1.1rem;transform:translateY(-50%);color:#E8A0BF;font-size:1rem;pointer-events:none;}
+.search-clear{position:absolute;top:50%;left:1.1rem;transform:translateY(-50%);color:#4A4A4A66;font-size:0.9rem;cursor:pointer;display:none;touch-action:manipulation;}
+.search-clear.show{display:block;}
+#no-results-msg{display:none;text-align:center;padding:3rem 1rem;color:#4A4A4A99;}
+#no-results-msg.show{display:block;}
+
+/* ===== SCROLL TO TOP ===== */
+#scroll-top-btn{position:fixed;bottom:6rem;right:1.25rem;z-index:49;width:44px;height:44px;border-radius:50%;background:white;color:#E8A0BF;display:flex;align-items:center;justify-content:center;font-size:1.1rem;box-shadow:0 4px 15px rgba(232,160,191,0.3);border:1.5px solid rgba(232,160,191,0.3);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, background 0.2s ease;touch-action:manipulation;}
+#scroll-top-btn.show{opacity:1;visibility:visible;transform:translateY(0);}
+#scroll-top-btn:active{background:#E8A0BF;color:white;transform:scale(0.92);}
+@media (hover:hover){#scroll-top-btn:hover{background:#FDF2F8;}}
+@media (max-width:768px){#scroll-top-btn{bottom:5.5rem;right:1rem;width:40px;height:40px;font-size:1rem;}}
 </style>
 <base target="_blank">
 <base target="_blank">
@@ -282,6 +300,11 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <!-- Categories -->
 <section class="py-12 bg-white/60">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="search-wrap mb-8">
+<input type="text" id="product-search" class="search-input" placeholder="دور على منتج... (Zoro, Rapunzel, Coaster)" oninput="handleSearchInput(this.value)">
+<i class="fas fa-search search-icon"></i>
+<i class="fas fa-times-circle search-clear" id="search-clear-btn" onclick="clearSearch()"></i>
+</div>
 <div class="flex flex-wrap justify-center gap-3">
 <button class="category-pill active px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('all')"><span>All</span></button>
 <button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('bags')"><span>Bags & Totes and Pouchs</span></button>
@@ -733,6 +756,10 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 </div>
 
 </div>
+<div id="no-results-msg">
+<i class="fas fa-search text-3xl mb-3 block text-yura-pink-dark/40"></i>
+<p class="font-semibold">مفيش منتجات مطابقة للبحث</p>
+</div>
 </div>
 </section>
 
@@ -1005,6 +1032,11 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 </div>
 </div>
 </footer>
+
+<!-- Scroll to Top Button -->
+<button id="scroll-top-btn" onclick="scrollToTop()" aria-label="ارجع لأعلى الصفحة">
+<i class="fas fa-chevron-up"></i>
+</button>
 
 <!-- Floating WhatsApp Button -->
 <a href="https://wa.me/201018140186?text=أهلاً%20Yura%20Store،%20عايزة%20أستفسر%20عن%20منتجاتكم" target="_blank" class="fixed bottom-5 left-5 z-50 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg float-whatsapp hover:scale-110 transition-transform duration-200">
@@ -1839,12 +1871,43 @@ document.getElementById('cart-modal').addEventListener('click', function(e) {
 
 updateCartBadge();
 
-// ===== CATEGORY FILTER =====
+// ===== CATEGORY FILTER + SEARCH =====
+let currentCategory = 'all';
+let currentSearchTerm = '';
+
 function filterProducts(category) {
+  currentCategory = category;
+  applyProductFilters();
+}
+
+function handleSearchInput(value) {
+  currentSearchTerm = value.trim().toLowerCase();
+  document.getElementById('search-clear-btn').classList.toggle('show', currentSearchTerm.length > 0);
+  applyProductFilters();
+}
+
+function clearSearch() {
+  const input = document.getElementById('product-search');
+  input.value = '';
+  currentSearchTerm = '';
+  document.getElementById('search-clear-btn').classList.remove('show');
+  applyProductFilters();
+}
+
+function applyProductFilters() {
   const items = document.querySelectorAll('.product-item');
+  let visibleCount = 0;
   items.forEach(item => {
     const itemCategories = item.dataset.category.split(' ');
-    if (category === 'all' || itemCategories.includes(category)) {
+    const matchesCategory = currentCategory === 'all' || itemCategories.includes(currentCategory);
+    const nameEl = item.querySelector('h3');
+    const badgeEl = item.querySelector('.absolute.top-4.left-4');
+    const searchableText = ((nameEl ? nameEl.textContent : '') + ' ' + (badgeEl ? badgeEl.textContent : '')).toLowerCase();
+    const matchesSearch = currentSearchTerm === '' || searchableText.includes(currentSearchTerm);
+    const visible = matchesCategory && matchesSearch;
+
+    if (visible) {
+      visibleCount++;
       item.style.display = '';
       requestAnimationFrame(() => {
         item.style.opacity = '1';
@@ -1856,7 +1919,25 @@ function filterProducts(category) {
       setTimeout(() => { item.style.display = 'none'; }, 200);
     }
   });
+
+  const noResultsMsg = document.getElementById('no-results-msg');
+  if (noResultsMsg) {
+    setTimeout(() => {
+      noResultsMsg.classList.toggle('show', visibleCount === 0);
+    }, visibleCount === 0 ? 200 : 0);
+  }
 }
+
+// ===== SCROLL TO TOP =====
+function scrollToTop() {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+const scrollTopBtn = document.getElementById('scroll-top-btn');
+window.addEventListener('scroll', () => {
+  if (scrollTopBtn) {
+    scrollTopBtn.classList.toggle('show', window.scrollY > 500);
+  }
+}, {passive: true});
 
 // ===== NAVBAR =====
 const navbar = document.getElementById('navbar');
