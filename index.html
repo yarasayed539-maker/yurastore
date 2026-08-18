@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -927,7 +928,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-
 <!-- Product: Cat Paw Gloves -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="gloves">
   <div class="relative overflow-hidden aspect-[3/4]">
@@ -947,7 +947,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-
 <!-- Product: Classic Gloves -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="gloves">
   <div class="relative overflow-hidden aspect-[3/4]">
@@ -966,6 +965,27 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
     </button>
   </div>
 </div>
+
+<!-- ========== NEW PRODUCT: Headband & Clips ========== -->
+<!-- Product: Headband & Clips -->
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="accessories">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/HWc72GQS/photo-1-2026-08-18-01-08-21.jpg" alt="Headband & Clips" class="card-image w-full h-full object-cover" onclick="openProductModal(33)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">180 EGP</span></div>
+    <div class="absolute top-4 left-4 bg-yura-pink-dark/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Accessories</div>
+  </div>
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Headband & Clips</h3>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">دي أحلي هدية للأطفال، هيتبسطو منها أوي! 🤩💗 طقم الهيدباند والكليبس كروشيه هاند ميد 100% بـ تصميم مميز وشيك، وبيتجهز بألوان وتفاصيل تختاريها أنتِ بنفسك عشان يطلع بالشكل اللي تحبيه بالضبط. قطعة فريدة ومبهجة تنفع هدية أو إضافة لطيفة لأي طفلة ✨</p>
+    <button onclick="addToCart(33)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
+  </div>
+</div>
+<!-- ========== END NEW PRODUCT ========== -->
 
 </div>
 <div id="no-results-msg">
@@ -2051,8 +2071,30 @@ const products = [
       "https://i.postimg.cc/44tGJw6D/photo-1-2026-08-18-00-14-43.jpg"
     ],
     whatsapp: "Hi yura , I want to order Classic Gloves"
+  },
+  // ========== NEW PRODUCT: Headband & Clips ==========
+  {
+    id: 33,
+    name: "Headband & Clips",
+    category: "Accessories",
+    categoryColor: "bg-yura-pink-dark",
+    price: "180 EGP",
+    oldPrice: "",
+    description: "دي أحلي هدية للأطفال، هيتبسطو منها أوي! 🤩💗 طقم الهيدباند والكليبس كروشيه هاند ميد 100% بـ تصميم مميز وشيك، وبيتجهز بألوان وتفاصيل تختاريها أنتِ بنفسك عشان يطلع بالشكل اللي تحبيه بالضبط. قطعة فريدة ومبهجة تنفع هدية أو إضافة لطيفة لأي طفلة ✨",
+    size: "",
+    length: "",
+    colors: ["#FFFFFF", "#FFD54F", "#E63946", "#F8BBD0"],
+    time: "10-15 يوم",
+    shipping: "توصيل لجميع المحافظات",
+    images: [
+      "https://i.postimg.cc/HWc72GQS/photo-1-2026-08-18-01-08-21.jpg",
+      "https://i.postimg.cc/Pfp84Gmy/photo-2-2026-08-18-01-08-21.jpg",
+      "https://i.postimg.cc/BZL1gWxY/photo-3-2026-08-18-01-08-21.jpg",
+      "https://i.postimg.cc/qBhCLf8D/photo-4-2026-08-18-01-08-21.jpg"
+    ],
+    whatsapp: "Hi yura , I want to order Headband & Clips"
   }
-
+  // ========== END NEW PRODUCT ==========
 ];
 
 let currentProduct = null;
