@@ -316,6 +316,7 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 <button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('bookmarks')"><span>Bookmarks</span></button>
 <button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('gloves')"><span>Gloves</span></button>
 <button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('accessories')"><span>Accessories</span></button>
+<button class="category-pill px-6 py-2.5 rounded-full bg-white border border-yura-pink/30 text-yura-text font-semibold text-sm shadow-soft" onclick="filterProducts('mask')"><span>Mask</span></button>
 </div>
 </div>
 </section>
@@ -331,8 +332,60 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
 </div>
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto" id="products-grid">
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/TYq2bLxf/photo-1-2026-08-25-19-11-10.jpg" alt="Baseet Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(34)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">300 EGP</span></div>
+    <div class="absolute top-4 left-4 bg-yura-pink-dark/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Keychains</div>
+  </div>
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Baseet Keychain</h3>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">مشاويرك هتبقى سكرة مع بسيط! 🤩 خليه معاك في كل سكة، وعلقيه في العربية وانسِ الهم. تعليقة هاندميد كلها حب وكياتة</p>
+    <button onclick="addToCart(34)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
+  </div>
+</div>
 
-<!-- Product: Rapunzel Crochet Doll -->
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="mask">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/D0KzL1Yp/photo-2-2026-08-25-19-42-41.jpg" alt="Tul8te Mask" class="card-image w-full h-full object-cover" onclick="openProductModal(37)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">350 EGP</span></div>
+    <div class="absolute top-4 left-4 bg-yura-gold/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Mask</div>
+  </div>
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Tul8te Mask</h3>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">عشان تعيش فايب "توليت" صح، مش محتاج غير الماسك بتاعنا والوردة الحمرا! 🌹✨</p>
+    <button onclick="addToCart(37)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
+  </div>
+</div>
+
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/9FMRcYTk/photo-1-2026-08-25-19-31-19.jpg" alt="Shamshoon Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(36)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">230 EGP</span></div>
+    <div class="absolute top-4 left-4 bg-yura-pink-dark/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Keychains</div>
+  </div>
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Shamshoon Keychain</h3>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">شمشون ساب سلطع برجر والوصفة السرية، وقرر يجي يسرق قلوبكم أنتوا! 💚😂</p>
+    <button onclick="addToCart(36)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
+  </div>
+</div>
+
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="dolls">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/x83jbTW5/IMG-2718.jpg" alt="Rapunzel Crochet Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(0)" loading="lazy">
@@ -351,26 +404,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Zoro Amigurumi -->
-<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="anime boys keychains">
-  <div class="relative overflow-hidden aspect-[3/4]">
-    <img src="https://i.postimg.cc/59YzckPj/IMG-2748.jpg" alt="Zoro Amigurumi" class="card-image w-full h-full object-cover" onclick="openProductModal(1)" loading="lazy">
-    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
-      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
-    </div>
-    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">150 EGP</span></div>
-    <div class="absolute top-4 left-4 bg-yura-gold/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Anime Collection</div>
-  </div>
-  <div class="card-content p-5">
-    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Zoro Amigurumi</h3>
-    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">لكل عشاق ون بيس! 🏴‍☠️ ميدالية زورو أميجورومي مصنوعة يدويًا 100% بكل حب وإتقان ✨</p>
-    <button onclick="addToCart(1)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
-      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
-    </button>
-  </div>
-</div>
-
-<!-- Product: Custom Amigurumi Doll -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="dolls">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/gk3G8vJk/IMG-2467.jpg" alt="Custom Amigurumi Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(2)" loading="lazy">
@@ -389,7 +422,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Van Gogh Amigurumi -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="dolls boys">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/cJDV3c8F/IMG-2215.jpg" alt="Van Gogh Amigurumi" class="card-image w-full h-full object-cover" onclick="openProductModal(3)" loading="lazy">
@@ -408,7 +440,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Spider-Man & Gwen Keychains -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/Kz5SzyDt/IMG-1968.jpg" alt="Spider-Man & Gwen Keychains" class="card-image w-full h-full object-cover" onclick="openProductModal(4)" loading="lazy">
@@ -433,45 +464,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Ring Box Bouquet -->
-<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
-  <div class="relative overflow-hidden aspect-[3/4]">
-    <img src="https://i.postimg.cc/P5pFF8NT/IMG-2442.jpg" alt="Ring Box Bouquet" class="card-image w-full h-full object-cover" onclick="openProductModal(5)" loading="lazy">
-    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
-      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
-    </div>
-    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">200 EGP</span></div>
-    <div class="absolute top-4 left-4 bg-yura-pink-dark/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Keychains</div>
-  </div>
-  <div class="card-content p-5">
-    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Ring Box Bouquet</h3>
-    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">بوكيه ورد مش بس للشكل، دا كمان بيشيل خاتمك! 💐✨ قطعة كروشيه هاند ميد 100% بلمسة رومانسية مميزة جداً 💖</p>
-    <button onclick="addToCart(5)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
-      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
-    </button>
-  </div>
-</div>
-
-<!-- Product: Turtle Keychain -->
-<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
-  <div class="relative overflow-hidden aspect-[3/4]">
-    <img src="https://i.postimg.cc/MTYgtgtK/photo-1-2026-08-17-15-06-59.jpg" alt="Turtle Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(6)" loading="lazy">
-    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
-      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
-    </div>
-    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">120 EGP</span></div>
-    <div class="absolute top-4 left-4 bg-yura-pink-dark/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Keychains</div>
-  </div>
-  <div class="card-content p-5">
-    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Turtle Keychain</h3>
-    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">ميدالية سلحفه هاند ميد 100% بتفاصيل كيوت ومتقنة جداً، بصدفة بنية وجسم أخضر ناعم. قطعة مبهجة تقدر تعلقها في المفاتيح أو الشنطة لتضيف لمسة مميزة ولطيفة ✨</p>
-    <button onclick="addToCart(6)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
-      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
-    </button>
-  </div>
-</div>
-
-<!-- Product: Duck Keychain -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/MTdfxKd2/photo-4-2026-08-17-15-16-11.jpg" alt="Duck Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(7)" loading="lazy">
@@ -490,7 +482,60 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Sunflower Bouquet -->
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="anime boys keychains">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/59YzckPj/IMG-2748.jpg" alt="Zoro Amigurumi" class="card-image w-full h-full object-cover" onclick="openProductModal(1)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">150 EGP</span></div>
+    <div class="absolute top-4 left-4 bg-yura-gold/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Anime Collection</div>
+  </div>
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Zoro Amigurumi</h3>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">لكل عشاق ون بيس! 🏴‍☠️ ميدالية زورو أميجورومي مصنوعة يدويًا 100% بكل حب وإتقان ✨</p>
+    <button onclick="addToCart(1)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
+  </div>
+</div>
+
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/P5pFF8NT/IMG-2442.jpg" alt="Ring Box Bouquet" class="card-image w-full h-full object-cover" onclick="openProductModal(5)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">200 EGP</span></div>
+    <div class="absolute top-4 left-4 bg-yura-pink-dark/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Keychains</div>
+  </div>
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Ring Box Bouquet</h3>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">بوكيه ورد مش بس للشكل، دا كمان بيشيل خاتمك! 💐✨ قطعة كروشيه هاند ميد 100% بلمسة رومانسية مميزة جداً 💖</p>
+    <button onclick="addToCart(5)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
+  </div>
+</div>
+
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/MTYgtgtK/photo-1-2026-08-17-15-06-59.jpg" alt="Turtle Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(6)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">120 EGP</span></div>
+    <div class="absolute top-4 left-4 bg-yura-pink-dark/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Keychains</div>
+  </div>
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Turtle Keychain</h3>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">ميدالية سلحفه هاند ميد 100% بتفاصيل كيوت ومتقنة جداً، بصدفة بنية وجسم أخضر ناعم. قطعة مبهجة تقدر تعلقها في المفاتيح أو الشنطة لتضيف لمسة مميزة ولطيفة ✨</p>
+    <button onclick="addToCart(6)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
+  </div>
+</div>
+
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/v86FnSFp/photo-1-2026-08-17-15-33-56.jpg" alt="Sunflower Bouquet" class="card-image w-full h-full object-cover" onclick="openProductModal(8)" loading="lazy">
@@ -509,7 +554,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Kitty Keychain -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/FRzZSqfr/photo-2-2026-08-17-15-50-38.jpg" alt="Kitty Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(9)" loading="lazy">
@@ -528,7 +572,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Rose Cherries Charm -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/3RGPpd0N/photo-6-2026-08-17-16-07-19.jpg" alt="Rose Cherries Charm" class="card-image w-full h-full object-cover" onclick="openProductModal(10)" loading="lazy">
@@ -547,7 +590,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Za3lan Doll -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="dolls">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/MGqcgQxF/photo-1-2026-08-17-16-12-58.jpg" alt="Za3lan Doll" class="card-image w-full h-full object-cover" onclick="openProductModal(11)" loading="lazy">
@@ -566,10 +608,9 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Bouquet Charm -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
   <div class="relative overflow-hidden aspect-[3/4]">
-    <img src="https://i.postimg.cc/bvSYv08v/photo-4-2026-08-17-16-20-23.jpg" alt="Bouquet Charm" class="card-image w-full h-full object-cover" onclick="openProductModal(12)" loading="lazy">
+    <img src="https://i.postimg.cc/Mpk0R6gw/photo-2026-08-18-01-27-29.jpg" alt="Bouquet Charm" class="card-image w-full h-full object-cover" onclick="openProductModal(12)" loading="lazy">
     <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
       <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
     </div>
@@ -585,7 +626,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Rose Bouquet Coaster -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="coaster">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/g0rS6LFs/photo-1-2026-08-17-14-07-48.jpg" alt="Rose Bouquet Coaster" class="card-image w-full h-full object-cover" onclick="openProductModal(13)" loading="lazy">
@@ -604,7 +644,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: AirPods Case -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="airpods">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/Ssj4SstS/photo-1-2026-08-17-21-45-57.jpg" alt="AirPods Case" class="card-image w-full h-full object-cover" onclick="openProductModal(14)" loading="lazy">
@@ -623,7 +662,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Tulip Bouquet Coaster -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="coaster">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/Ls5LjcyB/photo-1-2026-08-17-21-53-48.jpg" alt="Tulip Bouquet Coaster" class="card-image w-full h-full object-cover" onclick="openProductModal(15)" loading="lazy">
@@ -642,7 +680,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Flower Bouquet Coaster -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="coaster">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/wTnCKzNJ/photo-6-2026-08-17-22-00-25.jpg" alt="Flower Bouquet Coaster" class="card-image w-full h-full object-cover" onclick="openProductModal(16)" loading="lazy">
@@ -661,7 +698,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Bookmark -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="bookmarks">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/KcD7SDgt/photo-1-2026-08-17-22-05-18.jpg" alt="Bookmark" class="card-image w-full h-full object-cover" onclick="openProductModal(17)" loading="lazy">
@@ -680,7 +716,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Granny Square Bookmark -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="bookmarks">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/MKZ7Wf7v/photo-8-2026-08-17-22-05-18.jpg" alt="Granny Square Bookmark" class="card-image w-full h-full object-cover" onclick="openProductModal(18)" loading="lazy">
@@ -699,7 +734,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Pink Tulip Coaster -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="coaster">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/zXWF2YF3/photo-1-2026-08-17-22-23-18.jpg" alt="Pink Tulip Coaster" class="card-image w-full h-full object-cover" onclick="openProductModal(19)" loading="lazy">
@@ -718,7 +752,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Rose Pouch -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="bags">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/CLD0J7rK/photo-1-2026-08-17-23-30-19.jpg" alt="Rose Pouch" class="card-image w-full h-full object-cover" onclick="openProductModal(20)" loading="lazy">
@@ -737,7 +770,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Duck Backpack Keychain -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="dolls boys keychains">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/tTSRQgFV/photo-1-2026-08-17-23-44-38.jpg" alt="Duck Backpack Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(21)" loading="lazy">
@@ -756,7 +788,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Tulip Flower Coaster -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="coaster">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/BQb7Nnmr/photo-2-2026-08-18-01-21-45.jpg" alt="Tulip Flower Coaster" class="card-image w-full h-full object-cover" onclick="openProductModal(22)" loading="lazy">
@@ -775,7 +806,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Shaun the Sheep Keychain -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="dolls keychains">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/Hx1rxnhS/photo-3-2026-08-18-00-39-39.jpg" alt="Shaun the Sheep Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(23)" loading="lazy">
@@ -794,7 +824,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Duck Keychain (Bonnet) -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/QNpM6jyM/photo-2-2026-08-18-00-27-01.jpg" alt="Duck Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(24)" loading="lazy">
@@ -813,7 +842,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Cute Chick Keychain -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/P53t9JHW/photo-3-2026-08-18-01-13-42.jpg" alt="Cute Chick Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(25)" loading="lazy">
@@ -832,7 +860,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Bunny Keychain -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/y8f5sSkx/photo-3-2026-08-18-00-52-23.jpg" alt="Bunny Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(26)" loading="lazy">
@@ -851,7 +878,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Mini Football Keychain -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains boys">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/wBNDjS0b/photo-1-2026-08-17-23-39-52.jpg" alt="Mini Football Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(27)" loading="lazy">
@@ -870,7 +896,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Mini Bouquet Charm -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/05K3YQrw/photo-1-2026-08-18-00-01-50.jpg" alt="Mini Bouquet Charm" class="card-image w-full h-full object-cover" onclick="openProductModal(28)" loading="lazy">
@@ -889,7 +914,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Flower Keychain -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/VknH3HXY/photo-1-2026-08-17-23-52-49.jpg" alt="Flower Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(29)" loading="lazy">
@@ -908,7 +932,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Sunflower Keychain -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/6qvzZYL6/photo-2026-08-18-01-35-15.jpg" alt="Sunflower Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(30)" loading="lazy">
@@ -927,7 +950,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Cat Paw Gloves -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="gloves">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/05tQwVMw/photo-1-2026-08-18-00-09-45.jpg" alt="Cat Paw Gloves" class="card-image w-full h-full object-cover" onclick="openProductModal(31)" loading="lazy">
@@ -946,7 +968,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- Product: Classic Gloves -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="gloves">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/BQ00tDNZ/photo-10-2026-08-18-00-14-43.jpg" alt="Classic Gloves" class="card-image w-full h-full object-cover" onclick="openProductModal(32)" loading="lazy">
@@ -965,8 +986,6 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
   </div>
 </div>
 
-<!-- ========== NEW PRODUCT: Headband & Clips ========== -->
-<!-- Product: Headband & Clips -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="accessories">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/HWc72GQS/photo-1-2026-08-18-01-08-21.jpg" alt="Headband & Clips" class="card-image w-full h-full object-cover" onclick="openProductModal(33)" loading="lazy">
@@ -984,31 +1003,7 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
     </button>
   </div>
 </div>
-<!-- ========== END NEW PRODUCT ========== -->
 
-<!-- ========== NEW PRODUCT: Baseet Keychain ========== -->
-<!-- Product: Baseet Keychain -->
-<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
-  <div class="relative overflow-hidden aspect-[3/4]">
-    <img src="https://i.postimg.cc/TYq2bLxf/photo-1-2026-08-25-19-11-10.jpg" alt="Baseet Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(34)" loading="lazy">
-    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
-      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
-    </div>
-    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">300 EGP</span></div>
-    <div class="absolute top-4 left-4 bg-yura-pink-dark/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Keychains</div>
-  </div>
-  <div class="card-content p-5">
-    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Baseet Keychain</h3>
-    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">مشاويرك هتبقى سكرة مع بسيط! 🤩 خليه معاك في كل سكة، وعلقيه في العربية وانسِ الهم. تعليقة هاندميد كلها حب وكياتة</p>
-    <button onclick="addToCart(34)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
-      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
-    </button>
-  </div>
-</div>
-<!-- ========== END NEW PRODUCT ========== -->
-
-<!-- ========== NEW PRODUCT: Shell Bag ========== -->
-<!-- Product: Shell Bag -->
 <div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="bags">
   <div class="relative overflow-hidden aspect-[3/4]">
     <img src="https://i.postimg.cc/k54ZS9DW/photo-2026-08-19-22-44-04.jpg" alt="Shell Bag" class="card-image w-full h-full object-cover" onclick="openProductModal(35)" loading="lazy">
@@ -1026,23 +1021,58 @@ HANDMADE WITH LOVE · CROCHET ART · EGYPTIAN CRAFT
     </button>
   </div>
 </div>
-<!-- ========== END NEW PRODUCT ========== -->
 
-<!-- ========== NEW PRODUCT: Shamshoon Keychain ========== -->
-<!-- Product: Shamshoon Keychain -->
-<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="accessories">
   <div class="relative overflow-hidden aspect-[3/4]">
-    <img src="https://i.postimg.cc/9FMRcYTk/photo-1-2026-08-25-19-31-19.jpg" alt="Shamshoon Keychain" class="card-image w-full h-full object-cover" onclick="openProductModal(36)" loading="lazy">
+    <img src="https://i.postimg.cc/6QrvCCnq/photo-1-2026-08-18-01-00-13.jpg" alt="Pink Hair Clip" class="card-image w-full h-full object-cover" onclick="openProductModal(38)" loading="lazy">
     <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
       <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
     </div>
-    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">230 EGP</span></div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">45 EGP</span></div>
+    <div class="absolute top-4 left-4 bg-yura-pink-dark/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Accessories</div>
+  </div>
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Pink Hair Clip</h3>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">وردة كروشيه لطيفة ومبهجة بلون بينك هادي، متثبتة على كلبس شعر متين وسهل الاستخدام. قطعة هاند ميد رقيقة تلم الشعر بشياكة وتضيف لمسة أنثوية وناعمة لأي أوت فيت</p>
+    <button onclick="addToCart(38)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
+  </div>
+</div>
+
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="accessories">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/CKS1TXBW/photo-3-2026-08-18-01-04-54.jpg" alt="Fluffy Hair Clip" class="card-image w-full h-full object-cover" onclick="openProductModal(39)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">45 EGP</span></div>
+    <div class="absolute top-4 left-4 bg-yura-pink-dark/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Accessories</div>
+  </div>
+  <div class="card-content p-5">
+    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Fluffy Hair Clip</h3>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">توكة شعر هاند ميد على شكل وردة منتفخة (Puff Stitch) باللون الأوف وايت مع قلب بينك رقيق. متثبتة على كلبس متين، وبتضيف لمسة رقيقة وناعمة لأي تسريحة شعر.</p>
+    <button onclick="addToCart(39)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+      <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
+    </button>
+  </div>
+</div>
+
+<!-- ========== NEW PRODUCT: Matchy Frogs ========== -->
+<!-- Product: Matchy Frogs -->
+<div class="product-card group bg-white rounded-[2rem] overflow-hidden shadow-card gradient-border product-item" data-category="keychains">
+  <div class="relative overflow-hidden aspect-[3/4]">
+    <img src="https://i.postimg.cc/Z5FrftB3/photo-2026-08-26-01-02-30.jpg" alt="Matchy Frogs" class="card-image w-full h-full object-cover" onclick="openProductModal(40)" loading="lazy">
+    <div class="overlay absolute inset-0 flex items-end p-5 pointer-events-none">
+      <span class="text-white/90 text-xs font-light tracking-wide"><i class="fas fa-images mr-1"></i>Tap for details</span>
+    </div>
+    <div class="absolute top-4 right-4 price-tag px-3 py-1.5 rounded-full"><span class="text-yura-dark font-bold text-sm">150 EGP</span></div>
     <div class="absolute top-4 left-4 bg-yura-pink-dark/90 text-white text-xs px-2.5 py-1 rounded-full font-semibold">Keychains</div>
   </div>
   <div class="card-content p-5">
-    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Shamshoon Keychain</h3>
-    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">شمشون ساب سلطع برجر والوصفة السرية، وقرر يجي يسرق قلوبكم أنتوا! 💚😂</p>
-    <button onclick="addToCart(36)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
+    <h3 class="font-bold text-yura-dark text-lg mb-1 group-hover:text-yura-pink-dark transition-colors duration-200">Matchy Frogs</h3>
+    <p class="text-yura-text/60 text-sm mb-4 line-clamp-2 leading-relaxed">Ente w Ana Frogs 🐸💕 لأن الصداقة الحقيقية هي اللي بتجمعنا وما تفرقناش! 🤝✨ ميداليات الضفادع المغناطيسية، كل نص فيها بيشد التاني، هدية مثالية ولطيفة تعبّر عن رابطة الصداقة اللي ما بتنكسرش💚</p>
+    <button onclick="addToCart(40)" class="cart-btn w-full py-3 rounded-xl text-white font-bold text-sm flex items-center justify-center gap-2">
       <i class="fas fa-shopping-bag text-base"></i>أضف للسلة
     </button>
   </div>
@@ -1664,10 +1694,16 @@ const products = [
     time: "5-7 أيام",
     shipping: "توصيل لجميع المحافظات",
     images: [
+      "https://i.postimg.cc/Mpk0R6gw/photo-2026-08-18-01-27-29.jpg",
       "https://i.postimg.cc/bvSYv08v/photo-4-2026-08-17-16-20-23.jpg",
       "https://i.postimg.cc/9fwXfPVQ/photo-1-2026-08-17-16-20-22.jpg",
       "https://i.postimg.cc/fbSWb7ZT/photo-2-2026-08-17-16-20-22.jpg",
-      "https://i.postimg.cc/TP52PjGG/photo-3-2026-08-17-16-20-22.jpg"
+      "https://i.postimg.cc/TP52PjGG/photo-3-2026-08-17-16-20-22.jpg",
+      "https://i.postimg.cc/XYMKFjtb/photo-2026-08-18-01-27-32.jpg",
+      "https://i.postimg.cc/Vky9Mf2c/photo-2026-08-18-01-27-41.jpg",
+      "https://i.postimg.cc/y8FmTqCb/photo-2026-08-18-01-27-45.jpg",
+      "https://i.postimg.cc/J7vjV71F/photo-2026-08-18-01-30-31.jpg",
+      "https://i.postimg.cc/DfH1kf2M/photo-2026-08-18-01-30-32.jpg"
     ],
     whatsapp: "Hi yura , I want to order Bouquet Charm"
   },
@@ -1764,7 +1800,9 @@ const products = [
       "https://i.postimg.cc/qMWPfrKN/photo-5-2026-08-17-22-00-25.jpg",
       "https://i.postimg.cc/BQRrW3FH/photo-7-2026-08-17-22-00-25.jpg",
       "https://i.postimg.cc/VL2xywtt/photo-8-2026-08-17-22-00-25.jpg",
-      "https://i.postimg.cc/7YjFv4z1/photo-9-2026-08-17-22-00-25.jpg"
+      "https://i.postimg.cc/7YjFv4z1/photo-9-2026-08-17-22-00-25.jpg",
+      "https://i.postimg.cc/x1SH8sNZ/photo-2026-08-18-01-30-16.jpg",
+      "https://i.postimg.cc/wjdJMWRP/photo-2026-08-18-01-30-17.jpg"
     ],
     whatsapp: "Hi yura , I want to order Flower Bouquet Coaster"
   },
@@ -2225,6 +2263,94 @@ const products = [
       "https://i.postimg.cc/5N0YfSLx/photo-5-2026-08-25-19-31-19.jpg"
     ],
     whatsapp: "Hi yura , I want to order Shamshoon Keychain"
+  },
+  // ========== NEW PRODUCT: Tul8te Mask ==========
+  {
+    id: 37,
+    name: "Tul8te Mask",
+    category: "Mask",
+    categoryColor: "bg-yura-gold",
+    price: "350 EGP",
+    oldPrice: "",
+    description: "عشان تعيش فايب \"توليت\" صح، مش محتاج غير الماسك بتاعنا والوردة الحمرا! 🌹✨",
+    note: "متاح تطلبيه الماسك لوحده بـ 350 جنيه، أو Set كامل (ماسك + وردة) بزيادة 100 جنيه على السعر 😉",
+    size: "26 سم",
+    length: "",
+    colors: ["#FFFFFF", "#F8BBD0"],
+    time: "10-15 يوم",
+    shipping: "توصيل لجميع المحافظات",
+    images: [
+      "https://i.postimg.cc/D0KzL1Yp/photo-2-2026-08-25-19-42-41.jpg",
+      "https://i.postimg.cc/brjvk1FL/photo-1-2026-08-25-19-42-41.jpg",
+      "https://i.postimg.cc/Y0wSYQyn/photo-3-2026-08-25-19-43-24.jpg",
+      "https://i.postimg.cc/x8SdMLFs/photo-4-2026-08-25-19-42-41.jpg"
+    ],
+    whatsapp: "Hi yura , I want to order Tul8te Mask"
+  },
+  // ========== NEW PRODUCT: Pink Hair Clip ==========
+  {
+    id: 38,
+    name: "Pink Hair Clip",
+    category: "Accessories",
+    categoryColor: "bg-yura-pink-dark",
+    price: "45 EGP",
+    oldPrice: "",
+    description: "وردة كروشيه لطيفة ومبهجة بلون بينك هادي، متثبتة على كلبس شعر متين وسهل الاستخدام. قطعة هاند ميد رقيقة تلم الشعر بشياكة وتضيف لمسة أنثوية وناعمة لأي أوت فيت",
+    note: "متاحة بأي لون تحبيه ✨",
+    size: "",
+    length: "",
+    colors: ["#F8BBD0", "#FFFFFF", "#E63946"],
+    time: "5-7 أيام",
+    shipping: "توصيل لجميع المحافظات",
+    images: [
+      "https://i.postimg.cc/6QrvCCnq/photo-1-2026-08-18-01-00-13.jpg",
+      "https://i.postimg.cc/pdfFKKzy/photo-2-2026-08-18-01-00-13.jpg"
+    ],
+    whatsapp: "Hi yura , I want to order Pink Hair Clip"
+  },
+  // ========== NEW PRODUCT: Fluffy Hair Clip ==========
+  {
+    id: 39,
+    name: "Fluffy Hair Clip",
+    category: "Accessories",
+    categoryColor: "bg-yura-pink-dark",
+    price: "45 EGP",
+    oldPrice: "",
+    description: "توكة شعر هاند ميد على شكل وردة منتفخة (Puff Stitch) باللون الأوف وايت مع قلب بينك رقيق. متثبتة على كلبس متين، وبتضيف لمسة رقيقة وناعمة لأي تسريحة شعر.",
+    note: "متاحة بأي لون تحبيه ✨",
+    size: "",
+    length: "",
+    colors: ["#FFFFFF", "#F8BBD0", "#E63946", "#FFD54F"],
+    time: "3-5 أيام",
+    shipping: "توصيل لجميع المحافظات",
+    images: [
+      "https://i.postimg.cc/CKS1TXBW/photo-3-2026-08-18-01-04-54.jpg",
+      "https://i.postimg.cc/TPfwMFLF/photo-1-2026-08-18-01-04-54.jpg",
+      "https://i.postimg.cc/1zsth2nb/photo-2-2026-08-18-01-04-54.jpg",
+      "https://i.postimg.cc/25r6RMbs/photo-4-2026-08-18-01-04-54.jpg"
+    ],
+    whatsapp: "Hi yura , I want to order Fluffy Hair Clip"
+  },
+  // ========== NEW PRODUCT: Matchy Frogs ==========
+  {
+    id: 40,
+    name: "Matchy Frogs",
+    category: "Keychains",
+    categoryColor: "bg-yura-pink-dark",
+    price: "150 EGP",
+    oldPrice: "",
+    description: "Ente w Ana Frogs 🐸💕 لأن الصداقة الحقيقية هي اللي بتجمعنا وما تفرقناش! 🤝✨ ميداليات الضفادع المغناطيسية، كل نص فيها بيشد التاني، هدية مثالية ولطيفة تعبّر عن رابطة الصداقة اللي ما بتنكسرش💚",
+    note: "السعر 150 جنيه للزوج (ميدالية لكل صديق)، ومتاح تنفيذها بأي لون تحبيه ✨",
+    size: "",
+    length: "",
+    colors: ["#8FBC8F", "#F8BBD0", "#FFFFFF", "#E63946", "#FFD54F"],
+    time: "7-10 أيام",
+    shipping: "توصيل لجميع المحافظات",
+    images: [
+      "https://i.postimg.cc/Z5FrftB3/photo-2026-08-26-01-02-30.jpg",
+      "https://i.postimg.cc/t4thrQZZ/photo-2026-08-26-01-02-27.jpg"
+    ],
+    whatsapp: "Hi yura , I want to order Matchy Frogs"
   }
   // ========== END NEW PRODUCT ==========
 ];
